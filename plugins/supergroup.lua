@@ -882,7 +882,7 @@ if data[tostring(target)]['settings'] then
 	end
 local gp_type = data[tostring(msg.to.id)]['group_type']
 local settings = data[tostring(target)]['settings']
-  local text = "⚙_SuperGroup Settings:_\n--------------\n*🔧Lock Links *: _"..settings.lock_link.."_\n*🔧Lock Tags :* _"..settings.lock_tags.."_\n*🔧Lock Emoji :*_ "..settings.lock_emoji.."_\n--------------\n*🔧lock cmd(commands)*_"..settings.lock_cmd.."_\n*🔧lock username(@) :*_"..settings.lock_user.."_\n*🔧Lock poker :*_"..settings.lock_poker.."_\n*🔧Lock Forwarding :* _"..settings.lock_fwd.."_\n--------------\n*🔧Lock Reply :*_ "..settings.lock_reply.."_\n*🔧Lock BadWords :* _"..settings.lock_fosh.."_\n*🔧Lock Bots :* _"..bots_protection.."_\n*🔧Lock Flood:* _"..settings.flood.."_\n*🔧Flood Sensitivity :* _"..NUM_MSG_MAX.."_\n--------------\n*🔧Lock Spam: *_"..settings.lock_spam.." _\n*🔧lock all :* _"..settings.lock_all.."_\n*🔧Lock Persian:* _"..settings.lock_arabic.."_\n*🔧Lock Member:* _"..settings.lock_member.."_\n*🔧Lock RTL:* _"..settings.lock_rtl.."_\n*🔧Lock TgService :* _"..settings.lock_tgservice.."_\n--------------\n*🔧Lock Sticker:*_ "..settings.lock_sticker.."_\n*🔧Public:* _"..settings.public.."_\n*🔧Strict Settings:* _"..settings.strict.."_\n--------------\n*Type :* _"..group_type.."\n_*🤖bot version:1.1🤖*\n*Dev* : [MrBlackLife](http://telegram.me/Mrblacklife)\n[Channel](https://telegram.me/spheroch)"
+  local text = "⚙_SuperGroup Settings:_\n--------------\n*🔧Lock Links *: _"..settings.lock_link.."_\n*🔧Lock Tags :* _"..settings.lock_tags.."_\n*🔧Lock Emoji :*_ "..settings.lock_emoji.."_\n--------------\n*🔧lock cmd(commands)*_"..settings.lock_cmd.."_\n*🔧lock username(@) :*_"..settings.lock_user.."_\n*🔧Lock poker :*_"..settings.lock_poker.."_\n*🔧Lock Forwarding :* _"..settings.lock_fwd.."_\n--------------\n*🔧Lock Reply :*_ "..settings.lock_reply.."_\n*🔧Lock BadWords :* _"..settings.lock_fosh.."_\n*🔧Lock Bots :* _"..bots_protection.."_\n*🔧Lock Flood:* _"..settings.flood.."_\n*🔧Flood Sensitivity :* _"..NUM_MSG_MAX.."_\n--------------\n*🔧Lock Spam: *_"..settings.lock_spam.." _\n*🔧lock all :* _"..settings.lock_all.."_\n*🔧Lock Persian:* _"..settings.lock_arabic.."_\n*🔧Lock Member:* _"..settings.lock_member.."_\n*🔧Lock RTL:* _"..settings.lock_rtl.."_\n*🔧Lock TgService :* _"..settings.lock_tgservice.."_\n--------------\n*🔧Lock Sticker:*_ "..settings.lock_sticker.."_\n*🔧Public:* _"..settings.public.."_\n*🔧Strict Settings:* _"..settings.strict.."_\n--------------\n*Type :* _"..gp_type.."\n_*🤖bot version:1.1🤖*\n*Dev* : [MrBlackLife](http://telegram.me/Mrblacklife)\n[Channel](https://telegram.me/spheroch)"
   local text = text
 send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
 end
@@ -1638,7 +1638,7 @@ local function run(msg, matches)
 			end
 local gp_type = data[tostring(msg.to.id)]['group_type']
 			savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested group link ["..group_link.."]")
-			local text = "_SuperGp name :_ *"..msg.to.title.."*\n*Link For* ["..group_type.."]("..group_link..") SuperGroup!"
+			local text = "_SuperGp name :_ *"..msg.to.title.."*\n*Link For* ["..gp_type.."]("..group_link..") SuperGroup!"
 send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
 		end
 
