@@ -111,7 +111,7 @@ local function pre_process(msg)
 send_api_msg(msg, get_receiver_api(msg), "*"..msg.from.print_name.."* _You Have Been Kicked For Spam._, true, 'md'")
 		else
 			savelog(msg.to.id, name_log.." ["..msg.from.id.."] kicked for #spam")
-		send_api_msg(msg, get_receiver_api(msg), *"..msg.from.print_name.."* _You Have Been Kicked For Spam._, true, 'md')
+		send_api_msg(msg, get_receiver_api(msg), "*"..msg.from.print_name.."* _You Have Been Kicked For Spam._, true, 'md'*)
 		end
 	  end
       -- incr it on redis
