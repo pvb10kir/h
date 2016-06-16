@@ -1638,7 +1638,7 @@ local function run(msg, matches)
 			end
 local gp_type = data[tostring(msg.to.id)]['group_type']
 			savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested group link ["..group_link.."]")
-			return "_SuperGp name :_ *"..msg.to.title.."*\n*Link For* ["..group_type.."]("..group_link..") SuperGroup!"
+			local text = "_SuperGp name :_ *"..msg.to.title.."*\n*Link For* ["..group_type.."]("..group_link..") SuperGroup!"
 send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
 		end
 
