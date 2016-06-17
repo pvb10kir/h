@@ -10,7 +10,6 @@ local chat = get_receiver(msg)
 if is_momod(msg) then -- you can set it to is_owner(msg)
 chat_add_user(chat, addsudo, callback, false)
 end
-end
 return {
 },
 patterns = {
