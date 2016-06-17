@@ -139,7 +139,7 @@ do
       requester = 'admin'
     elseif is_owner(msg, gid, uid) then
       requester = 'owner'
-    elseif is_mod(msg, gid, uid) then
+    elseif is_momod(msg, gid, uid) then
       requester = 'moderator'
     else
       requester = 'user'
