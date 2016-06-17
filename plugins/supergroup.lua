@@ -1368,9 +1368,9 @@ elseif get_cmd == "setadmin" then
 					save_data(_config.moderation.data, data)
 					savelog(channel, name_log.."["..from_id.."] set ["..v.peer_id.."] as owner by username")
 				if result.username then
-					text = member_username.." ["..v.peer_id.."] added as owner of the [ "..msg.to.title.." ] for #TelePro"
+					text = member_username.." ["..v.peer_id.."] added as owner of the [ "..msg.to.title.." ]."
 				else
-					text = "["..v.peer_id.."] added as owner of the [ "..msg.to.title.." ] for #TelePro"
+					text = "["..v.peer_id.."] added as owner of the [ "..msg.to.title.." ]."
 				end
 			end
 		elseif memberid and vusername ~= member and vpeer_id ~= memberid then
@@ -1385,7 +1385,7 @@ elseif get_cmd == "setadmin" then
 				data[tostring(channel)]['set_owner'] = tostring(memberid)
 				save_data(_config.moderation.data, data)
 				savelog(channel, name_log.."["..from_id.."] set ["..memberid.."] as owner by username")
-				text = "["..memberid.."] added as owner of the [ "..msg.to.title.." ] for #TelePro"
+				text = "["..memberid.."] added as owner of the [ "..msg.to.title.." ]."
 			end
 		end
 	end
