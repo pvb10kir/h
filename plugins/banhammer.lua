@@ -146,7 +146,7 @@ local support_id = msg.from.id
     elseif matches[1]:lower() == 'id' then
       local name = user_print_name(msg.from)
       savelog(msg.to.id, name.." ["..msg.from.id.."] used /id ")
-      local text = "["..msg.from.print_name.."](http://telegram.me/"..msg.from.username..")\n*Your ID* : _"..msg.from.id.."_\n*Group ID :* _"..msg.to.id.."_"
+      local text = "["..msg.from.print_name.."](http://telegram.me/"..msg.from.username..")\n*Your #ID* : _"..msg.from.id.."_\n*Group #ID :* _"..msg.to.id.."_"
    send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
  end
   end
