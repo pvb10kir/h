@@ -13,7 +13,7 @@ local function run(msg, matches)
     local chat = get_receiver(msg)
     local user = "user#id"..msg.from.id
     if antilink == "yes" then
-        send_large_msg(chat, You Have Been Kicked for send ads ')
+        send_large_msg(chat, 'You Have Been Kicked for send ads')
         delete_msg(msg.id,ok_cb,false)
     end
 end
