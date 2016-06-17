@@ -1229,7 +1229,7 @@ local function callbackres(extra, success, result)
 			save_data(_config.moderation.data, data)
 			savelog(channel, name_log.." ["..from_id.."] set ["..result.peer_id.."] as owner by username")
 		if result.username then
-			text = member_username.." [ "..result.peer_id.." ] added as owner of the [ "..msg.to.title.." ] for #TelePro"
+			text = member_username.." [ "..result.peer_id.." ] added as owner of the [ "..msg.to.title.." ]."
 		else
 			text = "[ "..result.peer_id.." ] added as owner of the [ "..msg.to.title.." ]."
 		end
