@@ -47,11 +47,4 @@ return {
     run = run,
     pre_process = pre_process
 }
-end$',
-        '^(باز کردن) فروارد$',
-		--'^[/!#]fwd (status)$',
-    },
-    run = run,
-    pre_process = pre_process
-}
 end
