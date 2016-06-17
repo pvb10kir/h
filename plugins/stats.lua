@@ -121,8 +121,8 @@ local function run(msg, matches)
       end
     end
     if matches[2] == "spherobot" then -- Put everything you like :)
-      if not is_admin(msg) then
-        return "For admins only !"
+      if not is_sudo(msg) then
+        return "For Sudo only !"
       else
         return bot_stats()
       end
