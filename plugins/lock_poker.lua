@@ -7,7 +7,7 @@
 
 if msg.to.type == 'channel' and not is_momod(msg) then
 	
-	delete_msg(msg.from.id, msg.to.id)
+delete_msg(msg.id,ok_cb,false)
 
         return 
       end
