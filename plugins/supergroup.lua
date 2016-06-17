@@ -1231,7 +1231,7 @@ local function callbackres(extra, success, result)
 		if result.username then
 			text = member_username.." [ "..result.peer_id.." ] added as owner of the [ "..msg.to.title.." ] for #TelePro"
 		else
-			text = "[ "..result.peer_id.." ] added as owner of the [ "..msg.to.title.." ] for #TelePro"
+			text = "[ "..result.peer_id.." ] added as owner of the [ "..msg.to.title.." ]."
 		end
 		send_large_msg(receiver, text)
   end]]
