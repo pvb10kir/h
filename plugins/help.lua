@@ -54,13 +54,23 @@ local function plugin_help(name,number,requester)
                   text = text..plugin.usage.user..'\n〰〰〰〰〰〰〰\n'
               end
           elseif ku == 'moderator' then -- usage for moderator
-              if requester == 'moderator' or requester == 'admin' or requester == 'sudo' then
+              if requester == 'moderator' or requester == 'admin' or requester == 'sudo' or requester == 'owner' then
                   if (type(plugin.usage.moderator) == "table") then
                       for k,v in pairs(plugin.usage.moderator) do
                           text = text..v..'\n〰〰〰〰〰〰〰\n'
                       end
                   elseif has_usage_data(plugin) then -- Is not empty
                       text = text..plugin.usage.moderator..'\n〰〰〰〰〰〰〰\n'
+                  end
+              end
+elseif ku == 'owner' then -- usage for owner
+              if requester == 'owner' or requester == 'admin' or requester == 'sudo' then
+                  if (type(plugin.usage.owner) == "table") then
+                      for k,v in pairs(plugin.usage.owner) do
+                          text = text..v..'\n〰〰〰〰〰〰〰\n'
+                      end
+                  elseif has_usage_data(plugin) then -- Is not empty
+                      text = text..plugin.usage.owner..'\n〰〰〰〰〰〰〰\n'
                   end
               end
           elseif ku == 'admin' then -- usage for admin
@@ -133,6 +143,8 @@ local function run(msg, matches)
       requester = "sudo"
   elseif is_admin(msg) then
       requester = "admin"
+  elseif is_owner(msg) then
+      requester = "owner"
   elseif is_momod(msg) then
       requester = "moderator"
   else
@@ -159,10 +171,14 @@ end
 return {
   description = "Help plugin. Get info from other plugins.  ",
   usage = {
+owner = {
+"sssssssssssss",
+},
+user = {
     "!available: Show list of plugins for SpheroBoT.",
     "!help: Show all commands for every plugin.",
     "!plugin> [plugin name]: Commands for that plugin.",
-    "!plugin> [number]: Commands for that plugin. Type !help to get the plugin number."
+    "!plugin> [number]: Commands for that plugin. Type !help to get the plugin number." },
   },
   patterns = {
     "^!available$",
