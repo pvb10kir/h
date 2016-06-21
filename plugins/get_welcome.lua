@@ -8,7 +8,7 @@ local group_welcome = redis:hget(hash,'welcome')
 if matches[1] == 'delbye' and not matches[2] and is_owner(msg) then 
     
    redis:hdel(hash,'welcome')
-        return '✔Welcome Text Has Been Deleted✔'
+        return '✔Bye Text Has Been Deleted✔'
 end
 
 local url , res = http.request('http://api.gpmod.ir/time/')
