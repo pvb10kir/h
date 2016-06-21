@@ -1218,26 +1218,6 @@ function ban_by_reply_admins(extra, success, result)
 		return
 	end
 end
--- Unbanall by reply
-function unbanall_by_reply(extra, success, result)
-	if type(result) == 'boolean' then
-		print('Old message :(')
-		return false
-	end
-	if result.to.type == 'chat' or result.to.type == 'channel' then
-		local chat = 'chat#id'..result.to.peer_id
-		local channel = 'channel#id'..result.to.peer_id
-	if tonumber(result.from.peer_id) == tonumber(our_id) then -- Ignore bot
-		return
-	end
-		send_large_msg(chat, "User "..result.from.peer_id.." Unban From all Groups")
-		-- Save on redis
-		local hash =  'banned:'..result.to.peer_id
-		redis:srem(hash, result.from.peer_id)
-	else
-		return
-  end
-end
 -- Unban by reply
 function unban_by_reply(extra, success, result)
 	if type(result) == 'boolean' then
