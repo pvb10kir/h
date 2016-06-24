@@ -52,7 +52,6 @@ return {
   "^[!#/](setbye) +(.*)$",
   "^[!#/](delbye)$",
   "^!!tgservice (chat_del_user)$",
-  "^!!tgservice (channel_del_user)$",
   },
   run = run
 }
