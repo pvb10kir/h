@@ -11,7 +11,6 @@ if is_momod(msg) then -- you can set it to is_owner(msg)
 chat_add_user(chat, addsudo, callback, false)
 end
 end
-end
 return {
 },
 patterns = {
