@@ -232,7 +232,7 @@ function create_config( )
 	"whitelist",
 	"msg_checks"
     },
-    sudo_users = {85831686},--Sudo users
+    sudo_users = {255317894},--Sudo users
     moderation = {data = 'data/moderation.json'},
     about_text = [[Sphero + Helper
 An advanced administration bot based on TeleSeed written in Lua
