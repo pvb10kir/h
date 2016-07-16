@@ -2,7 +2,7 @@
 if matches[1] == '/kickme' then
 local hash = 'kick:'..msg.to.id..':'..msg.from.id
      redis:set(hash, "waite")
-      local text = '*Hi*,\n*Are you sure?*\n*Send Me* /yes *Or* /no'
+      local text = '*Hi*,\n*Are you sure?*\n*Send Me /yes Or /no*'
 send_api_msg(msg, get_receiver_api(msg), text, true, 'md')    
 end
 
@@ -11,7 +11,7 @@ end
       if msg.text:match("^/yes$") and redis:get(hash) == "waite" then
 	  redis:set(hash, "ok")
 	elseif msg.text:match("^/no$") and redis:get(hash) == "waite" then
-	send_api_msg(get_receiver_api(msg), "*Ok*,\n *You're Free As a Bird*", true, 'md')
+	send_api_msg(get_receiver_api(msg), "*Ok*\n *You're Free As a Bird*", true, 'md')
 	  redis:del(hash, true)
 
       end
