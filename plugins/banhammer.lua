@@ -111,22 +111,22 @@ local function kick_ban_res(extra, success, result)
 			return
          end
 		 kick_user(member_id, chat_id)
-      elseif get_cmd == 'ban' then
+      elseif get_cmd == 'ban +' then
         if is_momod2(member_id, chat_id) and not is_admin2(sender) then
 			send_large_msg(receiver, "You can't ban mods/owner/admins")
 			return
         end
         send_large_msg(receiver, 'User @'..member..' ['..member_id..'] banned')
 		ban_user(member_id, chat_id)
-      elseif get_cmd == 'unban' then
+      elseif get_cmd == 'ban -' then
         send_large_msg(receiver, 'User @'..member..' ['..member_id..'] unbanned')
         local hash =  'banned:'..chat_id
         redis:srem(hash, member_id)
         return 'User '..user_id..' unbanned'
-      elseif get_cmd == 'banall' then
+      elseif get_cmd == 'banall +' then
         send_large_msg(receiver, 'User @'..member..' ['..member_id..'] globally banned')
 		banall_user(member_id)
-      elseif get_cmd == 'unbanall' then
+      elseif get_cmd == 'banall -' then
         send_large_msg(receiver, 'User @'..member..' ['..member_id..'] globally unbanned')
 	    unbanall_user(member_id)
     end
@@ -171,7 +171,7 @@ local support_id = msg.from.id
     end
     return ban_list(chat_id)
   end
-  if matches[1]:lower() == 'ban' then-- /ban
+  if matches[1]:lower() == 'ban +' then-- /ban
     if type(msg.reply_id)~="nil" and is_momod(msg) then
       if is_admin1(msg) then
 		msgr = get_message(msg.reply_id,ban_by_reply_admins, false)
@@ -199,7 +199,7 @@ local support_id = msg.from.id
       else
 		local cbres_extra = {
 		chat_id = msg.to.id,
-		get_cmd = 'ban',
+		get_cmd = 'ban +',
 		from_id = msg.from.id,
 		chat_type = msg.to.type
 		}
@@ -209,7 +209,7 @@ local support_id = msg.from.id
   end
 
 
-  if matches[1]:lower() == 'unban' then -- /unban
+  if matches[1]:lower() == 'ban -' then -- /unban
     if type(msg.reply_id)~="nil" and is_momod(msg) then
       local msgr = get_message(msg.reply_id,unban_by_reply, false)
     end
@@ -227,7 +227,7 @@ local support_id = msg.from.id
       else
 		local cbres_extra = {
 			chat_id = msg.to.id,
-			get_cmd = 'unban',
+			get_cmd = 'ban -',
 			from_id = msg.from.id,
 			chat_type = msg.to.type
 		}
@@ -276,7 +276,7 @@ end
 		return
 	end
 
-  if matches[1]:lower() == 'banall' and is_admin1(msg) then -- Global ban
+  if matches[1]:lower() == 'banall +' and is_admin1(msg) then -- Global ban
     if type(msg.reply_id) ~="nil" and is_admin1(msg) then
       banall = get_message(msg.reply_id,banall_by_reply, false)
     end
@@ -292,7 +292,7 @@ end
      else
 	local cbres_extra = {
 		chat_id = msg.to.id,
-		get_cmd = 'banall',
+		get_cmd = 'banall +',
 		from_id = msg.from.id,
 		chat_type = msg.to.type
 	}
@@ -300,7 +300,7 @@ end
 		resolve_username(username, kick_ban_res, cbres_extra)
       end
   end
-  if matches[1]:lower() == 'unbanall' then -- Global unban
+  if matches[1]:lower() == 'banall -' then -- Global unban
     local user_id = matches[2]
     local chat_id = msg.to.id
       if string.match(matches[2], '^%d+$') then
@@ -312,7 +312,7 @@ end
     else
 		local cbres_extra = {
 			chat_id = msg.to.id,
-			get_cmd = 'unbanall',
+			get_cmd = 'banall -',
 			from_id = msg.from.id,
 			chat_type = msg.to.type
 		}
@@ -332,15 +332,15 @@ return {
     "^[#!/]([Bb]anlist) (.*)$",
     "^[#!/]([Bb]anlist)$",
     "^[#!/]([Gg]banlist)$",
-	"^[#!/]([Kk]ickme)",
+-- 	"^[#!/]([Kk]ickme)",
     "^[#!/]([Kk]ick)$",
-	"^[#!/]([Bb]an)$",
-    "^[#!/]([Bb]an) (.*)$",
-    "^[#!/]([Uu]nban) (.*)$",
-    "^[#!/]([Uu]nbanall) (.*)$",
-    "^[#!/]([Uu]nbanall)$",
+	"^[#!/]([Bb]an +)$",
+    "^[#!/]([Bb]an +) (.*)$",
+    "^[#!/](ban -) (.*)$",
+    "^[#!/](banall -) (.*)$",
+    "^[#!/](banall -)$",
     "^[#!/]([Kk]ick) (.*)$",
-    "^[#!/]([Uu]nban)$",
+    "^[#!/](ban -)$",
   --  "^[#!/]([Ii]d)$",
     "^!!tgservice (.+)$"
   },
