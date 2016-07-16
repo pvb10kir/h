@@ -8,9 +8,9 @@ end
 
     if msg.text then
 	local hash = 'kick:'..msg.to.id..':'..msg.from.id
-      if msg.text:match("^[/!]yes$") and redis:get(hash) == "waite" then
+      if msg.text:match("^/yes$") and redis:get(hash) == "waite" then
 	  redis:set(hash, "ok")
-	elseif msg.text:match("^[!/]no$") and redis:get(hash) == "waite" then
+	elseif msg.text:match("^/no$") and redis:get(hash) == "waite" then
 	send_api_msg(get_receiver_api(msg), "*Ok* "..msg.from.username..",\n *You're Free As a Bird*", true, 'md')
 	  redis:del(hash, true)
 
@@ -29,8 +29,8 @@ end
 return {
   patterns = {
   "[/!]kickme",
-  "^[/!]yes$",
-  "^[!/]no$"
+  "^/yes$",
+  "^/no$"
   },
   run = run,
 }
