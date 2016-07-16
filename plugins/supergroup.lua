@@ -12,7 +12,7 @@ local function check_member_super(cb_extra, success, result)
     if member_id ~= our_id then
       -- SuperGroup configuration
       data[tostring(msg.to.id)] = {
-        group_type = 'SuperGroup',
+        group_type = 'Super',
 		long_id = msg.to.peer_id,
 		moderators = {},
         set_owner = member_id ,
@@ -1639,7 +1639,7 @@ local function run(msg, matches)
 			end
 local gp_type = data[tostring(msg.to.id)]['group_type']
 			savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested group link ["..group_link.."]")
-			local text = "*SuperGp name :* *"..msg.to.title.."*\n*Link For* ["..gp_type.."]("..group_link..")* SuperGroup!*"
+			local text = "_SuperGroup name :_ *"..msg.to.title.."*\n[Supergroup Link For "..gp_type.." Group!]("..group_link..")"
 send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
 		end
 
