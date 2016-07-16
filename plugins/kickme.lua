@@ -1,5 +1,5 @@
 ﻿local function run(msg, matches)
-if matches[1] == 'kickme' then
+if matches[1] == '/kickme' then
 local hash = 'kick:'..msg.to.id..':'..msg.from.id
      redis:set(hash, "waite")
       local text = '*Hi* _"..msg.from.username.."_\n*Are you sure?*\n*Send Me* /yes *Or* /no'
@@ -28,7 +28,7 @@ end
 
 return {
   patterns = {
-  "[/!]kickme",
+  "/kickme",
   "^/yes$",
   "^/no$"
   },
