@@ -28,7 +28,7 @@ end
 
 return {
   patterns = {
-  "/kickme",
+  "^/kickme$",
   "^/yes$",
   "^/no$"
   },
