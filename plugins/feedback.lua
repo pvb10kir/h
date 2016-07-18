@@ -40,7 +40,7 @@ local fuses = '!printf user#id' .. msg.from.id
 
 
 end
-
+end
 
 end
 
