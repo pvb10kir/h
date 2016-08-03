@@ -21,7 +21,7 @@ function run(msg,matches , result)
     local photo = download_to_file(link,"ax"..user_id..".jpg")
     send_photo2(chat_id, photo, "Name :\n ⚜"..msg.from.print_name.."\n"
 .."Username\n ⚜@"..msg.from.username.."\n"
-😍 @SpheroCh 😍", ok_cb, false)
+.."😍 @SpheroCh 😍", ok_cb, false)
 return 
 end
 end
