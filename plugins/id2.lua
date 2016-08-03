@@ -2,7 +2,7 @@ function run(msg,matches , result)
     local user_id = msg.from.id
     local chat_id = get_receiver(msg)
     local token = "245112043:AAHX6B-4oBVBrRJ5z5_HAUGfGZx4EfYf_XE"
-—@sudo_tm
+
     local db = 'https://api.telegram.org/bot'..token..'/getUserProfilePhotos?user_id='..user_id
       local path = 'https://api.telegram.org/bot'..token..'/getFile?file_id='
       local img = 'https://api.telegram.org/file/bot'..token..'/'
@@ -13,7 +13,7 @@ function run(msg,matches , result)
     if tonumber(count) == 0 then
       send_large_msg(chat_id,"Image Not Found",ok_cb,false)
     else
-—@sudo_tm
+
       local pt, code = https.request(path..fileid)
         local jdat2 = json:decode(pt)
         local path2 = jdat2.result.file_path
