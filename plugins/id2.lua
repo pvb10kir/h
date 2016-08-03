@@ -19,9 +19,12 @@ function run(msg,matches , result)
         local path2 = jdat2.result.file_path
     local link = img..path2
     local photo = download_to_file(link,"ax"..user_id..".jpg")
-    send_photo2(chat_id, photo, "Name :\n ⚜"..msg.from.print_name.."\n"
-.."Username\n ⚜@"..msg.from.username.."\n"
-.."😍 @SpheroCh 😍", ok_cb, false)
+    send_photo2(chat_id, photo, "FullName:\n "..msg.from.first_name.."\n"
+.."User :\n "..msg.from.id.."\n"
+.."Username\n "..msg.from.username.."\n"
+.."User Group: \n"..msg.to.id.."\n"
+.."SuperGroup Name: \n"..msg.to.title.."\n"
+.." @SpheroCh", ok_cb, false)
 return 
 end
 end
