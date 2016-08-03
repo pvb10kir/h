@@ -132,6 +132,9 @@ Returns group logs
 
 _👌Thx For See This👌
 More Cmds Send me_ [/more_help](https://telegram.me/sphero)
+برای دیدن دستورات بیشتر
+/more help 
+را ارسال کنید
 
 *SpheroTM*
 
