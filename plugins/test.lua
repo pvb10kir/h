@@ -1,6 +1,7 @@
 local function run(msg)
 local text = [[*Local Help For* [Sphero](http://telegram.me/sphero)
-⌚️!info
+
+*⌚️!info
 Displays general info about the SuperGroup
 
 ⌚️!admins
@@ -127,7 +128,7 @@ Returns users name and id by username
 
 ⌚️!log
 Returns group logs
-⌚️Search for kick reasons using #RTL|#spam|#lockmember
+⌚️Search for kick reasons using #RTL|#spam|#lockmember*
 
 _👌Thx For See This👌
 More Cmds Send me_ [/more_help](https://telegram.me/sphero)
