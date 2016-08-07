@@ -44,7 +44,23 @@ local text = [[*🇮🇷!addsudo
 🇮🇷!ver
 نمایش ورژن ربات
 
-SpheroTM*]]
+🇮🇷!warn (username/reply)
+اخطار به کاربر در صورت رعایت نکردن قوانین
+
+🇮🇷!unwarn (username/reply)
+پاک کردن ۱ اخطار کاربر 
+
+🇮🇷!unwarnall (username/reply)
+پاک کردن کل اخطار های کاربر
+
+🇮🇷!warnmax (1-10)
+تنظیم کردن که در چه تعداد اخطار کاربر از گروه پاک شود
+
+🇮🇷!getwarn (username/reply)
+نمایش تعداد اخطار های کاربر*
+
+💤*SpheroTM*💤
+[Channel](https://telegram.me/spheroch)]]
     send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
 end
 return {
