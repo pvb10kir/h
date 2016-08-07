@@ -81,7 +81,7 @@ local function warn_by_reply(extra, success, result) -- (on reply) /warn
   if is_momod2(msg.from.id, msg.to.id) and not is_admin2(extra.fromid) then
   return send_msg(receiver, 'you cant warn to be group admin', ok_cb, false) end
 --endif--
-  if is_admin2(msg.from.id) then return send_msg(receiver, 'You can't warn admin group', ok_cb, false) end
+  if is_admin2(msg.from.id) then return send_msg(receiver, 'You cant warn admin group', ok_cb, false) end
 --endif--
   if value then
    if value == '1' then
