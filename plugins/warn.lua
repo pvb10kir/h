@@ -168,14 +168,14 @@ local function run(msg, matches)
  if not is_momod(msg) then return 'only for moderators' end
  --endif--
  ----------------------------------
- if matches[1]:lower() == 'warn +' and not matches[2] then -- (on reply) /warn
+ if matches[1]:lower() == 'warn' and not matches[2] then -- (on reply) /warn
   if msg.reply_id then
     local Reply = msg.reply_id
     msgr = get_message(msg.reply_id, warn_by_reply, {receiver=receiver, Reply=Reply, target=target, fromid=fromid})
   else return 'by reply or username' end
  --endif--
  end
- if matches[1]:lower() == 'warn +' and matches[2] then -- /warn <@username>
+ if matches[1]:lower() == 'warn' and matches[2] then -- /warn <@username>
    if string.match(user, '^%d+$') then
       return 'by username or reply'
     elseif string.match(user, '^@.+$') then
@@ -183,14 +183,14 @@ local function run(msg, matches)
       msgr = res_user(username, warn_by_username, {receiver=receiver, user=user, target=target, fromid=fromid})
    end
  end
- if matches[1]:lower() == 'warn -' and not matches[2] then -- (on reply) /unwarn
+ if matches[1]:lower() == 'unwarn' and not matches[2] then -- (on reply) /unwarn
   if msg.reply_id then
     local Reply = msg.id
     msgr = get_message(msg.reply_id, unwarn_by_reply, {receiver=receiver, Reply=Reply, target=target, fromid=fromid})
   else return 'By username or reply' end
  --endif--
  end
- if matches[1]:lower() == 'warn -' and matches[2] then -- /unwarn <@username>
+ if matches[1]:lower() == 'unwarn' and matches[2] then -- /unwarn <@username>
    if string.match(user, '^%d+$') then
       return 'By username Or reply'
     elseif string.match(user, '^@.+$') then
@@ -202,10 +202,10 @@ end
 
 return {
   patterns = {
-    "^[!/]([Ww][Aa][Rr][Nn]) +$",
-    "^[!/]([Ww][Aa][Rr][Nn]) + (.*)$",
-    "^[!/]([Ww][Aa][Rr][Nn]) -$",
-    "^[!/]([Ww][Aa][Rr][Nn]) - (.*)$"
+    "^[!/]([Ww][Aa][Rr][Nn])$",
+    "^[!/]([Ww][Aa][Rr][Nn]) (.*)$",
+    "^[!/](un[Ww][Aa][Rr][Nn])$",
+    "^[!/](un[Ww][Aa][Rr][Nn]) (.*)$"
   }, 
   run = run 
 }
