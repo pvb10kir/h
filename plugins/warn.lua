@@ -1,21 +1,29 @@
+--#############################
+--#                  Warn Plugin                            #
+--#                                                                   #
+--#                  @Empix                                 #
+--#                  @EdBaRoO                          #
+--#                                                                #
+--#                @shieldTM                           #
+--###########################
 local data = load_data(_config.moderation.data)
 --------------------------------------------------
 local function set_warn(msg, value)
     if tonumber(value) < 0 or tonumber(value) > 10 then
-        return 'خطا! فقط ارقام 1 تا 10 قبول است.'
+        return 'Error, range is [0-10].'
     end
     local warn_max = value
     data[tostring(msg.to.id)]['settings']['warn_max'] = warn_max
     save_data(_config.moderation.data, data)
-    return'max warn changed to '..value
+    return 'Warn has been set to '..value
 end
 --------------------------------------------------------------
 local function get_warn(msg)
     local warn_max = data[tostring(msg.to.id)]['settings']['warn_max']
     if not warn_max then
-        return warn not set'
+        return 'warn not set'
     end
-    return 'maz warn changed to  '..warn_max
+    return 'Warn has been set to '..warn_max
 end
 ---------------------------------------------------------
 local function get_user_warns(user_id, chat_id)
@@ -166,7 +174,7 @@ end
 -------------------------------------------------------------
 local function run(msg, matches)
     if is_momod(msg) then
-        if matches[1]:lower() == 'maxwarn' and matches[2] then
+        if matches[1]:lower() == 'warnmax' and matches[2] then
             local msg = set_warn(msg, matches[2])
             if matches[2] == '0' then
                 return 'Warn will not work anymore.'
@@ -177,7 +185,7 @@ local function run(msg, matches)
         if get_warn(msg) == 'Warn hasn\t been set yet.' then
             return 'Warn hasn\t been set yet.'
         else
-            if matches[1]:lower() == 'warns' then
+            if matches[1]:lower() == 'getwarn' then
                 if type(msg.reply_id) ~= "nil" then
                     msgr = get_message(msg.reply_id, getWarn_by_reply, false)
                 elseif string.match(matches[2], '^%d+$') then
@@ -218,7 +226,7 @@ local function run(msg, matches)
                     resolve_username(string.gsub(matches[2], '@', ''), Unwarn_by_username, { msg = msg })
                 end
             end
-            if matches[1]:lower() == 'remall warns' then
+            if matches[1]:lower() == 'unwarnall' then
                 if type(msg.reply_id) ~= "nil" then
                     msgr = get_message(msg.reply_id, Unwarnall_by_reply, false)
                 elseif string.match(matches[2], '^%d+$') then
@@ -233,7 +241,7 @@ local function run(msg, matches)
             end
         end
     else
-        return 'only for the mods'
+        return 'This plugin requires mod privileges or higher.'
     end
 end
 
@@ -241,15 +249,23 @@ return {
     description = "WARN",
     patterns =
     {
-        "^[!/](maxwarn) (%d+)$",
-        "^[!/](warns) (.*)$",
-        "^[!/](warns)$",
-        "^[!/](warn) (.*)$",
-        "^[!/](warn)$",
-        "^[!/](unwarn) (.*)$",
-        "^[!/](unwarn)$",
-        "^[!/](remall warns) (.*)$",
-        "^[!/](remall warns)$",
+        "^[#!/]([Ww][Aa][Rr][Nn][Mm][Aa][Xx]) (%d+)$",
+        "^[#!/]([Gg][Ee][Tt][Ww][Aa][Rr][Nn]) (.*)$",
+        "^[#!/]([Gg][Ee][Tt][Ww][Aa][Rr][Nn])$",
+        "^[#!/]([Ww][Aa][Rr][Nn]) (.*)$",
+        "^[#!/]([Ww][Aa][Rr][Nn])$",
+        "^[#!/]([Uu][Nn][Ww][Aa][Rr][Nn]) (.*)$",
+        "^[#!/]([Uu][Nn][Ww][Aa][Rr][Nn])$",
+        "^[#!/]([Uu][Nn][Ww][Aa][Rr][Nn][Aa][Ll][Ll]) (.*)$",
+        "^[#!/]([Uu][Nn][Ww][Aa][Rr][Nn][Aa][Ll][Ll])$",
     },
     run = run,
 }
+--#############################
+--#                  Warn Plugin                            #
+--#                                                                   #
+--#                  @Empix                                 #
+--#                  @EdBaRoO                          #
+--#                                                                #
+--#                @shieldTM                           #
+--###########################
