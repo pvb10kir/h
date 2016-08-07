@@ -34,9 +34,9 @@ local function warn_by_username(extra, success, result) -- /warn <@username>
   end
 ----------------------------------
   if is_momod2(msg.id, target) and not is_admin2(extra.fromid) then
-  return send_msg(receiver, '!You cant warn administrators bot', ok_cb, false) end
+  return send_msg(receiver, 'شما نمیتوانید به مدیر گروه اخطار بدهید!', ok_cb, false) end
 --endif--
-  if is_admin2(msg.id) then return send_msg(receiver, 'You cant warn administrators group!', ok_cb, false) end
+  if is_admin2(msg.id) then return send_msg(receiver, 'شما نمیتوانید به ادمین ربات اخطار بدهید!', ok_cb, false) end
 --endif--
   if value then
    if value == '1' then
@@ -58,7 +58,7 @@ local function warn_by_username(extra, success, result) -- /warn <@username>
   end
   send_msg(receiver, text, ok_cb, false)
   else
-   send_msg(receiver, 'username not found', ok_cb, false)
+   send_msg(receiver, ' نام کاربری پیدا نشد.', ok_cb, false)
   end
 end
 
@@ -79,9 +79,9 @@ local function warn_by_reply(extra, success, result) -- (on reply) /warn
   end
 ----------------------------------
   if is_momod2(msg.from.id, msg.to.id) and not is_admin2(extra.fromid) then
-  return send_msg(receiver, 'you cant warn to be group admin', ok_cb, false) end
+  return send_msg(receiver, 'شما نمیتوانید به مدیر گروه اخطار بدهید!', ok_cb, false) end
 --endif--
-  if is_admin2(msg.from.id) then return send_msg(receiver, 'You cant warn admin group', ok_cb, false) end
+  if is_admin2(msg.from.id) then return send_msg(receiver, 'شما نمیتوانید به ادمین ربات اخطار بدهید!', ok_cb, false) end
 --endif--
   if value then
    if value == '1' then
@@ -121,13 +121,13 @@ local function unwarn_by_username(extra, success, result) -- /unwarn <@username>
 --endif--
   if value then
   redis:hdel(hash, msg.id, '0')
-  text = 'Warn user : ('..msg.id..') Cleaned\nWarns : 0/4'
+  text = 'اخطار های کاربر ('..msg.id..') پاک شد\nتعداد اخطار ها : ۰/۴'
   else
-   text = 'No warn currently appliyed to this account'
+   text = 'این کاربر اخطاری دریافت نکرده است'
   end
   send_msg(receiver, text, ok_cb, false)
   else
-   send_msg(receiver, 'username not found', ok_cb, false)
+   send_msg(receiver, ' نام کاربری پیدا نشد.', ok_cb, false)
   end
 end
 
@@ -165,19 +165,19 @@ local function run(msg, matches)
  local receiver = get_receiver(msg)
  if msg.to.type == 'user' then return end
  --endif--
- if not is_momod(msg) then return 'only for moderators' end
+ if not is_momod(msg) then return 'شما مدیر نیستید' end
  --endif--
  ----------------------------------
  if matches[1]:lower() == 'warn' and not matches[2] then -- (on reply) /warn
   if msg.reply_id then
     local Reply = msg.reply_id
     msgr = get_message(msg.reply_id, warn_by_reply, {receiver=receiver, Reply=Reply, target=target, fromid=fromid})
-  else return 'by reply or username' end
+  else return 'از نام کاربری یا ریپلی کردن پیام کاربر برای اخطار دادن استفاده کنید' end
  --endif--
  end
  if matches[1]:lower() == 'warn' and matches[2] then -- /warn <@username>
    if string.match(user, '^%d+$') then
-      return 'by username or reply'
+      return 'از نام کاربری یا ریپلی کردن پیام کاربر برای اخطار دادن استفاده کنید'
     elseif string.match(user, '^@.+$') then
       username = string.gsub(user, '@', '')
       msgr = res_user(username, warn_by_username, {receiver=receiver, user=user, target=target, fromid=fromid})
@@ -187,12 +187,12 @@ local function run(msg, matches)
   if msg.reply_id then
     local Reply = msg.id
     msgr = get_message(msg.reply_id, unwarn_by_reply, {receiver=receiver, Reply=Reply, target=target, fromid=fromid})
-  else return 'By username or reply' end
+  else return 'از نام کاربری یا ریپلی کردن استفاده کنید' end
  --endif--
  end
  if matches[1]:lower() == 'unwarn' and matches[2] then -- /unwarn <@username>
    if string.match(user, '^%d+$') then
-      return 'By username Or reply'
+      return 'از نام کاربری یا ریپلی کردن استفاده کنید'
     elseif string.match(user, '^@.+$') then
       username = string.gsub(user, '@', '')
       msgr = res_user(username, unwarn_by_username, {receiver=receiver, user=user, target=target, fromid=fromid})
@@ -204,8 +204,8 @@ return {
   patterns = {
     "^[!/]([Ww][Aa][Rr][Nn])$",
     "^[!/]([Ww][Aa][Rr][Nn]) (.*)$",
-    "^[!/](un[Ww][Aa][Rr][Nn])$",
-    "^[!/](un[Ww][Aa][Rr][Nn]) (.*)$"
+    "^[!/]([Uu][Nn][Ww][Aa][Rr][Nn])$",
+    "^[!/]([Uu][Nn][Ww][Aa][Rr][Nn]) (.*)$"
   }, 
   run = run 
 }
