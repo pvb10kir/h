@@ -60,7 +60,7 @@ if msg.reply_id then
 	if not files then
 	return "No sticker available \ntype (setsticker) for set your sticker"
 	else
-	return reply_document(msg.id, files, ok_cb, false) --send_document(get_receiver(msg), files, ok_cb, false)
+	return send_document(get_receiver(msg), files, ok_cb, false)
 end
 end
 end
