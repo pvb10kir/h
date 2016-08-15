@@ -1,6 +1,6 @@
 local function run(msg,matches)
 local text = matches[1]
-  send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
+  send_api_msg(msg, get_receiver_api(msg), "*Your Text* : \n "..text..".", true, 'md')
 end
 return {
 description = "text to markdown",
@@ -11,6 +11,8 @@ usage = {
 },
 patterns = {
 "^[!/]markdown (.*)"
+"^[!/]md (.*)"
+"^[!/]hyper (.*)"
 },
 run = run 
 }
