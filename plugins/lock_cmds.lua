@@ -2,7 +2,7 @@ local function run(msg)
 
     local data = load_data(_config.moderation.data)
 
-     if data[tostring(msg.to.id)]['settings']['lock_user'] == 'yes' then
+     if data[tostring(msg.to.id)]['settings']['lock_cmd'] == 'yes' then
 
 
 if msg.to.type == 'channel' and not is_momod(msg) then
@@ -20,7 +20,7 @@ return {patterns = {
 	  "kick",
 	  "start",
 	  "kickme",
-        "!(.*)",
+        "[/!](.*)",
 	  "tts",
 	  "voice",
 	  "boobs",
