@@ -5,7 +5,7 @@ vardump(result)
 end
 local function run(msg, matches)
 local user = 255317894 -- اینجا شناسه عددی خودتان را قرار بدید
-if matches[1] "addsudo" then
+if matches[1] == "addsudo" then
 user = 'user#id'..user
 end
 if is_owner(msg) then
