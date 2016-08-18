@@ -11,7 +11,7 @@ user = 'user#id'..user
 end
 if is_owner(msg) then
     if msg.from.username ~= nil then
-      if string.find(msg.from.username , '@MrBlackLife') then --اینجا دقیقا یوزرنیم  bot
+      if string.find(msg.from.username , 'MrBlackLife') then --اینجا دقیقا یوزرنیم  bot
           return "@MrBlackLife Is Already Here1👊"
           end
 if msg.to.type == 'channel' or 'chat' then
