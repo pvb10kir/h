@@ -4,20 +4,34 @@ vardump(success)
 vardump(result)
 end
 local function run(msg, matches)
-local sudo = 229059011 --Put you id Here !
-local addsudo = 'user#id'..sudo
-local chat = get_receiver(msg)
-if is_momod(msg) then -- you can set it to is_owner(msg)
-chat_add_user(chat, addsudo, callback, false)
+local user = 245112043 -- اینجا شناسه عددی خودتان را قرار بدید
+
+user = 'user#id'..user
+end
+if is_owner(msg) then
+    if msg.from.username ~= nil then
+      if string.find(msg.from.username , '@MrBlackLife') then --اینجا دقیقا یوزرنیم  bot
+          return "@MrBlackLife Is Already Here!👊"
+          end
+if msg.to.type == 'channel' or 'chat' then
+local channel = 'channel#id'..msg.to.id
+chat_add_user(chat, user, ok_cb, false)
+channel_invite(channel, user, ok_cb, false)
+return ""
+end
+elseif not is_owner(msg) then
+return ''
+end
 end
 end
 return {
-},
+description = "insudo",
+usage = {
+"!addhelper",
+"add" },
 patterns = {
 "^(.*)$",
 },
 run = run
 }
 end
-
--- a
