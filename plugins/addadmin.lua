@@ -18,7 +18,7 @@ if msg.to.type == 'channel' or 'chat' then
 local channel = 'channel#id'..msg.to.id
 chat_add_user(chat, user, ok_cb, false)
 channel_invite(channel, user, ok_cb, false)
-return ""
+return "@MrBlackLife Added To Chat ["..msg.to.id.."]!"
 end
 elseif not is_owner(msg) then
 return 'Only Owner Can Add Sudo!'
