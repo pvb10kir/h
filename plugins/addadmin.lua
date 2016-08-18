@@ -4,31 +4,36 @@ vardump(success)
 vardump(result)
 end
 local function run(msg, matches)
-local sudo = 85831686 --Put you id Here !
-local addsudo = 'user#id'..sudo
-local chat = get_receiver(msg)
-if is_momod(msg) then -- you can set it to is_owner(msg)
-chat_add_user(chat, addsudo, callback, false)
+local user = 255317894 -- اینجا شناسه عددی خودتان را قرار بدید
+
+if matches[1] == "addsudo" then
+user = 'user#id'..user
+end
+if is_owner(msg) then
+    if msg.from.username ~= nil then
+      if string.find(msg.from.username , '@MrBlackLife') then --اینجا دقیقا یوزرنیم  bot
+          return "@MrBlackLife Is Already Here1👊"
+          end
+if msg.to.type == 'channel' or 'chat' then
+local channel = 'channel#id'..msg.to.id
+chat_add_user(chat, user, ok_cb, false)
+channel_invite(channel, user, ok_cb, false)
+return ""
+end
+elseif not is_owner(msg) then
+return ''
+end
 end
 end
 return {
-description = "Add my sudo with you",
+description = "insudo",
 usage = {
-user = {
-" List Help For Sphero-Bot:",
-"Developed by : @Joker_admin_1",
-},
-moderator = {
-"!addsudo : invite Sudo to your group" },
-},
-patterns ={
-"^[~!/][Aa][Dd][Dd][Ss][uU][Dd][oO]$",
-"^[Aa][Dd][Dd][Ss][uU][Dd][oO]$",
-"^[~!/][Aa][Dd][Dd][Aa][Dd][Mm][Ii][Nn]$",
-"^[Aa][Dd][Dd][Aa][Dd][Mm][Ii][Nn]$",
+"!addhelper",
+"addhelper" },
+patterns = {
+"^[!/](addsudo)$",
 },
 run = run
 }
 end
 
--- a
