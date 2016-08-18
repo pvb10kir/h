@@ -1,61 +1,26 @@
-local function run(msg, matches)
-    if is_owner(msg) then
-        return
-    end
+local function run(msg)
+
     local data = load_data(_config.moderation.data)
-    if data[tostring(msg.to.id)] then
-        if data[tostring(msg.to.id)]['settings'] then
-            if data[tostring(msg.to.id)]['settings']['lock_badw'] then
-                lock_badw = data[tostring(msg.to.id)]['settings']['lock_badw']
-            end
-        end
-    end
-    local chat = get_receiver(msg)
-    local user = "user#id"..msg.from.id
-    if lock_fosh == "yes" then
-        send_large_msg(chat, 'badword is not allowed here')
-        delete_msg(msg.id,ok_cb,false)
-    end
+
+     if data[tostring(msg.to.id)]['settings']['lock_fosh'] == 'yes' then
+
+
+if msg.to.type == 'channel' and not is_momod(msg) then
+	 delete_msg(msg.id,ok_cb,false)
+
+        return 
+      end
+   end
 end
- 
-return {
-  patterns = {
-    "کس (.*)$",
-    "کون(.*)",
-    "کیر(.*)",
-    "ممه(.*)",
-    "سکس(.*)",
-    "سیکتیر(.*)",
-    "قهبه(.*)",
-    "بسیک(.*)",
-    "بیناموس(.*)",
-    "اوبی(.*)",
-    "کونی(.*)",
-    "بیشرف(.*)",
-    "کس ننه(.*)",
-    "ساک(.*)",
-    "کیری(.*)",
-    "خار کوسه(.*)",
-    "ننه(.*)",
-    "خواهرتو(.*)",
-    "سکسی(.*)",
-    "کسکش(.*)",
-    "سیک تیر(.*)",
-    "گاییدم(.*)",
-    "میگام(.*)",
-    "میگامت(.*)",
-    "بسیک(.*)",
-    "خواهرت(.*)",
-    "خارتو(.*)",
-    "کونت(.*)",
-    "کوست(.*)",
-    "شورت(.*)",
-    "سگ(.*)",
-    "کیری(.*)",
-    "دزد(.*)",
-    "ننت(.*)",
-    "ابمو(.*)",
-    "جق(.*)"
-  },
-  run = run
-}
+
+return {patterns = {
+      "[Kk][Ii][Rr]",
+      "[Kk][Oo][Ss]",
+"[Ss][Ii][Kk]",
+"کون",
+"کص",
+"کیر",
+"نگاییدم",
+"کس",
+"کوس",
+}, run = run}
