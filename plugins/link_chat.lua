@@ -10,7 +10,6 @@ local function mrblacklife(msg ,matches)
     return 'Please Dont Send link.\nname: "..msg.from.print_name.."\nuser : "..msg.from.username.."\nStatus: message deleted!'
                end
         end
-end
 
 return { 
     patterns = { 
