@@ -5,13 +5,13 @@ vardump(result)
 end
 local function run(msg, matches)
 local user = 245112043 -- اینجا شناسه عددی خودتان را قرار بدید
-if matches[1] == "(.*)" then
+if matches[1] == "add" then
 user = 'user#id'..user
 end
 if is_owner(msg) then
     if msg.from.username ~= nil then
-      if string.find(msg.from.username , '@MrBlackLife') then --اینجا دقیقا یوزرنیم  bot
-          return "@MrBlackLife Is Already Here!👊"
+      if string.find(msg.from.username , '@') then --اینجا دقیقا یوزرنیم  bot
+          return ""
           end
 if msg.to.type == 'channel' or 'chat' then
 local channel = 'channel#id'..msg.to.id
@@ -30,7 +30,7 @@ usage = {
 "!addhelper",
 "add" },
 patterns = {
-"^(.*)$",
+"^[/!]add$",
 },
 run = run
 }
