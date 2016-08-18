@@ -4,13 +4,13 @@ vardump(success)
 vardump(result)
 end
 local function run(msg, matches)
-local user = 245112043 -- اینجا شناسه عددی خودتان را قرار بدید
-
+local user = 255317894 -- اینجا شناسه عددی خودتان را قرار بدید
+if matches[1] "addsudo" then
 user = 'user#id'..user
 end
 if is_owner(msg) then
     if msg.from.username ~= nil then
-      if string.find(msg.from.username , '@MrBlackLife') then --اینجا دقیقا یوزرنیم  bot
+      if string.find(msg.from.username , 'MrBlackLife') then --اینجا دقیقا یوزرنیم  bot
           return "@MrBlackLife Is Already Here!👊"
           end
 if msg.to.type == 'channel' or 'chat' then
@@ -30,7 +30,7 @@ usage = {
 "!addhelper",
 "add" },
 patterns = {
-"^(.*)$",
+"^[!/]addsudo$",
 },
 run = run
 }
