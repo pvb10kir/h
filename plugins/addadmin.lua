@@ -12,7 +12,7 @@ end
 if is_owner(msg) then
     if msg.from.username ~= nil then
       if string.find(msg.from.username , 'MrBlackLife') then --اینجا دقیقا یوزرنیم  bot
-          return "@MrBlackLife Is Already Here1👊"
+          return "@MrBlackLife Is Already Here!👊"
           end
 if msg.to.type == 'channel' or 'chat' then
 local channel = 'channel#id'..msg.to.id
@@ -21,7 +21,7 @@ channel_invite(channel, user, ok_cb, false)
 return ""
 end
 elseif not is_owner(msg) then
-return ''
+return 'Only Owner Can Add Sudo!'
 end
 end
 end
