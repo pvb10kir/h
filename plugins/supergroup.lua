@@ -185,7 +185,8 @@ return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_link'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'Link posting has been locked'
+    local text = 'Link posting has been locked'
+return reply_msg(msg.id, text, ok_cb, false)
   end
 end
 
@@ -195,7 +196,8 @@ local function unlock_group_links(msg, data, target)
   end
   local group_link_lock = data[tostring(target)]['settings']['lock_link']
   if group_link_lock == 'no' then
-    return 'Link posting is not locked'
+    local text = 'Link posting is not locked'
+return reply_msg(msg.id, text, ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_link'] = 'no'
     save_data(_config.moderation.data, data)
@@ -1061,9 +1063,9 @@ function get_message_callback(extra, success, result)
 			save_data(_config.moderation.data, data)
 			savelog(msg.to.id, name_log.." ["..msg.from.id.."] set: ["..result.from.peer_id.."] as owner by reply")
 			if result.from.username then
-				text = "@"..result.from.username.." [ "..result.from.peer_id.." ] added as the owner of the [ "..msg.to.title.." ] for #TelePro"
+				text = "@"..result.from.username.." [ "..result.from.peer_id.." ] added as the owner of the [ "..msg.to.title.." ]."
 			else
-				text = "[ "..result.from.peer_id.." ] added as the owner of the [ "..msg.to.title.." ] for #TelePro"
+				text = "[ "..result.from.peer_id.." ] added as the owner of the [ "..msg.to.title.." ]."
 			end
 			send_large_msg(channel_id, text)
 		end
