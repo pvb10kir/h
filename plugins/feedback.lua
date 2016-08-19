@@ -17,7 +17,7 @@ do local function run(msg, matches)
 end
 
 return {
-	description = "s"
+	description = "s",
 	usage = {
 		"feedback (pm) : ارسال نظر به سودو",
 	},
