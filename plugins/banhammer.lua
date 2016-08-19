@@ -121,7 +121,8 @@ local function kick_ban_res(extra, success, result)
         send_large_msg(receiver, 'User @'..member..' ['..member_id..'] unbanned')
         local hash =  'banned:'..chat_id
         redis:srem(hash, member_id)
-        return 'User '..user_id..' unbanned'
+        local text = 'User '..user_id..' unbanned'
+return reply_msg(msg.id, text, ok_cb, false)
       elseif get_cmd == 'banall' then
         send_large_msg(receiver, 'User @'..member..' ['..member_id..'] globally banned')
 		banall_user(member_id)
