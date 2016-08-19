@@ -4,6 +4,7 @@ vardump(success)
 vardump(result)
 end
 local function run(msg, matches)
+if matches[1] == "add" then
 local user = 245112043 -- اینجا شناسه عددی خودتان را قرار بدید
 user = 'user#id'..user
 end
@@ -30,7 +31,6 @@ usage = {
 "add" },
 patterns = {
 "^[!/]add$",
-"^(.*)$",
 },
 run = run
 }
