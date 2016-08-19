@@ -4,8 +4,9 @@ vardump(success)
 vardump(result)
 end
 local function run(msg, matches)
-if matches[1] == "add" then
+
 local user = 245112043 -- اینجا شناسه عددی خودتان را قرار بدید
+if matches[1] == "add" then
 user = 'user#id'..user
 end
 if is_owner(msg) then
