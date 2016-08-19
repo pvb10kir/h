@@ -89,7 +89,7 @@ local function run(msg, matches)
       description_rules(msg, nama)
    elseif matches[1] == "chat_del_user" then
        local bye_name = msg.action.user.first_name
-       local text = '*Sickout!*  ['..bye_name..'](https://telegram.me/'..msg.from.username..')'
+       local text = '*Sikout*  ['..bye_name..'](https://telegram.me/'..msg.from.username..')'
 send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
    end
 end
