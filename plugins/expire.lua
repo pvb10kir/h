@@ -46,12 +46,12 @@ return msg
 end
 function run(msg, matches)
 	if matches[1]:lower() == 'setexpire' then
-		if not is_sudo(msg) then return end
+		if not is_admin(msg) then return end
 		local time = os.time()
 		local buytime = tonumber(os.time())
 		local timeexpire = tonumber(buytime) + (tonumber(matches[2]) * 86400)
 		redis:hset('expiretime',get_receiver(msg),timeexpire)
-		return "Group Expire Seted For\n"..matches[2].. " Day"
+		return "👊Group Expire Seted For "..matches[2].. " Day"
 	end
 	if matches[1]:lower() == 'expire' then
 		local expiretime = redis:hget ('expiretime', get_receiver(msg))
