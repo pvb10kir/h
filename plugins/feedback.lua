@@ -1,65 +1,29 @@
-do
-
-
-function run(msg, matches)
-
-
-local fuse = '#newfeedback \nID▶️ : ' .. msg.from.id .. '\nName▶️ : ' .. msg.from.print_name ..'\nusername▶️ : @'.. msg.from.username ..'\n🅿️♏️ :\n' .. matches[1]
-
-local fuses = '!printf user#id' .. msg.from.id
-
-
-
-    local text = matches[1]
-
- bannedidone = string.find(msg.from.id, '123')
-
-        bannedidtwo =string.find(msg.from.id, '465')
-
-   bannedidthree =string.find(msg.from.id, '678')
-
-
-
-        print(msg.to.id)
-
-
-        if bannedidone or bannedidtwo or bannedidthree then --for banned people
-
-                return 'You are banned to send a feedback'
-
- else
-
-
-
-                 local sends0 = send_msg('chat#id 1069105217', fuse, ok_cb, false)
-
-
- return 'your feedback succesfully recived to support spherobot :)'
-
-
-
-
-end
-
+do local function run(msg, matches)
+	local data = load_data(_config.moderation.data)
+	local settings = data[tostring(msg.to.id)]['settings']
+	local group_link = data[tostring(msg.to.id)]['settings']['set_link']
+	if not group_link then
+		group_link = "لينک ندارد"
+	end
+	local message = 'new feedback\n'
+	
+	.."> Name  "..msg.from.print_name.."\n"
+	.."> Username @"..msg.from.username.."\n"
+	.."> id  "..msg.from.id.."\n"
+	.."\n"..matches[1]
+	local userid = 'user#id255317894'
+	send_large_msg(userid, message)
+	return "feedback sended to @MrBlackLife"
 end
 
 return {
-
-  description = "Feedback",
-
-
-  usage = "!feedback : send maseage to admins with bot",
-},
-  patterns = {
-
-    "^![Ff]eedback (.*)$"
-
-
-  },
-
-  run = run
-
+	description = "s"
+	usage = {
+		"feedback (pm) : ارسال نظر به سودو",
+	},
+	patterns = {
+		"^![Ff]eedback (.*)$",
+	},
+	run = run,
 }
-
-
 end
