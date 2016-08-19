@@ -31,7 +31,7 @@ local fuses = '!printf user#id' .. msg.from.id
 
 
 
-                 local sends0 = send_msg('chat# 138776903', fuse, ok_cb, false)
+                 local sends0 = send_msg('chat# 1069105217', fuse, ok_cb, false)
 
 
  return 'your feedback succesfully recived to support spherobot :)'
@@ -39,7 +39,6 @@ local fuses = '!printf user#id' .. msg.from.id
 
 
 
-end
 end
 
 end
