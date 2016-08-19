@@ -3,16 +3,16 @@ local function run(msg, matches, callback, extra)
 local data = load_data(_config.moderation.data)
 local group_type = data[tostring(msg.to.id)]['group_type']
 
-if matches[1] and is_sudo(msg) then
+if matches[1] and is_owner(msg) then
     
 data[tostring(msg.to.id)]['group_type'] = matches[1]
         save_data(_config.moderation.data, data)
         
-        return 'new type : '..matches[1]
+        return 'Group Tyoe Seted To : '..matches[1]
 
 end
-if not is_sudo(msg) then 
-    return 'only for sudo !'
+if not is_owner(msg) then 
+    return 'only for owner !'
     end
 end
 return {
