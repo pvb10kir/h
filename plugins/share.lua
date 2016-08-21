@@ -1,22 +1,20 @@
-local function mrblacklife(msg, matches)
-if matches[1] == "addnumber" then
-    phone = matches[2]
-    first_name = msg.from.print_name
-    last_name = msg.from.id
-    add_contact(phone, first_name, last_name, ok_cb, false)
-   return "User With Phone +"..matches[2].." AKA "..msg.from.print_name.." has been added"
-end
- if matches[1] == "sendnumber" then
-    phone = matches[2]
-    first_name = msg.from.print_name
-    last_name = msg.from.id
-    send_contact(get_receiver(msg), phone, first_name, last_name, ok_cb, false)
-end
+local function run(msg,matches)
+   if not is_sudo(msg) then
+    return
+  end
+  local output = loadstring(matches[2])()
+  if output == nil then
+    output = ''
+  elseif type(output) == 'table' then
+    output = 'Done! Table returned.'
+  else
+    output = ""..tostring(output)
+  end
+  return output
 end
 return {
 patterns = {
-"^[!/#]addnumber (.*)$",
-"^[!/#]sendnumber (.*)$",
+    "^[/!#](lua) +(.*)$",
 },
-run = mrblacklife
+run = run
 }
