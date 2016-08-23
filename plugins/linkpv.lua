@@ -1,7 +1,7 @@
 do
 local function run(msg, matches)
 local data = load_data(_config.moderation.data)
-if not is_chat_msg(msg) then
+if not is_channel_msg(msg) then
  return
 else
 if data[tostring(msg.to.id)] then
@@ -28,7 +28,7 @@ if data[tostring(msg.to.id)] then
    if not group_link then
     return "First make a Newlink!"
    end
-   send_large_msg('chat#'..msg.to.id, "Link sent!")
+   send_large_msg('channel#'..msg.to.id, "Link sent!")
    send_large_msg('user#'..msg.from.id,"Group link for ".. msg.to.title.." : \n___________________\n"..group_link)
   end
   
@@ -58,7 +58,7 @@ if data[tostring(msg.to.id)] then
     save_data(_config.moderation.data, data)
     send_large_msg(receiver, "Link closed")
    end
-   local receiver = 'chat#'..msg.to.id
+   local receiver = 'channel#'..msg.to.id
    return export_chat_link(receiver, link_callback, {receiver = receiver})
 
   elseif matches[1] == 'ink' and is_momod(msg) then
@@ -86,8 +86,8 @@ return {
     },
  },
   patterns = {
-    "^[Nn](ewlink)$",
-    "^[Ll](ink)$",
+   -- "^[Nn](ewlink)$",
+   -- "^[Ll](ink)$",
  "^[Nn](ewlink) (pv)$",
     "^[Ll](ink) (pv)$",
  "^[Cc](link)$",
