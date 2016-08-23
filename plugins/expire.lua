@@ -4,7 +4,7 @@ local function pre_process(msg)
 	local now = tonumber(os.time())
 	if expiretime then    
 		timetoexpire = math.floor((tonumber(expiretime) - tonumber(now)) / 86400) + 1
-		if tonumber("0") > tonumber(timetoexpire) and not is_sudo(msg) then
+		if tonumber("0") > tonumber(timetoexpire) and not is_admin(msg) then
 		if msg.text:match('/') then
 			return send_large_msg(get_receiver(msg), ' تاریخ اتقضای گروه به پایان رسید و ازین به بعد ربات در گروه شما کار نخواهد کرد.')
 		else
