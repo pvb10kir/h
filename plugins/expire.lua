@@ -5,7 +5,7 @@ local function pre_process(msg)
   local now = tonumber(os.time())
   if expiretime then    
     timetoexpire = math.floor((tonumber(expiretime) - tonumber(now)) / 86400) + 1
-    if tonumber("0") > tonumber(timetoexpire) and not is_admin2(msg) then
+    if tonumber("0") > tonumber(timetoexpire) and is_admin(msg) then
     if msg.text:match('/') then
       return send_large_msg(get_receiver(msg), 'تاریخ اتقضای گروه به پایان رسید.\n ربات دیگر در گروه شما کار نخواهد کرد\nتمدید در @Sphero_Bot')
     else
@@ -47,7 +47,7 @@ return msg
 end
 function run(msg, matches)
   if matches[1]:lower() == 'setexpire' then
-    if not is_admin2(msg) then return end
+    if is_admin(msg) then return end
     local time = os.time()
     local buytime = tonumber(os.time())
     local timeexpire = tonumber(buytime) + (tonumber(matches[2]) * 86400)
