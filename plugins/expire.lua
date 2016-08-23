@@ -46,7 +46,7 @@ return msg
 end
 function run(msg, matches)
 	if matches[1]:lower() == 'setexpire' then
-		if not is_sudo(msg) then return end
+		if not is_admin(msg) then return end
 		local time = os.time()
 		local buytime = tonumber(os.time())
 		local timeexpire = tonumber(buytime) + (tonumber(matches[2]) * 86400)
