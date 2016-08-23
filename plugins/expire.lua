@@ -52,13 +52,13 @@ function run(msg, matches)
     local buytime = tonumber(os.time())
     local timeexpire = tonumber(buytime) + (tonumber(matches[2]) * 86400)
     redis:hset('expiretime',get_receiver(msg),timeexpire)
-    return "I Set Group Expire For"..matches[2].. " Day📍."
+    return "I Set Group Expire For "..matches[2].. " Day📍."
   end
   if matches[1]:lower() == 'expire' then
     local expiretime = redis:hget ('expiretime', get_receiver(msg))
     if not expiretime then return 'تاریخ ست نشده است' else
       local now = tonumber(os.time())
-      return (math.floor((tonumber(expiretime) - tonumber(now)) / 86400) + 1) .. " روز دیگر"
+      return (math.floor((tonumber(expiretime) - tonumber(now)) / 86400) + 1) .. "📍 Day"
     end
   end
 
