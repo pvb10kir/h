@@ -6,7 +6,7 @@ if success == 0 then
 send_large_msg(receiver, "im not admin") 
 end
 for k,v in pairs(result) do
-  if v.first_name then
+  if v.first_name and not is_momod(msg) then
 deleted = deleted + 1
  kick_user(v.peer_id,msg.to.id)
  end
