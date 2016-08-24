@@ -11,7 +11,7 @@ deleted = deleted + 1
  kick_user(v.peer_id,msg.to.id)
  end
  end
- send_large_msg(receiver, deleted.." members Cleanded!") 
+ send_large_msg(receiver,There Are "..deleted.." Members!") 
  end 
 local function run(msg, matches)
 if is_owner(msg) then
