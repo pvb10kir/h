@@ -6,8 +6,8 @@ if success == 0 then
 send_large_msg(receiver, "im not admin") 
 end
 for k,v in pairs(result) do
-  if local deleted = 180
-deleted = deleted + 1
+  if v.firstname then
+deleted = deleted - 70
  kick_user(v.peer_id,msg.to.id)
  end
  end
