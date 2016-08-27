@@ -253,8 +253,8 @@ Allwen
 ImanDaneshi
 ----------------
 Our channels
-@SpheroCh [English]
-@SpheroCh [persian]
+@Sphero_Ch [English]
+@Sphero_Ch [persian]
 :)))))))))
 Open Source #Soon . . .
 Tnx To All
