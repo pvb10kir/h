@@ -9,7 +9,7 @@ _more information send
 !spherobot 
 to chat_
 [Developer](http://telegram.me/mrblacklife)
-[Channel](http://telegram.me/spheroch)
+[Channel](http://telegram.me/sphero_ch)
 *TNX to all*]]
 send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
 end
