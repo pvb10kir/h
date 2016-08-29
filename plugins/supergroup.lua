@@ -883,13 +883,10 @@ if data[tostring(target)]['settings'] then
 			data[tostring(target)]['settings']['lock_member'] = 'no'
 		end
 	end
-local expiretime = redis:hget ('expiretime', get_receiver(msg))
-    if not expiretime then return 'infinity' else
-      local now = tonumber(os.time())
-      return (math.floor((tonumber(expiretime) - tonumber(now)) / 86400) + 1) .. "📍 Day"
+    
 local gp_type = data[tostring(msg.to.id)]['group_type']
 local settings = data[tostring(target)]['settings']
-  local text = "♨️ _👊"..msg.to.title.."👊__ Settings:_\n〰〰〰〰〰〰\n▪️ *Lock Links : * _"..settings.lock_link.."_\n▪️ *Lock Emoji : * _ "..settings.lock_emoji.."_\n▪️ *Lock user/Tag : *_"..settings.lock_user.."_\n▫️ *Lock poker :  * _"..settings.lock_poker.."_\n▪️*Lock Forwarding : * _"..settings.lock_fwd.."_\n▫️ *Lock Reply : *_ "..settings.lock_reply.."_\n▪️ *Lock BadWords : * _"..settings.lock_fosh.."_\n▫️ *Lock Bots : * _"..bots_protection.."_\n▪️ *Lock Flood: * _"..settings.flood.."_\n▫️ *Flood Sensitivity : * _"..NUM_MSG_MAX.."_\n▪️ *Lock Persian/arabic : * _"..settings.lock_arabic.."_\n▫️ *Lock Member : * _"..settings.lock_member.."_\n▪️*Lock RTL : * _"..settings.lock_rtl.."_\n*▫️ Lock TgService : * _"..settings.lock_tgservice.."_\n▪️ *Lock Sticker : * _ "..settings.lock_sticker.."_\n▫️ *Public Status : * _"..settings.public.."_\n▪️ *Strict Settings : * _"..settings.strict.."_\n▫️ *Group Model : * _"..gp_type.."_\n*Group Expire : * _"..expiretime.."_\n〰〰〰〰〰〰\n⚫️*Bot Version : 2.4*\n⚫️*Dev* : [MrBlackLife](http://telegram.me/Mrblacklife)\n⚫️*Channel : * [SpheroCh](https://telegram.me/sphero_ch)"
+  local text = "♨️ _👊"..msg.to.title.."👊__ Settings:_\n〰〰〰〰〰〰\n▪️ *Lock Links : * _"..settings.lock_link.."_\n▪️ *Lock Emoji : * _ "..settings.lock_emoji.."_\n▪️ *Lock user/Tag : *_"..settings.lock_user.."_\n▫️ *Lock poker :  * _"..settings.lock_poker.."_\n▪️*Lock Forwarding : * _"..settings.lock_fwd.."_\n▫️ *Lock Reply : *_ "..settings.lock_reply.."_\n▪️ *Lock BadWords : * _"..settings.lock_fosh.."_\n▫️ *Lock Bots : * _"..bots_protection.."_\n▪️ *Lock Flood: * _"..settings.flood.."_\n▫️ *Flood Sensitivity : * _"..NUM_MSG_MAX.."_\n▪️ *Lock Persian/arabic : * _"..settings.lock_arabic.."_\n▫️ *Lock Member : * _"..settings.lock_member.."_\n▪️*Lock RTL : * _"..settings.lock_rtl.."_\n*▫️ Lock TgService : * _"..settings.lock_tgservice.."_\n▪️ *Lock Sticker : * _ "..settings.lock_sticker.."_\n▫️ *Public Status : * _"..settings.public.."_\n▪️ *Strict Settings : * _"..settings.strict.."_\n▫️ *Group Model : * _"..gp_type.."_\n〰〰〰〰〰〰\n⚫️*Bot Version : 2.4*\n⚫️*Dev* : [MrBlackLife](http://telegram.me/Mrblacklife)\n⚫️*Channel : * [SpheroCh](https://telegram.me/sphero_ch)"
   local text = text
 send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
 end
