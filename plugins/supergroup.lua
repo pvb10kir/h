@@ -198,13 +198,14 @@ local function lock_group_links(msg, data, target)
 local hash = 'group:'..msg.to.id
     local group_lang = redis:hget(hash,'lang')
     if group_lang then
-local text = 'ارسال لینک از قبل قفل بوده است.'
-return reply_msg(msg.id, text, ok_cb, false)
+return 'ارسال لینک از قبل قفل بوده است.'
 else
-    local text = 'Link posting is already locked'
-return reply_msg(msg.id, text, ok_cb, false)
-    if data[tostring(target)]['settings']['lock_link'] = 'yes'
+    return 'Link posting is already locked'
+  else
+data[tostring(target)]['settings']['lock_link'] = 'yes'
     save_data(_config.moderation.data, data)
+return 'ارسال لینک قفل شد.'
+else
     local text = 'Link posting has been locked'
 return reply_msg(msg.id, text, ok_cb, false)
 end
