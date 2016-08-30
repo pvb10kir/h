@@ -201,19 +201,23 @@ local function lock_group_links(msg, data, target)
   end
   local group_link_lock = data[tostring(target)]['settings']['lock_link']
   if group_link_lock == 'yes' then
-    return 'Link posting is already locked'
+   local hash = 'group:'..msg.to.id
+  local group_lang = redis:hget(hash,'lang')
+  if group_lang then
+    return 'از قبل قفل است'
   else
+  return 'Link posting is already locked '
+end
+end
     data[tostring(target)]['settings']['lock_link'] = 'yes'
     save_data(_config.moderation.data, data)
-local hash = 'group:'..msg.to.id
+   local hash = 'group:'..msg.to.id
     local group_lang = redis:hget(hash,'lang')
     if group_lang then
-return 'ارسال لینک قفل شد.'
-else
-    return 'Link posting has been locked'
-
-end
-end
+    return 'ارسال لینک قفل شد'
+    else
+  return 'Link posting  has been locked'
+  end
 end
 local function unlock_group_links(msg, data, target)
   if not is_momod(msg) then
