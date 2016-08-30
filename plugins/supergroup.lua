@@ -210,7 +210,6 @@ return reply_msg(msg.id, text, ok_cb, false)
 return reply_msg(msg.id, text, ok_cb, false)
   end
 end
-end
 
 local function unlock_group_links(msg, data, target)
   if not is_momod(msg) then
