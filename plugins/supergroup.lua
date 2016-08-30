@@ -71,9 +71,16 @@ local function check_member_superrem(cb_extra, success, result)
       end
       data[tostring(groups)][tostring(msg.to.id)] = nil
       save_data(_config.moderation.data, data)
+local hash = 'group:'..msg.to.id
+    local group_lang = redis:hget(hash,'lang')
+    if group_lang then
+ local text = '👻سوپرگروه از لیست حذف شد'
+      return reply_msg(msg.id, text, ok_cb, false)
+else
 	  local text = '👻SuperGroup has been removed!'
       return reply_msg(msg.id, text, ok_cb, false)
     end
+end
   end
 end
 
@@ -182,11 +189,18 @@ end
 
 --Begin supergroup locks
 local function lock_group_links(msg, data, target)
+local hash = 'group:'..msg.to.id
+    local group_lang = redis:hget(hash,'lang')
+    if group_lang then
   if not is_momod(msg) then
     return
   end
   local group_link_lock = data[tostring(target)]['settings']['lock_link']
+
   if group_link_lock == 'yes' then
+local text = 'ارسال لینک از قبل قفل بوده است.'
+return reply_msg(msg.id, text, ok_cb, false)
+else
     local text = 'Link posting is already locked'
 return reply_msg(msg.id, text, ok_cb, false)
   else
@@ -195,6 +209,7 @@ return reply_msg(msg.id, text, ok_cb, false)
     local text = 'Link posting has been locked'
 return reply_msg(msg.id, text, ok_cb, false)
   end
+end
 end
 
 local function unlock_group_links(msg, data, target)
