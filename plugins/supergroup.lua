@@ -135,6 +135,12 @@ end
 
 --Get and output members of supergroup
 local function callback_who(cb_extra, success, result)
+
+local hash = 'group:'..msg.to.id
+    local group_lang = redis:hget(hash,'lang')
+    if group_lang then
+local text = "اعضای گروه "..cb_extra.receiver
+else
 local text = "Members for "..cb_extra.receiver
 local i = 1
 for k,v in pairsByKeys(result) do
@@ -143,6 +149,7 @@ if not v.print_name then
 else
 	vname = v.print_name:gsub("?", "")
 	name = vname:gsub("_", " ")
+end
 end
 	if v.username then
 		username = " @"..v.username
