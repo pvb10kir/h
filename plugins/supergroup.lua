@@ -1834,7 +1834,7 @@ send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
 
 		if matches[1] == 'lock' and is_momod(msg) then
 			local target = msg.to.id
-			if matches[2] == 'links' or 'link' then
+			if matches[2] == 'links' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked link posting ")
 				return lock_group_links(msg, data, target)
 			end
@@ -1850,7 +1850,7 @@ send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked poker ")
 				return lock_group_poker(msg, data, target)
 			end
-			if matches[2] == 'user' or 'username' or 'tag' then
+			if matches[2] == 'user' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked username ")
 				return lock_group_user(msg, data, target)
 			end
@@ -1894,7 +1894,7 @@ send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
 
 		if matches[1] == 'unlock' and is_momod(msg) then
 			local target = msg.to.id
-			if matches[2] == 'links' or 'link' then
+			if matches[2] == 'links' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked link posting ")
 				return lock_group_links(msg, data, target)
 			end
@@ -1910,7 +1910,7 @@ send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked poker ")
 				return lock_group_poker(msg, data, target)
 			end
-			if matches[2] == 'user' or 'username' or 'tag' then
+			if matches[2] == 'user' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked username ")
 				return lock_group_user(msg, data, target)
 			end
