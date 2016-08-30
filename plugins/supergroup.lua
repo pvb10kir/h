@@ -201,7 +201,7 @@ local hash = 'group:'..msg.to.id
 return 'ارسال لینک از قبل قفل بوده است.'
 else
     return 'Link posting is already locked'
-  else
+  elseif
 data[tostring(target)]['settings']['lock_link'] = 'yes'
     save_data(_config.moderation.data, data)
 return 'ارسال لینک قفل شد.'
