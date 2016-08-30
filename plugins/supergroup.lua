@@ -886,11 +886,17 @@ if data[tostring(target)]['settings'] then
     
 local gp_type = data[tostring(msg.to.id)]['group_type']
 local settings = data[tostring(target)]['settings']
+local hash = 'group:'..msg.to.id
+    local group_lang = redis:hget(hash,'lang')
+    if group_lang then
   local text = "♨️ _👊"..msg.to.title.."👊__ Settings:_\n〰〰〰〰〰〰\n▪️ *Lock Links : * _"..settings.lock_link.."_\n▪️ *Lock Emoji : * _ "..settings.lock_emoji.."_\n▪️ *Lock user/Tag : *_"..settings.lock_user.."_\n▫️ *Lock poker :  * _"..settings.lock_poker.."_\n▪️*Lock Forwarding : * _"..settings.lock_fwd.."_\n▫️ *Lock Reply : *_ "..settings.lock_reply.."_\n▪️ *Lock BadWords : * _"..settings.lock_fosh.."_\n▫️ *Lock Bots : * _"..bots_protection.."_\n▪️ *Lock Flood: * _"..settings.flood.."_\n▫️ *Flood Sensitivity : * _"..NUM_MSG_MAX.."_\n▪️ *Lock Persian/arabic : * _"..settings.lock_arabic.."_\n▫️ *Lock Member : * _"..settings.lock_member.."_\n▪️*Lock RTL : * _"..settings.lock_rtl.."_\n*▫️ Lock TgService : * _"..settings.lock_tgservice.."_\n▪️ *Lock Sticker : * _ "..settings.lock_sticker.."_\n▫️ *Public Status : * _"..settings.public.."_\n▪️ *Strict Settings : * _"..settings.strict.."_\n▫️ *Group Model : * _"..gp_type.."_\n〰〰〰〰〰〰\n⚫️*Bot Version : 2.4*\n⚫️*Dev* : [MrBlackLife](http://telegram.me/Mrblacklife)\n⚫️*Channel : * [SpheroCh](https://telegram.me/sphero_ch)"
   local text = text
 send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
+else
+ local text = "♨️ _👊"..msg.to.title.."👊__ تنظیمات_\n〰〰〰〰〰〰\n▪️ *قفل لینک : * _"..settings.lock_link.."_\n▪️ *قفل اموجی : * _ "..settings.lock_emoji.."_\n▪️ *قفل تگ/یوزرنیم : *_"..settings.lock_user.."_\n▫️ *قفل 😀 :  * _"..settings.lock_poker.."_\n▪️*قفل فروارد : * _"..settings.lock_fwd.."_\n▫️ *قفل ریپلی : *_ "..settings.lock_reply.."_\n▪️ *قفل کلمات رکیک : * _"..settings.lock_fosh.."_\n▫️ *قفل دعوت بات : * _"..bots_protection.."_\n▪️ *قفل اسپم : * _"..settings.flood.."_\n▫️ *حساسیت اسپم : * _"..NUM_MSG_MAX.."_\n▪️ *قفل فارسی/عربی : * _"..settings.lock_arabic.."_\n▫️ *قفل اینوایت ممبر : * _"..settings.lock_member.."_\n▪️*قفل راست به چپ : * _"..settings.lock_rtl.."_\n*▫️ قفل پیام های سرویس : * _"..settings.lock_tgservice.."_\n▪️ *قفل استیکر : * _ "..settings.lock_sticker.."_\n▫️ *عمومی : * _"..settings.public.."_\n▪️ *تنظیمات سختگیرانه : * _"..settings.strict.."_\n▫️ *مدل گروه : * _"..gp_type.."_\n〰〰〰〰〰〰\n⚫️*ورژن ربات : 2.4*\n⚫️*توسعه دهنده* : [MrBlackLife](http://telegram.me/Mrblacklife)\n⚫️*کانال بات : * [SpheroCh](https://telegram.me/sphero_ch)"
+send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
 end
-
+end
 local function promote_admin(receiver, member_username, user_id)
   local data = load_data(_config.moderation.data)
   local group = string.gsub(receiver, 'channel#id', '')
