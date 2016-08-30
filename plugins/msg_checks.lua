@@ -18,11 +18,6 @@ if is_chat_msg(msg) or is_super_group(msg) then
 	else
 		lock_arabic = 'no'
 	end
-	if settings.lock_rtl then
-		lock_rtl = settings.lock_rtl
-	else
-		lock_rtl = 'no'
-	end
 		if settings.lock_tgservice then
 		lock_tgservice = settings.lock_tgservice
 	else
@@ -248,35 +243,12 @@ if is_chat_msg(msg) or is_super_group(msg) then
 						kick_user(msg.from.id, msg.to.id)
 					end
 				end
-				local print_name = msg.from.print_name
-				local is_rtl_name = print_name:match("‮")
-				if is_rtl_name and lock_rtl == "yes" then
-					savelog(msg.to.id, name_log.." User ["..msg.from.id.."] joined and kicked (#RTL char in name)")
-					kick_user(user_id, msg.to.id)
-				end
 				if lock_member == 'yes' then
 					savelog(msg.to.id, name_log.." User ["..msg.from.id.."] joined and kicked (#lockmember)")
 					kick_user(user_id, msg.to.id)
 					delete_msg(msg.id, ok_cb, false)
 				end
 			end
-			if action == 'chat_add_user' and not is_momod2(msg.from.id, msg.to.id) then
-				local user_id = msg.action.user.id
-				if string.len(msg.action.user.print_name) > 70 and lock_group_spam == 'yes' then
-					savelog(msg.to.id, name_log.." ["..msg.from.id.."] added ["..user_id.."]: Service Msg deleted (#spam name)")
-					delete_msg(msg.id, ok_cb, false)
-					if strict == "yes" or to_chat then
-						savelog(msg.to.id, name_log.." ["..msg.from.id.."] added ["..user_id.."]: added user kicked (#spam name) ")
-						delete_msg(msg.id, ok_cb, false)
-						kick_user(msg.from.id, msg.to.id)
-					end
-				end
-				local print_name = msg.action.user.print_name
-				local is_rtl_name = print_name:match("‮")
-				if is_rtl_name and lock_rtl == "yes" then
-					savelog(msg.to.id, name_log.." User ["..msg.from.id.."] added ["..user_id.."]: added user kicked (#RTL char in name)")
-					kick_user(user_id, msg.to.id)
-				end
 				if msg.to.type == 'channel' and lock_member == 'yes' then
 					savelog(msg.to.id, name_log.." User ["..msg.from.id.."] added ["..user_id.."]: added user kicked  (#lockmember)")
 					kick_user(user_id, msg.to.id)
