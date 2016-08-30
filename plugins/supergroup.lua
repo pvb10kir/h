@@ -1832,7 +1832,7 @@ send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
 			end
 		end
 
-		if matches[1] == 'lock' or 'lock +' and is_momod(msg) then
+		if matches[1] == 'lock' and is_momod(msg) then
 			local target = msg.to.id
 			if matches[2] == 'links' or 'link' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked link posting ")
@@ -1892,7 +1892,7 @@ send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
 			end
 		end
 
-		if matches[1] == 'unlock' or 'lock -' and is_momod(msg) then
+		if matches[1] == 'unlock' and is_momod(msg) then
 			local target = msg.to.id
 			if matches[2] == 'links' or 'link' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked link posting ")
@@ -2286,8 +2286,6 @@ return {
 	"^[#!/]([Dd]el)$",
 	"^[#!/]([Ll]ock) (.*)$",
 	"^[#!/]([Uu]nlock) (.*)$",
-	"^[#!/]([Ll]ock) (-) (.*)$",
-	"^[#!/]([Ll]ock) (+) (.*)$",
 	"^[#!/]([Mm]ute) ([^%s]+)$",
 	"^[#!/]([Uu]nmute) ([^%s]+)$",
 	"^[#!/]([Mm]uteuser)$",
