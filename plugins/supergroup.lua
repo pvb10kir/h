@@ -203,12 +203,10 @@ return reply_msg(msg.id, text, ok_cb, false)
 else
     local text = 'Link posting is already locked'
 return reply_msg(msg.id, text, ok_cb, false)
-  else
-    data[tostring(target)]['settings']['lock_link'] = 'yes'
+    if data[tostring(target)]['settings']['lock_link'] = 'yes'
     save_data(_config.moderation.data, data)
     local text = 'Link posting has been locked'
 return reply_msg(msg.id, text, ok_cb, false)
-  end
 end
 end
 end
