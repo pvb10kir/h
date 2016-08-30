@@ -189,15 +189,15 @@ end
 
 --Begin supergroup locks
 local function lock_group_links(msg, data, target)
-local hash = 'group:'..msg.to.id
-    local group_lang = redis:hget(hash,'lang')
-    if group_lang then
   if not is_momod(msg) then
     return
   end
   local group_link_lock = data[tostring(target)]['settings']['lock_link']
 
   if group_link_lock == 'yes' then
+local hash = 'group:'..msg.to.id
+    local group_lang = redis:hget(hash,'lang')
+    if group_lang then
 local text = 'ارسال لینک از قبل قفل بوده است.'
 return reply_msg(msg.id, text, ok_cb, false)
 else
