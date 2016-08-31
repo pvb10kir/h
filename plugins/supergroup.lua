@@ -854,6 +854,7 @@ return 'از قبل فعال بوده است.'
 else
     return 'Settings are already strictly enforced'
   end
+end
     data[tostring(target)]['settings']['strict'] = 'yes'
     save_data(_config.moderation.data, data)
 local hash = 'group:'..msg.to.id
