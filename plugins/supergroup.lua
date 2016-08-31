@@ -2178,59 +2178,59 @@ send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
 			local target = msg.to.id
 			if matches[2] == 'links' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked link posting ")
-				return lock_group_links(msg, data, target)
+				return unlock_group_links(msg, data, target)
 			end
 			if matches[2] == 'fwd' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked forwarding ")
-				return lock_group_fwd(msg, data, target)
+				return unlock_group_fwd(msg, data, target)
 			end
 			if matches[2] == 'emoji' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked emoji ")
-				return lock_group_emoji(msg, data, target)
+				return unlock_group_emoji(msg, data, target)
 			end
 			if matches[2] == 'poker' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked poker ")
-				return lock_group_poker(msg, data, target)
+				return unlock_group_poker(msg, data, target)
 			end
 			if matches[2] == 'user' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked username ")
-				return lock_group_user(msg, data, target)
+				return unlock_group_user(msg, data, target)
 			end
 			if matches[2] == 'reply' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked Reply ")
-				return lock_group_reply(msg, data, target)
+				return unlock_group_reply(msg, data, target)
 			end
 			if matches[2] == 'fosh' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked Bad Words posting ")
-				return lock_group_fosh(msg, data, target)
+				return unlock_group_fosh(msg, data, target)
 			end
 			if matches[2] == 'bots' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked adding bots ")
-				return lock_group_bots(msg, data, target)
+				return unlock_group_bots(msg, data, target)
 			end
 			if matches[2] == 'flood' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked flood ")
-				return lock_group_flood(msg, data, target)
+				return unlock_group_flood(msg, data, target)
 			end
 			if matches[2] == 'arabic' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked arabic ")
-				return lock_group_arabic(msg, data, target)
+				return unlock_group_arabic(msg, data, target)
 			end
 			if matches[2] == 'member' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked member ")
-				return lock_group_membermod(msg, data, target)
+				return unlock_group_membermod(msg, data, target)
 			end
 			if matches[2] == 'tgservice' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked Tgservice Actions")
-				return lock_group_tgservice(msg, data, target)
+				return unlock_group_tgservice(msg, data, target)
 			end
 			if matches[2] == 'sticker' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked sticker posting")
-				return lock_group_sticker(msg, data, target)
+				return unlock_group_sticker(msg, data, target)
 			end
 			if matches[2] == 'strict' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked enabled strict settings")
-				return enable_strict_rules(msg, data, target)
+				return disable_strict_rules(msg, data, target)
 			end
 		end
 
