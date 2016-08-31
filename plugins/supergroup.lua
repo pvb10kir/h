@@ -708,13 +708,14 @@ else
 end
     data[tostring(target)]['settings']['lock_member'] = 'yes'
     save_data(_config.moderation.data, data)
-  end
+ 
 local hash = 'group:'..msg.to.id
     local group_lang = redis:hget(hash,'lang')
     if group_lang then
 return 'ادد کردن ممبر قفل شد.'
 else
   return 'Members has been locked'
+end
 end
 
 local function unlock_group_membermod(msg, data, target)
