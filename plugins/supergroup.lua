@@ -878,6 +878,7 @@ return 'تنظیمات سختگیرانه از قبل غیرفعال است'
 else
     return 'Settings are not strictly enforced'
   end
+end
     data[tostring(target)]['settings']['strict'] = 'no'
     save_data(_config.moderation.data, data)
 local hash = 'group:'..msg.to.id
