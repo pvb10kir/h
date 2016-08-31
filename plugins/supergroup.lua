@@ -923,6 +923,7 @@ return 'اسفرو ورژن 4\nبر پایه تله سید/یاگوپ\nقوان�
 else
     return 'Sphero V4\nBased on TeleSeed/Yagop\nNo rules available\nyoucan set rules by\n!setrules rules\n(Bold And Hyperlink and... Supported😍)'
   end
+end
   local rules = data[tostring(msg.to.id)][data_cat]
   local group_name = data[tostring(msg.to.id)]['settings']['set_name']
   local rules = group_name..' rules:\n\n'..rules:gsub("/n", " ")
