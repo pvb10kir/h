@@ -630,6 +630,7 @@ return 'اسپم دادن در گروه از قبل قفل نبوده است.'
 else
     return 'Flood is not locked'
   end
+end
     data[tostring(target)]['settings']['flood'] = 'no'
     save_data(_config.moderation.data, data)
 local hash = 'group:'..msg.to.id
