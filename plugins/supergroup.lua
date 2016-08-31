@@ -576,7 +576,7 @@ local hash = 'group:'..msg.to.id
     local group_lang = redis:hget(hash,'lang')
     if group_lang then
 return 'ادد کردن ربات در گروه قفل نبوده است.'
-els
+else
     return 'adding bots is not locked'
   end
 end
