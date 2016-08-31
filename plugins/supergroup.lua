@@ -942,14 +942,24 @@ local function set_public_membermod(msg, data, target)
 	save_data(_config.moderation.data, data)
   end
   if group_public_lock == 'yes' then
+local hash = 'group:'..msg.to.id
+    local group_lang = redis:hget(hash,'lang')
+    if group_lang then
+return 'سوپرگروه از قبل عمومی بوده است'
+else
     return 'Group is already public'
-  else
+  end
+end
     data[tostring(target)]['settings']['public'] = 'yes'
     save_data(_config.moderation.data, data)
-  end
+  local hash = 'group:'..msg.to.id
+    local group_lang = redis:hget(hash,'lang')
+    if group_lang then
+return 'سوپرگروه عمومی شد'
+else
   return 'SuperGroup is now: public'
 end
-
+end
 local function unset_public_membermod(msg, data, target)
   if not is_momod(msg) then
     return
@@ -961,11 +971,22 @@ local function unset_public_membermod(msg, data, target)
 	save_data(_config.moderation.data, data)
   end
   if group_public_lock == 'no' then
+local hash = 'group:'..msg.to.id
+    local group_lang = redis:hget(hash,'lang')
+    if group_lang then
+return 'سوپرگروه عمومی نبوده است'
+else
     return 'Group is not public'
-  else
+  end
+end
     data[tostring(target)]['settings']['public'] = 'no'
 	data[tostring(target)]['long_id'] = msg.to.long_id
     save_data(_config.moderation.data, data)
+local hash = 'group:'..msg.to.id
+    local group_lang = redis:hget(hash,'lang')
+    if group_lang then
+return 'سوپرگروه خصوصی شد'
+else
     return 'SuperGroup is now: not public'
   end
 end
@@ -1087,9 +1108,14 @@ local function promote2(receiver, member_username, user_id)
   end
   data[group]['moderators'][tostring(user_id)] = member_tag_username
   save_data(_config.moderation.data, data)
+local hash = 'group:'..msg.to.id
+    local group_lang = redis:hget(hash,'lang')
+    if group_lang then
+ send_large_msg(receiver, member_username..' مدیر شد.')
+else
   send_large_msg(receiver, member_username..' has been promoted.')
 end
-
+end
 local function demote2(receiver, member_username, user_id)
   local data = load_data(_config.moderation.data)
   local group = string.gsub(receiver, 'channel#id', '')
