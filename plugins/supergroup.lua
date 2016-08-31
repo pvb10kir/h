@@ -729,6 +729,7 @@ return 'ادد کردن ممبر از قبل قفل نبوده است.'
 else
     return 'Members are not locked'
   end
+end
     data[tostring(target)]['settings']['lock_member'] = 'no'
     save_data(_config.moderation.data, data)
 local hash = 'group:'..msg.to.id
