@@ -1111,9 +1111,9 @@ local function promote2(receiver, member_username, user_id)
 local hash = 'group:'..msg.to.id
     local group_lang = redis:hget(hash,'lang')
     if group_lang then
- send_large_msg(receiver, member_username..' مدیر شد.')
+ return 'یوزر '..member_username..' مدیر شد.'
 else
-  send_large_msg(receiver, member_username..' has been promoted.')
+  return 'User '..member_username..' has been promoted.'
 end
 end
 local function demote2(receiver, member_username, user_id)
@@ -1127,7 +1127,7 @@ local function demote2(receiver, member_username, user_id)
   end
   data[group]['moderators'][tostring(user_id)] = nil
   save_data(_config.moderation.data, data)
-  send_large_msg(receiver, member_username..' has been demoted.')
+  return 'User '..member_username..' has been demoted.'
 end
 
 local function modlist(msg)
