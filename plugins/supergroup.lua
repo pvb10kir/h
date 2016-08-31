@@ -904,19 +904,29 @@ local function set_rulesmod(msg, data, target)
   local data_cat = 'rules'
   data[tostring(target)][data_cat] = rules
   save_data(_config.moderation.data, data)
+local hash = 'group:'..msg.to.id
+    local group_lang = redis:hget(hash,'lang')
+    if group_lang then
+return 'قوانین سوپرگروه تنظیم شد.'
+else
   return 'SuperGroup rules set'
 end
-
+end
 --'Get supergroup rules' function
 local function get_rules(msg, data)
   local data_cat = 'rules'
   if not data[tostring(msg.to.id)][data_cat] then
-    return 'No rules available.'
+local hash = 'group:'..msg.to.id
+    local group_lang = redis:hget(hash,'lang')
+    if group_lang then
+return 'اسفرو ورژن 4\nبر پایه تله سید/یاگوپ\nقوانینی تنظیم نشده است\n با دستور\n!setrules قوانین\nبرای گروهتون قانون بزارید.\n(متن بولد و هایپرلینک و... ساپورت میشود😍)'
+else
+    return 'Sphero V4\nBased on TeleSeed/Yagop\nNo rules available\nyoucan set rules by\n!setrules rules\n(Bold And Hyperlink and... Supported😍)'
   end
   local rules = data[tostring(msg.to.id)][data_cat]
   local group_name = data[tostring(msg.to.id)]['settings']['set_name']
   local rules = group_name..' rules:\n\n'..rules:gsub("/n", " ")
-  return rules
+ send_api_msg(msg, get_receiver_api(msg), rules, true, 'md')
 end
 
 --Set supergroup to public or not public function
