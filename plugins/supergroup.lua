@@ -378,9 +378,10 @@ local hash = 'group:'..msg.to.id
     local group_lang = redis:hget(hash,'lang')
     if group_lang then
 return 'ارسال یوزرنیم/تگ قفل نبوده است.'
-els
+else
     return 'User is not locked.'
   end
+end
     data[tostring(target)]['settings']['lock_user'] = 'no'
     save_data(_config.moderation.data, data)
 local hash = 'group:'..msg.to.id
