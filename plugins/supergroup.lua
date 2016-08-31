@@ -754,6 +754,7 @@ return 'از قبل قفل بوده است.'
 else
     return 'Tgservice is already locked'
   end
+end
     data[tostring(target)]['settings']['lock_tgservice'] = 'yes'
     save_data(_config.moderation.data, data)
 local hash = 'group:'..msg.to.id
