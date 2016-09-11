@@ -14,7 +14,7 @@ local function pre_process(msg)
   end
   if tonumber(timetoexpire) == 0 then
     if redis:hget('expires0',msg.to.id) then return msg end
-    send_large_msg(get_receiver(msg), '0 روز تا پایان تاریخ انقضای گروه باقی مانده است\nنسبت به تمدید اقدام کنید.\nنسبت به تمدید اقدام کنید.\nتمدید با مراجعه به @Sphero_Bot\n!!بخش امور ربات اسفرو/تمدید گپ')
+    reply_msg(get_receiver(msg), '0 روز تا پایان تاریخ انقضای گروه باقی مانده است\nنسبت به تمدید اقدام کنید.\nنسبت به تمدید اقدام کنید.\nتمدید با مراجعه به @Sphero_Bot\n!!بخش امور ربات اسفرو/تمدید گپ')
     redis:hset('expires0',msg.to.id,'5')
   end
   if tonumber(timetoexpire) == 1 then
@@ -58,7 +58,7 @@ function run(msg, matches)
     local expiretime = redis:hget ('expiretime', get_receiver(msg))
     if not expiretime then return 'تاریخ ست نشده است' else
       local now = tonumber(os.time())
-      return (math.floor((tonumber(expiretime) - tonumber(now)) / 86400) + 1) .. "📍 Day"
+      return (math.floor((tonumber(expiretime) - tonumber(now)) / 86400) + 1) .. " 📍 Day"
     end
   end
 
