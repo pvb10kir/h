@@ -135,8 +135,8 @@ send_api_msg(msg, get_receiver_api(msg), "*User [*_"..msg.from.id.."_*]*\n*Have 
           local print_name = user_print_name(msg.from):gsub("‮", "")
 		  local name = print_name:gsub("_", "")
           --Send this to that chat
-          send_large_msg("chat#id"..msg.to.id..", "User [ "..name.." ]"..msg.from.id.." globally banned From ["..msg.to.print_name.."]("..msg.to.id..") for spamming \nSudo Can unbanall Rhis user by \n /unbannall_"..msg.from.id.." .")
-		  send_large_msg("channel#id1069105217, "User [ "..name.." ]"..msg.from.id.." globally banned From ["..msg.to.print_name.."]("..msg.to.id..") for spamming \nSudo Can unbanall Rhis user by \n /unbannall_"..msg.from.id.." .")
+          send_large_msg("chat#id"..msg.to.id..", "User [ "..name.." ]"..msg.from.id.." globally banned From ["..msg.to.print_name.."]/"..msg.to.id.."/ for spamming \nSudo Can unbanall Rhis user by \n /unbannall_"..msg.from.id.." .")
+		  send_large_msg("channel#id1069105217, "User [ "..name.." ]"..msg.from.id.." globally banned From ["..msg.to.print_name.."]/"..msg.to.id.."/ for spamming \nSudo Can unbanall Rhis user by \n /unbannall_"..msg.from.id..".")
           local GBan_log = 'GBan_log'
 		  local GBan_log =  data[tostring(GBan_log)]
 		  for k,v in pairs(GBan_log) do
