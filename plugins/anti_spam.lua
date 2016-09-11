@@ -109,7 +109,7 @@ local function pre_process(msg)
 		if username then
 			savelog(msg.to.id, name_log.." @"..username.." ["..msg.from.id.."] kicked for #spam")
 send_api_msg(msg, get_receiver_api(msg), "*User [*_"..msg.from.id.."_*]*\n*Have Been Kicked*\n*For Spam.*", true, 'md')
-		else
+		end
 			savelog(msg.to.id, name_log.." ["..msg.from.id.."] kicked for #spam")
 		send_api_msg(msg, get_receiver_api(msg), "*User [*_"..msg.from.id.."_*]*\n*Have Been Kicked*\n*For Spam.*", true, 'md')
 		end
@@ -126,7 +126,7 @@ send_api_msg(msg, get_receiver_api(msg), "*User [*_"..msg.from.id.."_*]*\n*Have 
           banall_user(msg.from.id)
           local gbanspam = 'gban:spam'..msg.from.id
           --reset the counter
-          redis:set(gbanspam, 7)
+          redis:set(gbanspam, 0)
           if msg.from.username ~= nil then
             username = msg.from.username
 		  else 
