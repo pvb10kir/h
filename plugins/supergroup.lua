@@ -1103,9 +1103,11 @@ local function promote2(receiver, member_username, user_id)
 local hash = 'group:'..msg.to.id
     local group_lang = redis:hget(hash,'lang')
     if group_lang and not data[group] then
-    return send_large_msg(receiver, 'SuperGroup is not added.')
+local text = 'سوپر گروه اضافه نشده بود.'
+    return send_large_msg(receiver, text)
 else
-return send_large_msg(receiver, 'سوپرگروه اضافه نشده است.')
+local text = 'SuperGroup is not added.'
+return send_large_msg(receiver, text)
   end
 end
   if data[group]['moderators'][tostring(user_id)] then
