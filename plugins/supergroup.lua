@@ -1095,7 +1095,6 @@ local function demote_admin(receiver, member_username, user_id)
   data[group]['moderators'][tostring(user_id)] = nil
   save_data(_config.moderation.data, data)
 end
-end
 local function promote2(receiver, member_username, user_id)
   local data = load_data(_config.moderation.data)
   local group = string.gsub(receiver, 'channel#id', '')
