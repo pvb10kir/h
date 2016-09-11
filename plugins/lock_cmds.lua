@@ -44,7 +44,6 @@ else
 "Cmds Has Been Unlocked"
 end
 end
-end
 
 return {
     patterns = {
