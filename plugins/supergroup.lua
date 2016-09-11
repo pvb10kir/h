@@ -1099,9 +1099,17 @@ local function promote2(receiver, member_username, user_id)
   local data = load_data(_config.moderation.data)
   local group = string.gsub(receiver, 'channel#id', '')
   local member_tag_username = string.gsub(member_username, '@', '(at)')
-  if not data[group] then
-    return send_large_msg(receiver, 'SuperGroup is not added.')
+  local hash = 'group:'..msg.to.id
+    local group_lang = redis:hget(hash,'lang')
+    if group_lang then
+if not data[group] then
+local text = 'سوپر گروه از قبل اضافه نشده بود.'
+    return send_large_msg(receiver, text)
+else
+local text = 'SuperGroup is not added.'
+return send_large_msg(receiver, text)
   end
+end
   if data[group]['moderators'][tostring(user_id)] then
     return send_large_msg(receiver, member_username..' is already a moderator.')
   end
