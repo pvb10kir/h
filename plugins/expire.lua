@@ -64,6 +64,7 @@ else
     return "I Set Group Expire For "..matches[2].." Day📍."
   end
 end
+end
   if matches[1]:lower() == 'expire' then
     local expiretime = redis:hget ('expiretime', get_receiver(msg))
  local hash = 'group:'..msg.to.id
