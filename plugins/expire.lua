@@ -7,10 +7,14 @@ local function pre_process(msg)
     timetoexpire = math.floor((tonumber(expiretime) - tonumber(now)) / 86400) + 1
     if tonumber("0") > tonumber(timetoexpire) and not is_sudo(msg) then
     if msg.text:match('/') then
-      return send_large_msg(get_receiver(msg), 'تاریخ اتقضای گروه به پایان رسید.\n ربات دیگر در گروه شما کار نخواهد کرد\nتمدید در @Sphero_Bot')
+local hash = 'group:'..msg.to.id
+    local group_lang = redis:hget(hash,'lang')
+    if group_lang then
+      return reply_msg(msg.id, 'تاریخ اتقضای گروه به پایان رسید.\n ربات دیگر در گروه شما کار نخواهد کرد\nتمدید در @Sphero_Bot', ok_cb, false)
     else
-      return
+      return reply_msg(msg.id, 'تاریخ اتقضای گروه به پایان رسید.\n ربات دیگر در گروه شما کار نخواهد کرد\nتمدید در @Sphero_Bot', ok_cb, false)
     end
+end
   end
   if tonumber(timetoexpire) == 0 then
     if redis:hget('expires0',msg.to.id) then return msg end
@@ -52,11 +56,23 @@ function run(msg, matches)
     local buytime = tonumber(os.time())
     local timeexpire = tonumber(buytime) + (tonumber(matches[2]) * 86400)
     redis:hset('expiretime',get_receiver(msg),timeexpire)
-    return "I Set Group Expire For "..matches[2].. " Day📍."
+local hash = 'group:'..msg.to.id
+    local group_lang = redis:hget(hash,'lang')
+    if group_lang then
+return "تاریخ گروه برای "..matches[2].." روز دیگر تمدید شد
+else
+    return "I Set Group Expire For "..matches[2].." Day📍."
   end
+end
   if matches[1]:lower() == 'expire' then
     local expiretime = redis:hget ('expiretime', get_receiver(msg))
-    if not expiretime then return 'تاریخ ست نشده است' else
+    if not expiretime then 
+local hash = 'group:'..msg.to.id
+    local group_lang = redis:hget(hash,'lang')
+    if group_lang then
+return 'تاریخ ست نشده است' 
+else
+return 'Expire Time No set for this Group'
       local now = tonumber(os.time())
       return (math.floor((tonumber(expiretime) - tonumber(now)) / 86400) + 1) .. " 📍 Day"
     end
