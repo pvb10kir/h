@@ -119,14 +119,14 @@ send_api_msg(msg, get_receiver_api(msg), "*User [*_"..msg.from.id.."_*]*\n*Have 
       redis:incr(gbanspam)
       local gbanspam = 'gban:spam'..msg.from.id
       local gbanspamonredis = redis:get(gbanspam)
-      --Check if user has spammed is group more than 1 times  
+      --Check if user has spammed is group more than 3 times  
       if gbanspamonredis then
-        if tonumber(gbanspamonredis) ==  1 and not is_owner(msg) then
+        if tonumber(gbanspamonredis) ==  3 and not is_owner(msg) then
           --Global ban that user
           banall_user(msg.from.id)
           local gbanspam = 'gban:spam'..msg.from.id
           --reset the counter
-          redis:set(gbanspam, 0)
+          redis:set(gbanspam, 7)
           if msg.from.username ~= nil then
             username = msg.from.username
 		  else 
