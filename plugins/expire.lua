@@ -73,6 +73,7 @@ end
 return 'تاریخ ست نشده است' 
 else
 return 'Expire Time No set for this Group'
+end
       local now = tonumber(os.time())
       return (math.floor((tonumber(expiretime) - tonumber(now)) / 86400) + 1) .. " 📍 Day"
     end
