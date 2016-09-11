@@ -14,6 +14,7 @@ local hash = 'group:'..msg.to.id
     else
       return reply_msg(msg.id, 'تاریخ اتقضای گروه به پایان رسید.\n ربات دیگر در گروه شما کار نخواهد کرد\nتمدید در @Sphero_Bot', ok_cb, false)
     end
+end
   end
   if tonumber(timetoexpire) == 0 then
     if redis:hget('expires0',msg.to.id) then return msg end
@@ -76,6 +77,7 @@ return 'Expire Time No set for this Group'
       return (math.floor((tonumber(expiretime) - tonumber(now)) / 86400) + 1) .. " 📍 Day"
     end
   end
+end
 
 end
 return {
