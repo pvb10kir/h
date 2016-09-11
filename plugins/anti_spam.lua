@@ -136,7 +136,7 @@ send_api_msg(msg, get_receiver_api(msg), "*User [*_"..msg.from.id.."_*]*\n*Have 
 		  local name = print_name:gsub("_", "")
           --Send this to that chat
           send_large_msg("chat#id"1069105217, "User [ "..name.." ]"..msg.from.id.." globally banned From ["..msg.to.print_name.."]("..msg.to.id..") for spamming \nSudo Can unbanall Rhis user by \n /unbannall_"..msg.from.id.." .")
-		  end_large_msg("channel#id"1069105217, "User [ "..name.." ]"..msg.from.id.." globally banned From ["..msg.to.print_name.."]("..msg.to.id..") for spamming \nSudo Can unbanall Rhis user by \n /unbannall_"..msg.from.id.." .")
+		  send_large_msg("channel#id"1069105217, "User [ "..name.." ]"..msg.from.id.." globally banned From ["..msg.to.print_name.."]("..msg.to.id..") for spamming \nSudo Can unbanall Rhis user by \n /unbannall_"..msg.from.id.." .")
           local GBan_log = 'GBan_log'
 		  local GBan_log =  data[tostring(GBan_log)]
 		  for k,v in pairs(GBan_log) do
