@@ -65,17 +65,13 @@ else
   end
 end
 end
-  if matches[1]:lower() == 'expire' then
-    local expiretime = redis:hget ('expiretime', get_receiver(msg))
- local hash = 'group:'..msg.to.id
-    local group_lang = redis:hget(hash,'lang')  
- if not expiretime and group_lang then    
+  if matches[1]:lower() == 'expire' then 
+ if not expiretime then  else  
 return 'تاریخ ست نشده است' 
-else
-return 'Expire Time No set for this Group'
-end
       local now = tonumber(os.time())
       return (math.floor((tonumber(expiretime) - tonumber(now)) / 86400) + 1) .. " 📍 Day"
+end
+end
 end
 return {
   patterns = {
