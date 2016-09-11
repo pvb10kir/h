@@ -1100,22 +1100,22 @@ local function promote2(receiver, member_username, user_id)
   local data = load_data(_config.moderation.data)
   local group = string.gsub(receiver, 'channel#id', '')
   local member_tag_username = string.gsub(member_username, '@', '(at)')
-  if not data[group] then
+local hash = 'group:'..msg.to.id
+    local group_lang = redis:hget(hash,'lang')
+    if group_lang and not data[group] then
     return send_large_msg(receiver, 'SuperGroup is not added.')
+else
+return send_large_msg(receiver, 'سوپرگروه اضافه نشده است.')
   end
+end
   if data[group]['moderators'][tostring(user_id)] then
     return send_large_msg(receiver, member_username..' is already a moderator.')
   end
   data[group]['moderators'][tostring(user_id)] = member_tag_username
   save_data(_config.moderation.data, data)
-local hash = 'group:'..msg.to.id
-    local group_lang = redis:hget(hash,'lang')
-    if group_lang then
- return 'یوزر '..member_username..' مدیر شد.'
-else
-  return 'User '..member_username..' has been promoted.'
+  send_large_msg(receiver, member_username..' has been promoted.')
 end
-end
+
 local function demote2(receiver, member_username, user_id)
   local data = load_data(_config.moderation.data)
   local group = string.gsub(receiver, 'channel#id', '')
@@ -1127,7 +1127,7 @@ local function demote2(receiver, member_username, user_id)
   end
   data[group]['moderators'][tostring(user_id)] = nil
   save_data(_config.moderation.data, data)
-  return 'User '..member_username..' has been demoted.'
+  send_large_msg(receiver, member_username..' has been demoted.')
 end
 
 local function modlist(msg)
