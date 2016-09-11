@@ -66,10 +66,9 @@ else
 end
   if matches[1]:lower() == 'expire' then
     local expiretime = redis:hget ('expiretime', get_receiver(msg))
-    if not expiretime then 
-local hash = 'group:'..msg.to.id
-    local group_lang = redis:hget(hash,'lang')
-    if group_lang then
+ local hash = 'group:'..msg.to.id
+    local group_lang = redis:hget(hash,'lang')  
+ if not expiretime and group_lang then    
 return 'تاریخ ست نشده است' 
 else
 return 'Expire Time No set for this Group'
