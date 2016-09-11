@@ -33,6 +33,7 @@ local hash = 'group:'..msg.to.id
                     return "ممنوعیت دستورات فعال شد"
 else
 return "Cmds Has Been Locked"
+end
   if is_momod(msg) and matches[1] == 'unlock' then
                     local hash = 'cmdlock:'..msg.to.id
                     redis:del(hash)
@@ -42,7 +43,6 @@ local hash = 'group:'..msg.to.id
                     return "ممنوعیت دستورات غیر فعال شد"
 else
 "Cmds Has Been Unlocked"
-end
 end
 end
 end
