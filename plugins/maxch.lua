@@ -1,16 +1,17 @@
 local function mrblacklife(msg, matches)
-	if 'maxch' and matches[3] and is_momod(msg) then
-		return 'maxch has been set to '..matches[3]..' chatracters.'
-		end
-		text = matches[2]
-		if string.len(text) > matches[3] then
-	delete_msg(msg.id,ok_cb,false)
-return 'More than '..matches[3]..' characters are not allowed'
-	end
-		end
-		return {
-	patterns = {
-	"^[!/#]maxch (.*)$",
-	},
-	run = mrblacklife,
-	}
+  if matches[1] == 'maxch' and is_momod(msg) then
+redis:set('max_char'..msg.to.id,matches[2])
+    return 'maxch has been set to '..matches[2]..' chatracters.'
+    end
+    if string.len(matches[1]) > redis:get('max_char'..msg.to.id) and not is_momod(msg) then
+  delete_msg(msg.id,ok_cb,false)
+return 'More than '..redis:get('max_char'..msg.to.id)..' characters are not allowed'
+  end
+    end
+    return {
+  patterns = {
+  "^[!/#](maxch) (.*)$",
+  "(.*)"
+  },
+  run = mrblacklife,
+  }
