@@ -131,7 +131,7 @@ local bannedhash = 'banned:'..msg.from.id..':'..msg.to.id
         send_large_msg(receiver, 'User @'..member..' ['..member_id..'] globally banned')
 		banall_user(member_id)
       elseif get_cmd == 'unbanall' then
-        send_large_msg(receiver, 'User @'..member..' ['..member_id..'] globally unbanned')
+        reply_msg(msg.id, 'User @'..member..' ['..member_id..'] globally unbanned, ok_cb, false')
 	    unbanall_user(member_id)
     end
 end
