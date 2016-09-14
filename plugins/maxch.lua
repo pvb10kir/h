@@ -11,7 +11,6 @@ return 'More than '..redis:get('max_char'..msg.to.id)..' characters are not allo
   end
 return msg
 end
-end
     return {
   patterns = {
   "^[!/#](maxch) (.*)$",
