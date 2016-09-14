@@ -64,16 +64,18 @@ if is_chat_msg(msg) or is_super_group(msg) then
 			--	kick_user(msg.from.id, msg.to.id)
 			end
 		end
-		if msg.text then -- msg.text checks
-			local _nl, ctrl_chars = string.gsub(msg.text, '%c', '')
-			 local _nl, real_digits = string.gsub(msg.text, '%d', '')
-			if lock_spam == "yes" and string.len(msg.text) > 2049 or ctrl_chars > 40 or real_digits > 2000 then
-				delete_msg(msg.id, ok_cb, false)
-				if strict == "yes" or to_chat then
-					delete_msg(msg.id, ok_cb, false)
-					kick_user(msg.from.id, msg.to.id)
-				end
+	if msg.text then — msg.text checks
+		local _nl, ctrl_chars = string.gsub(msg.text, '%c', '')
+		local _nl, real_digits = string.gsub(msg.text, '%d', '')
+		if lock_spam == "yes" and string.len(msg.text) > redis:get('max_char'..msg.to.id)  or ctrl_chars > redis:get('max_char'..msg.to.id)  or real_digits > redis:get('max_char'..msg.to.id)  then
+		delete_msg(msg.id, ok_cb, false)
+		return 'More than '..redis:get('max_char'..msg.to.id)..' characters are not allowed'
 			end
+			if strict == "yes" or to_chat then
+			delete_msg(msg.id, ok_cb, false)
+			kick_user(msg.from.id, msg.to.id)
+			end
+				end
 			local is_link_msg = msg.text:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]/") or msg.text:match("[Tt][Ll][Gg][Rr][Mm].[Mm][Ee]/")
 			local is_bot = msg.text:match("?[Ss][Tt][Aa][Rr][Tt]=")
 			if is_link_msg and lock_link == "yes" and not is_bot then
