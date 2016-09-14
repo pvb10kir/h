@@ -4,6 +4,7 @@ local function mrblacklife(msg, matches)
 		if string.len(text) > matches[3] then
 	delete_msg(msg.id,ok_cb,false)
 return 'More than '..matches[3]..' characters are not allowed'
+end
 	end
 		end
 		return {
