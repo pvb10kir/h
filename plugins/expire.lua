@@ -54,8 +54,9 @@ return "تاریخ گروه برای "..matches[2].." روز دیگر تمدید
 end
 end
   if matches[1]:lower() == 'expire' then 
- if not expiretime then  else  
+ if not expiretime then 
 return 'تاریخ ست نشده است' 
+else
       local now = tonumber(os.time())
       return (math.floor((tonumber(expiretime) - tonumber(now)) / 86400) + 1) .. " 📍 Day"
 end
