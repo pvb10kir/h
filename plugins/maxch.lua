@@ -5,11 +5,11 @@ redis:set('max_char'..msg.to.id,matches[2])
     end
 end
 local function pre_process(msg)
-    if string.len(matches[1]) > redis:get('max_char'..msg.to.id) and not is_momod(msg) then
-  delete_msg(msg.id,ok_cb,false)
+if string.len(matches[1]) > redis:get('max_char'..msg.to.id) and not is_momod(msg) then
+delete_msg(msg.id,ok_cb,false)
 return 'More than '..redis:get('max_char'..msg.to.id)..' characters are not allowed'
   end
-    end
+end
     return {
   patterns = {
   "^[!/#](maxchar) (.*)$",
