@@ -1,8 +1,5 @@
 local function run(msg,matches)
-local text = "*Your Text* : \n"..matches[1]
-else
-matches[1] = */kickme* 
-return 'Khar khodeti'
+local text = "*Your Text* : \n"..matches[1].."\n[Join](https://telegram.me/sphero_ch)"
   send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
 end
 return {
