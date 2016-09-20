@@ -154,7 +154,7 @@ local text = [[*راهنمای جهانی برای رباتِ* [Sphero](http://t
 پاک کردن تمام ممبر های سوپر گروه
 
 🇮🇷!setlang (fa/en)
-تنظیم کردن زبان ربات*
+تنظیم کردن زبان ربات
 
 🇮🇷!feedback پیام
 فرستادن پیام شما برای ادمین ربات
@@ -164,9 +164,8 @@ local text = [[*راهنمای جهانی برای رباتِ* [Sphero](http://t
 
 🇮🇷!type موضوع
 ست کردن موضوعی برای گروه خود که در دریافت لینک از ان استفاده میشود همچنین در متن تنظیمات
-
-[💤SpheroTM💤
-Channel](https://telegram.me/sphero_ch)]]
+*
+💤SpheroTM💤 Channel ( @Sphero_Ch )]]
 else
 local text = [[*Local Help For*[ Sphero](https://telegram.me/sphero_ch)
 *
@@ -387,7 +386,7 @@ subject was show to your group link
 want to test? Send me /link
 *
 *💤SpheroTM💤*
-     [Channel](https://telegram.me/sphero_ch)]]
+     Channel : @Sphero_Ch]]
     send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
 end
 end
