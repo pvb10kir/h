@@ -2,7 +2,7 @@ local function run(msg)
 local hash = 'group:'..msg.to.id
     local group_lang = redis:hget(hash,'lang')
     if group_lang then
-local text = [[*راهنمای جهانی برای رباتِ* [Sphero]
+local text = [[راهنمای جهانی برای رباتِ [Sphero]
 *⌚️!gpinfo
 نشون دادن اطلاعات گروه
 ⌚️!admins
@@ -164,11 +164,12 @@ local text = [[*راهنمای جهانی برای رباتِ* [Sphero]
 
 🇮🇷!type موضوع
 ست کردن موضوعی برای گروه خود که در دریافت لینک از ان استفاده میشود همچنین در متن تنظیمات
-*
+
 💤SpheroTM💤 Channel ( @Sphero_Ch )]]
+reply_msg(msg.id, text, ok_cb, false)
 else
-local text = [[*Local Help For Sphero
-*
+local text = [[Local Help For Sphero
+
 ⌚️!info
 Displays general info about the SuperGroup
 
@@ -385,7 +386,7 @@ Set subject for your group
 subject was show to your group link 
 want to test? Send me /link
 
-*💤SpheroTM💤*
+💤SpheroTM💤
     Channel : @Sphero_Ch]]
     reply_msg(msg.id, text, ok_cd, false)
 end
