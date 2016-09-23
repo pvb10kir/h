@@ -1,5 +1,10 @@
 do function run(msg, matches)
+   local hash = 'groupcmds:'..msg.to.id
+    local group_cmds = redis:hget(hash,'cmds')
+    if group_cmds then 
 if matches[1]:lower() == 'id' then
+else
+    if matches[1]:lower() == 'ایدی' then
 local hash = 'group:'..msg.to.id
     local group_lang = redis:hget(hash,'lang')
     if group_lang then
@@ -19,6 +24,7 @@ moderator = {
 },
 patterns = {
 "^[!/#]([Ii][Dd])$",
+"^ایدی$",
 -- "^[Ii][Dd]$", --For lock cmds
 },
 run = run
