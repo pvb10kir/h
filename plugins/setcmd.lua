@@ -18,7 +18,7 @@ if matches[1] == 'cmds' then
 if cmds_lang then 
 return "دستورات گروه شما هم اکنون روی فارسی قرار دارد"
 else
-return "Group Lang : en"
+return "Group Cmds : en"
 end
 end
 end
