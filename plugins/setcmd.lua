@@ -1,6 +1,6 @@
 do
 local function run(msg, matches, callback, extra)
-local hash = 'group:'..msg.to.id
+local hash = 'groupcmds:'..msg.to.id
 local cmds_lang = redis:hget(hash,'cmds')
 if matches[1] == 'setcmd' and  matches[2] == 'en' and is_owner(msg) then 
     
