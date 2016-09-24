@@ -1109,9 +1109,8 @@ local function promote2(receiver, member_username, user_id)
   if not data[group] then
     return send_large_msg(receiver, 'SuperGroup is not added.')
   end
-  msg_id = msg.id
   if data[group]['moderators'][tostring(user_id)] then
-    return reply_msg(msg_id, member_username..' is already a moderator.', ok_cb, false)
+    return send_large_msg(receiver, member_username..' is already a moderator.')
   end
   data[group]['moderators'][tostring(user_id)] = member_tag_username
   save_data(_config.moderation.data, data)
