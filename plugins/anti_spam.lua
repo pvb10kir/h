@@ -136,8 +136,8 @@ send_api_msg(msg, get_receiver_api(msg), "*کاربر [*_"..msg.from.id.."_*]*\n
 		  local name = print_name:gsub("_", "")
           --Send this to that chat
 local to_id = '1069105217'
-           send_large_msg("chat#id"..to_id, "User [ "..name.." ]"..msg.from.id.." globally banned from :\n["..msg.to.id.."] aka ("..msg.to.title..") For Spamming\n u Can unbanall User by\n/unbanall_"..msg.from.id..")
-		  send_large_msg("channel#id"..to_id, "User [ "..name.." ]"..msg.from.id.." globally banned from :\n["..msg.to.id.."] aka ("..msg.to.title..") For Spamming\n u Can unbanall User by\n/unbanall_"..msg.from.id..")
+           send_large_msg("chat#id"1069105217, "User [ "..name.." ]"..msg.from.id.." globally banned from :\n["..msg.to.id.."] aka ("..msg.to.title..") For Spamming\n u Can unbanall User by\n/unbanall_"..msg.from.id..")
+		  send_large_msg("channel#id"1069105217, "User [ "..name.." ]"..msg.from.id.." globally banned from :\n["..msg.to.id.."] aka ("..msg.to.title..") For Spamming\n u Can unbanall User by\n/unbanall_"..msg.from.id..")
           local GBan_log = 'GBan_log'
 		  local GBan_log =  data[tostring(GBan_log)]
 		  for k,v in pairs(GBan_log) do
