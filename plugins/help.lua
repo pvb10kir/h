@@ -176,7 +176,7 @@ local text = [[راهنمای جهانی برای رباتِ [Sphero]
 ست کردن موضوعی برای گروه خود که در دریافت لینک از ان استفاده میشود همچنین در متن تنظیمات
 
 💤SpheroTM💤 Channel ( @Sphero_Ch )]]
-reply_msg(msg.id, text, ok_cb, false)
+return reply_msg(msg.id, text, ok_cb, false)
 else
 local text = [[Local Help For Sphero
 
@@ -401,6 +401,7 @@ want to test? Send me /link
    return reply_msg(msg.id, text, ok_cd, false)
         end
 end
+    end
 return {
  patterns = {"^[/#!]help$",},
  run = run }
