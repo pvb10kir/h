@@ -41,7 +41,6 @@ end
  end
       end
     end
-end
 return {
   patterns = {
   "^/kickme$",
