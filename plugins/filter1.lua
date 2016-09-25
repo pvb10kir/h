@@ -86,7 +86,7 @@ return ''..cmd_name..'  پاک شد'
 else
 return 'word '..cmd_name..' removed from filterlist. '
 end
-
+end
 local function run(msg, matches)
   if matches[2] == 'filter' then
   if not is_momod(msg) then
