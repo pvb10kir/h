@@ -7,7 +7,7 @@ local function addword(msg, name)
     if group_lang then
     return "کلمه جدید به فیلتر کلمات اضافه شد\n>"..name
 	else
-	return "Word '..name..' Added to filterlist."
+	return "..name Added to filterlist."
 end
 end
 local function get_variables_hash(msg)
