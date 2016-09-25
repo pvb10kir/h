@@ -1,4 +1,4 @@
-local function run(msg)
+local function run(msg, matches)
 local hash = 'group:'..msg.to.id
     local group_lang = redis:hget(hash,'lang')
     if group_lang then
