@@ -1,33 +1,20 @@
-do
 local function run(msg, matches, callback, extra)
-local hash = 'groupcmds:'..msg.to.id
-local cmds_lang = redis:hget(hash,'cmds')
-if matches[1] == 'setcmd' and  matches[2] == 'en' and is_owner(msg) then 
-    
-   redis:hdel(hash,'cmds')
-        return 'Group cmds Set To : en'
-end
-
-
-
-if matches[1] == 'setcmd' and matches[2] == 'fa' and is_owner(msg) then
-redis:hset(hash,'cmds',matches[2])
-        return 'دستورات گروه شما روی فارسی تنظیم شد'
-end
-if matches[1] == 'cmds' then
-if cmds_lang then 
-return "دستورات گروه شما هم اکنون روی فارسی قرار دارد"
+if matches[1]:lower() == 'setcmd' and matches[2] then
+        if is_owner(msg) then
+            hash = 'cmdset:'..msg.to.id
+            redis:set(hash, matches[2])
+local hash2 = 'group:'..msg.to.id
+    local group_lang = redis:hget(hash2,'lang')
+    if group_lang then
+             return 'دستورات گروه تنظیم شد روی '..matches[2]..' .'
 else
-return "Group Cmds : en"
+    return 'done cmds set to '..matches[2]..' .'
+        end
+  end
 end
-end
-end
-return {
-  patterns = {
-    "^[!#/]([Ss][Ee][Tt]cmd) ([Ff][Aa])$",
-  "^[!#/]([Ss][Ee][Tt]cmd) ([Ee][Nn])$",
-  "^[!#/](cmds)"
-  },
-  run = run
+return { 
+patterns = { 
+'^[!/#]setcmd (.*)$',
+},
+run = run,
 }
-end
