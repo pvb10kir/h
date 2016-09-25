@@ -36,8 +36,8 @@ end
 				local text = 'کاربر به دستور خود از گروه اخراج شد'
 				    send_api_msg(msg, get_receiver_api(msg), text, true, 'md')  
 				else
-         local text = '*User* *Succefulli Kicked*'
-    send_api_msg(msg, get_receiver_api(msg), text, true, 'md')   
+         local text2 = '*User* *Succefulli Kicked*'
+    send_api_msg(msg, get_receiver_api(msg), text2, true, 'md')   
  end
       end
     end
