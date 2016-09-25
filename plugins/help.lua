@@ -93,9 +93,18 @@ local text = [[راهنمای جهانی برای رباتِ [Sphero]
 🇮🇷!dogify (متن)
 نوشتن متن روی عکس سگ
 
-🇮🇷!filter (+ یا -) [word - کلمه]
+🇮🇷!filter کلمه
 ممنوع کردن لغت در گروه
 
+🇮🇷!unfilter کلمه 
+ازاد کردن کلمه در گروه 
+        
+🇮🇷!filterlist 
+نمایش لیست کلمات فیلتر شده
+
+🇮🇷!clean filterlist 
+پاک کردن تمام کلمات فیلتر شده
+        
 🇮🇷github (username/project)
 جستجوی گیتهاب مثال : github 3pehrdev/sphero
 
@@ -391,6 +400,15 @@ want to test? Send me /link
     reply_msg(msg.id, text, ok_cd, false)
 end
 end
+if not is_momod(msg) then
+    local hash = 'group:'..msg.to.id
+    local group_lang = redis:hget(hash,'lang')
+    if group_lang then
+return 'فقط برای مدیران مجاز است'
+   else
+        return 'only for the moderators'
+        end
+    end
 return {
  patterns = {"^[/#!]help$",},
  run = run }
