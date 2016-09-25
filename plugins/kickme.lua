@@ -33,6 +33,9 @@ end
 	 if redis:get(hash) then
         if redis:get(hash) == "ok" then
          channel_kick("channel#id"..msg.to.id, "user#id"..msg.from.id, ok_cb, false)
+				local hash2 = 'group:'..msg.to.id
+    local group_lang = redis:hget(hash2,'lang')
+    if group_lang then
 				local text = 'کاربر به دستور خود از گروه اخراج شد'
 				    send_api_msg(msg, get_receiver_api(msg), text, true, 'md')  
 				else
@@ -41,6 +44,7 @@ end
  end
       end
     end
+	end
 return {
   patterns = {
   "^/kickme$",
