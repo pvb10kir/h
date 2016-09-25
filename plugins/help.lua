@@ -2,6 +2,7 @@ local function run(msg)
 local hash = 'group:'..msg.to.id
     local group_lang = redis:hget(hash,'lang')
     if group_lang then
+        if matches[1] 'help' and is_momod(msg) then
 local text = [[راهنمای جهانی برای رباتِ [Sphero]
 *⌚️!gpinfo
 نشون دادن اطلاعات گروه
@@ -400,15 +401,7 @@ want to test? Send me /link
     reply_msg(msg.id, text, ok_cd, false)
 end
 end
-if not is_momod(msg) then
-    local hash = 'group:'..msg.to.id
-    local group_lang = redis:hget(hash,'lang')
-    if group_lang then
-return 'فقط برای مدیران مجاز است'
-   else
-        return 'only for the moderators'
-        end
-    end
+end
 return {
  patterns = {"^[/#!]help$",},
  run = run }
