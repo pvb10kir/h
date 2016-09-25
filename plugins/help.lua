@@ -1,8 +1,8 @@
 local function run(msg, matches)
+    if matches[1]:lower() == 'help' then
 local hash = 'group:'..msg.to.id
     local group_lang = redis:hget(hash,'lang')
     if group_lang then
-        if matches[1] 'help' and is_momod(msg) then
 local text = [[راهنمای جهانی برای رباتِ [Sphero]
 *⌚️!gpinfo
 نشون دادن اطلاعات گروه
