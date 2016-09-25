@@ -399,7 +399,6 @@ want to test? Send me /link
 💤SpheroTM💤
     Channel : @Sphero_Ch]]
    return reply_msg(msg.id, text, ok_cd, false)
-        end
 end
     end
 return {
