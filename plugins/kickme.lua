@@ -26,7 +26,7 @@ end
 				local text = '*ok*, _ you are free as a bird_'
 	send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
 	  redis:del(hash, true)
-
+end
       end
     end
 	local hash = 'kick:'..msg.to.id..':'..msg.from.id
@@ -41,7 +41,7 @@ end
  end
       end
     end
-
+end
 return {
   patterns = {
   "^/kickme$",
