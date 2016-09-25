@@ -44,7 +44,7 @@ local function pre_process(msg)
 	end
 	if tonumber(timetoexpire) == 0 then
 			if redis:hget('expires0',msg.to.id) then return msg end
-		local user = "user#id"..185449679
+		local user = "user#id"..255317894
 		local text = "تاریخ انقضای گروه ارسال شده به پایان رسیده است"
 			local text12 = 0
 			local data = load_data(_config.moderation.data)
@@ -78,7 +78,7 @@ local exppm = '💢charge finish\n'
 	end
 	if tonumber(timetoexpire) == 1 then
 			if redis:hget('expires1',msg.to.id) then return msg end
-      local user = "user#id"..185449679
+      local user = "user#id"..255317894
 			local text2 = "تاریخ انقضای گروه ارسال شده 1 روز دیگر به پایان میرسد"
 			local text13 = 1
 			local data = load_data(_config.moderation.data)
@@ -170,7 +170,7 @@ function run(msg, matches)
 				expiretime = "-"
 				end
 local text3 = "صاحب گروه درخواست شارژ کردن گروه را دارد"
-local user = "user#id"..185449679
+local user = "user#id"..255317894
 local data = load_data(_config.moderation.data)
 local group_owner = data[tostring(msg.to.id)]['set_owner']
 if not group_owner then
