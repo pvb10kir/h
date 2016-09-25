@@ -1,4 +1,4 @@
--- https://telegram.me/plugin_ch
+
 local function addword(msg, name)
     local hash = 'chat:'..msg.to.id..':badword'
     redis:hset(hash, name, 'newword')
@@ -7,7 +7,7 @@ local function addword(msg, name)
     if group_lang then
     return "کلمه جدید به فیلتر کلمات اضافه شد\n>"..name
 	else
-	return "..name Added to filterlist."
+	return "new word Added to filterlist.\n"..name
 end
 end
 local function get_variables_hash(msg)
