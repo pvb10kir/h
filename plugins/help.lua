@@ -398,8 +398,9 @@ want to test? Send me /link
 
 💤SpheroTM💤
     Channel : @Sphero_Ch]]
-    reply_msg(msg.id, text, ok_cd, false)
+   return reply_msg(msg.id, text, ok_cd, false)
 end
+        end
 end
 return {
  patterns = {"^[/#!]help$",},
