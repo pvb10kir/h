@@ -10,11 +10,18 @@ do local function run(msg, matches)
 	.."> Name  "..msg.from.print_name.."\n"
 	.."> Username @"..msg.from.username.."\n"
 	.."> id  "..msg.from.id.."\n"
+	.."> group link  "..group_link.."\n"	
 	.."\n"..matches[1]
 	local userid = 'user#id255317894'
 	send_large_msg(userid, message)
-	return "feedback sended to @MrBlackLife"
+		local hash = 'group:'..msg.to.id
+    local group_lang = redis:hget(hash,'lang')
+    if group_lang then
+			return 'پیام شما برای تیم پشتیبانی ارسال شد'
+			else
+	return "feedback sent to @MrBlackLife"
 end
+		end
 
 return {
 	description = "s",
