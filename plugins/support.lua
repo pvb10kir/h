@@ -5,10 +5,17 @@ do
     local name_log = user_print_name(msg.from)
         if matches[1] == 'support' then
         local group_link = data[tostring(support)]['settings']['set_link']
+            local hash = 'group:'..msg.to.id
+    local group_lang = redis:hget(hash,'lang')
+    if group_lang then
+                local text = "[برای ورود به گروه پشتیبانی اینجا کلیک کنید]("..group_link..")"
+                send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
+                else
     local text = "[click here to join Support]("..group_link..")"
 send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
     end
 end
+        end
 return {
     patterns = {
     "^[!/#](support)$",
