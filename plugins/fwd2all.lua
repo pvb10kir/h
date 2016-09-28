@@ -1,6 +1,7 @@
    function run(msg, matches)
 if matches[1]:lower() == 'f2a' and msg.reply_id then
 local pm = msg.reply_id
+    local data = load_data(_config.moderation.data)
 local groups = 'groups'
       for k,v in pairs(data[tostring(groups)]) do
         chat_id =  v
