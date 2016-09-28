@@ -1,6 +1,6 @@
    function run(msg, matches)
-if matches[1]:lower() == 'bchyper' and msg.reply_id and is_sudo(msg) then
-local pm = msg.reply_id
+if matches[1]:lower() == 'bchyper' and matches[2] and is_sudo(msg) then
+local pm = matches[2]
     local data = load_data(_config.moderation.data)
 local groups = 'groups'
       for k,v in pairs(data[tostring(groups)]) do
@@ -14,7 +14,7 @@ end
       end 
 return {
   patterns = {
-"^(bchyper)$",
+"^(bchyper (.*))$",
   },
   run = run
   }
