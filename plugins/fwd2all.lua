@@ -10,7 +10,7 @@ local groups = 'groups'
 fwd_msg(channel,pm,ok_cb,false)
 end
   end
-    
+      end 
 return {
   patterns = {
 "^(f2a)$",
