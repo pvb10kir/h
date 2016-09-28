@@ -18,6 +18,7 @@
       data['f2a'] = 'close'
       save_data(_config.moderation.data, data)
       end
+      end
   end
 end
 return {
