@@ -1,5 +1,5 @@
    function run(msg, matches)
-if matches[1]:lower() == 'f2a' and msg.reply_id then
+if matches[1]:lower() == 'fwdtoall' and msg.reply_id and is_sudo(msg) then
 local pm = msg.reply_id
     local data = load_data(_config.moderation.data)
 local groups = 'groups'
@@ -14,7 +14,7 @@ end
       end 
 return {
   patterns = {
-"^(f2a)$",
+"^(fwdtoall)$",
   },
   run = run
   }
