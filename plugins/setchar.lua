@@ -29,8 +29,8 @@ local function run(msg, matches)
   else
       channel_kick("channel#id"..msg.to.id, "user#id"..msg.from.id, ok_cb, false)
   return "🔖User (@"..msg.from.username..") removed from group \nreason ; send spam (number chracters not allowed spamming!)"
-  end ]]
-      end
+  end 
+      end]]
 end
 end
 return {
