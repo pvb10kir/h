@@ -22,7 +22,7 @@ local function run(msg, matches)
         local text = "Range is [1-2000]"
         return reply_msg(msg.id, text, ok_cb, false)
       end
-  —if ( tonumber(string.len(matches[1])) > 650 ) then
+  -- if ( tonumber(string.len(matches[1])) > 650 ) then
   delete_msg(msg.id, ok_cb, true)
  if (is_momod(msg)) then
       return nil
