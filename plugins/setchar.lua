@@ -5,9 +5,9 @@ local function run(msg, matches)
     return "🔖 (@"..msg.from.username..") your message was deleted (number msg chracters not allowed)"
  end
 local function run(msg, matches)
-  if ( tonumber(string.len(matches[1])) > 350 ) then
+  if ( tonumber(string.len(matches[1])) > 2000 ) then
   delete_msg(msg.id, ok_cb, true)
-  if (is_momod(msg)) then
+  if is_momod(msg) then
       return nil
   else
      delete_msg(msg.id, ok_cb, true)
