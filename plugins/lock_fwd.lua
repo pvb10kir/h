@@ -4,7 +4,7 @@ local function pre_process(msg)
     
     --Checking mute
     local hash = 'mate:'..msg.to.id
-    if redis:get(hash) and msg.fwd_from and not is_sudo(msg) and not is_owner(msg) and not is_momod(msg) then
+    if redis:get(hash) and msg.from.fwd and not is_sudo(msg) and not is_owner(msg) and not is_momod(msg) then
             delete_msg(msg.id, ok_cb, true)
             return "done"
         end
@@ -27,7 +27,7 @@ local function run(msg, matches)
   elseif is_momod(msg) and matches[1] == 'unlock' then
                     local hash = 'mate:'..msg.to.id
                     redis:del(hash)
-                    return "User "..msg.from.print_name.." Dont Send Forward Message!"
+                    return ""
 end
 
 end
