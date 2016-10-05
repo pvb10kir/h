@@ -9,7 +9,6 @@ if matches[1] == 'linkpv' then
        if not group_link then 
         return "First use /newlink or if bot isn't creator user /setlink"
        end
-end
          local text = "SuperGroup link  :\n"..group_link
           send_large_msg('user#id'..msg.from.id, text.."\n", ok_cb, false)
            return "SuperGroup link sent on your pv✔"
