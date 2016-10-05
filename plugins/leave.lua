@@ -1,13 +1,17 @@
-function run(msg, matches)
-local receiver = get_receiver(msg)
-if matches[1]:lower() == 'leave' and matches[2] and is_sudo(msg) then 
-leave_channel(receiver,matches[2], ok_cb, false)
+local function run(msg, matches)
+if not is_sudo(msg) then
+return false
+end
+local bot_id = 196009168 --for example 271787100
+if matches[1] == "leave" then
+chat_del_user("chat#id"..matches[2], 'user#id'..bot_id, ok_cb, false)
+leave_channel("channel#id"..matches[2], ok_cb, false)
+return "Success! Bot leave from "..matches[2]
 end
 end
 return {
-patterns = {
-'^[#!/](leave)(.*)$',
-},
-
-run = run
-}
+  patterns = {
+     "^[!#/](leave)_(.*)$"
+  },
+     run = run
+  }
