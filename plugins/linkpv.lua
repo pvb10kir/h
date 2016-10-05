@@ -1,6 +1,5 @@
- do
 
-function run(msg, matches)
+local function run(msg, matches)
        if not is_momod(msg) then
         return "For moderators only!"
        end
@@ -30,4 +29,3 @@ return {
   run = run,
 }
 
-end
