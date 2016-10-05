@@ -17,7 +17,7 @@ end
 end
 if matches[1] == 'newlinkpv' then
     data[tostring(msg.to.id)]['settings']['set_link']
-    local data = load_data(_config.moderation.data, data)
+     save_data(_config.moderation.data, data)
     local group_link = data[tostring(msg.to.id)]['settings']['set_link']
 send_large_msg('user#id'..msg.from.id, 'New link ;\n'..group_link..'\n@Sphero_Ch', ok_cb, false)
 return 'Supergroup Link has Been revoked And Send to your Private'
