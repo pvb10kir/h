@@ -20,7 +20,7 @@ if data[tostring(msg.to.id)] then
     send_large_msg(receiver, "Newlink sent!")
     send_large_msg('user#'..msg.from.id, "Newlink has been Created :\n______________________________\n"..group_link)
    end
-   local receiver = 'chat#'..msg.to.id
+   local receiver = 'channel#'..msg.to.id
    return export_chat_link(receiver, link_callback, {receiver = receiver})
 
   elseif matches[1] == 'ink' and is_momod(msg) then
@@ -45,7 +45,7 @@ if data[tostring(msg.to.id)] then
     local group_link = data[tostring(msg.to.id)]['settings']['set_link']
     send_large_msg(receiver, "Newlink has been Created :\n______________________________\n"..group_link)
    end
-   local receiver = 'chat#'..msg.to.id
+   local receiver = 'channel#'..msg.to.id
    return export_chat_link(receiver, link_callback, {receiver = receiver})
   
   elseif matches[1] == 'link' and is_momod(msg) then
