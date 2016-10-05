@@ -1,8 +1,8 @@
  do
 
 function run(msg, matches)
-       if not is_owner(msg) then
-        return "For owner only!"
+       if not is_momod(msg) then
+        return "For moderators only!"
        end
 if matches[1] == 'linkpv' then
     local data = load_data(_config.moderation.data)
@@ -24,10 +24,10 @@ end
 end
 return {
   patterns = {
-    "^[/#!]([Ll]inkpv)$"
-    "^[/#!]([Nn]ewlinkpv)$"
+    "^[/#!]([Ll]inkpv)$",
+    "^[/#!]([Nn]ewlinkpv)$",
   },
-  run = run
+  run = run,
 }
 
 end
