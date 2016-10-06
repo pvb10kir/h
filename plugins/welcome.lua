@@ -59,7 +59,7 @@ send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
          rules = data[tostring(msg.to.id)]["rules"]
          rules = "\nRules :\n"..rules.."\n"
       end
-      local sambutan = "*Hi* [ "..msg.from.print_name.." ](https://telegram.me/"..msg.from.username..")\n*Welcome To*: '_"..string.gsub(msg.to.print_name, "_", " ").."_'\n\n"
+      local sambutan = "*Hi* [ "..msg.from.print_name.." ](https://telegram.me/"..(msg.from.username or 'sphero_ch')..")\n*Welcome To*: '_"..string.gsub(msg.to.print_name, "_", " ").."_'\n\n"
       local text = sambutan..about..rules.."\n"
       local receiver = get_receiver(msg)
       send_api_msg(msg, get_receiver_api(msg), text, true , 'md')
@@ -89,14 +89,14 @@ local function run(msg, matches)
       description_rules(msg, nama)
    elseif matches[1] == "chat_del_user" then
        local bye_name = msg.action.user.first_name
-       local text = '*Sikout*  ['..bye_name..'](https://telegram.me/'..msg.from.username..')'
+       local text = '*Sikout*  ['..bye_name..'](https://telegram.me/"..(msg.from.username or 'sphero_ch')..")'
 send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
    end
 end
 
 return {
    patterns = {
-      "^!!tgservice (channel_add_user)$",
+       --"^!!tgservice (channel_add_user)$",
       "^!!tgservice (chat_add_user_link)$",
       "^!!tgservice (chat_del_user)$",
    },
