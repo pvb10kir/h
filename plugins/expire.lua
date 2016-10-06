@@ -159,6 +159,7 @@ function run(msg, matches)
 		return "تاریخ انقضای گروه:\nبه "..matches[3].. " روز دیگر تنظیم شد."
  send_large_msg(expgp,'درخواست شارژ شما پذیرفته شد . \n ربات به مدت '..matches[3]..' \nدر گروه شما شارژ شد.',ok_cb,false)
 	end
+end
 	if matches[1]:lower() == 'expire' then
 		local expiretime = redis:hget ('expiretime', get_receiver(msg))
 		if not expiretime then return 'تاریخ ست نشده است' else
