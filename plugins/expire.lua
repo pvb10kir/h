@@ -57,19 +57,23 @@ end
 group_link = "Unset"
 end
 local exppm = '💢charge finish\n'
+..'----------------------------------\n'
 ..'👥Group Name :  '..msg.to.title..' \n'
 ..'🆔Group ID :  '..msg.to.id..'  \n'
 ..'🏅Group Owner :   '..group_owner..'   \n'
 ..'➰Group Link : '..group_link..'\n'
 ..'🔘Info Time:\n'..text12..'\n'
+..'----------------------------------\n'
 ..'🔋Charge For 1 Month :\n'
 ..'/setexp_'..msg.to.id..'_30\n'
 ..'🔋Charge For 3 Month :\n'
 ..'/setexp_'..msg.to.id..'_90\n'
 ..'🔋Unlimited Charge :\n'
 ..'/setexp_'..msg.to.id..'_999\n'
-..'🔋Leave Bot :\n'
-..'/leave_'..msg.to.id..'\n'
+..'----------------------------------\n'
+..'🔋Leave Bot :
+..'/leave_'..msg.to.id..'
+..'----------------------------------\n'
 ..'@Sphero_Ch'
 			local sends = send_msg(user, exppm, ok_cb, false)   
 			send_large_msg(get_receiver(msg), '0 روز تا پایان تاریخ انقضای گروه باقی مانده است\nنسبت به تمدید اقدام کنید.\n ارسال درخواست شارژ با زدن دستور\n!charge\nلیست قیمت ها https://telegram.me/Sphero_Ch/382')
@@ -90,19 +94,23 @@ end
 group_link = "Unset"
 end
 local exppm = '💢charge finish\n'
+..'----------------------------------\n'
 ..'👥Group Name :  '..msg.to.title..' \n'
 ..'🆔Group ID :  '..msg.to.id..'  \n'
 ..'🏅Group Owner :   '..group_owner..'   \n'
 ..'➰Group Link : '..group_link..'\n'
-..'🔘Info Time:\n'..text12..'\n'
+..'🔘Info Time:\n'..text13..'\n'
+..'----------------------------------\n'
 ..'🔋Charge For 1 Month :\n'
 ..'/setexp_'..msg.to.id..'_30\n'
 ..'🔋Charge For 3 Month :\n'
 ..'/setexp_'..msg.to.id..'_90\n'
 ..'🔋Unlimited Charge :\n'
 ..'/setexp_'..msg.to.id..'_999\n'
-..'🔋Leave Bot :\n'
-..'/leave_'..msg.to.id..'\n'
+..'----------------------------------\n'
+..'🔋Leave Bot :
+..'/leave_'..msg.to.id..'
+..'----------------------------------\n'
 ..'@Sphero_Ch'
 		local sends = send_msg(user, exppm, ok_cb, false)
 			send_large_msg(get_receiver(msg), '1 روز تا پایان تاریخ انقضای گروه باقی مانده است\nنسبت به تمدید اقدام کنید.\n ارسال درخواست شارژ با زدن دستور\n!charge\nلیست قیمت ها https://telegram.me/Sphero_Ch/382')
@@ -150,7 +158,7 @@ function run(msg, matches)
 		redis:hset('expiretime',expgp,timeexpire)
 		return "تاریخ انقضای گروه:\nبه "..matches[3].. " روز دیگر تنظیم شد."
 else
- 		return send_large_msg('channel#id'..matches[2], 'درخواست شارژ شما پذیرفته شد . \n ربات به مدت '..matches[3]..' \n.در گروه شما شارژ شد', ok_cb, false)
+return send_large_msg("channel#id"..matches[2],درخواست شارژ شما پذیرفته شد . \n ربات به مدت '..matches[3]..' \nدر گروه شما شارژ شد.,ok_cb,false)
 	end
 	if matches[1]:lower() == 'expire' then
 		local expiretime = redis:hget ('expiretime', get_receiver(msg))
@@ -181,19 +189,23 @@ if not group_link then
 group_link = "Unset"
 end
 local exppm = '💢Req Charge\n'
+..'----------------------------------\n'
 ..'👥Group Name :  '..msg.to.title..' \n'
 ..'🆔Group ID :  '..msg.to.id..'  \n'
 ..'🏅Group Owner :   '..group_owner..'   \n'
 ..'➰Group Link : '..group_link..'\n'
-..'🔘Info Time:\n'..text12..'\n'
+..'🔘Info Time:\n'..text4..'\n'
+..'----------------------------------\n'
 ..'🔋Charge For 1 Month :\n'
 ..'/setexp_'..msg.to.id..'_30\n'
 ..'🔋Charge For 3 Month :\n'
 ..'/setexp_'..msg.to.id..'_90\n'
 ..'🔋Unlimited Charge :\n'
 ..'/setexp_'..msg.to.id..'_999\n'
-..'🔋Leave Bot :\n'
-..'/leave_'..msg.to.id..'\n'
+..'----------------------------------\n'
+..'🔋Leave Bot :
+..'/leave_'..msg.to.id..'
+..'----------------------------------\n'
 ..'@Sphero_Ch'
 			local sends = send_msg(user, exppm, ok_cb, false)
 		return "درخواست شما برای شارژ مجدد گروه ارسال شد"
