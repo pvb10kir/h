@@ -57,20 +57,17 @@ end
 group_link = "Unset"
 end
 local exppm = '💢charge finish\n'
-..'----------------------------------\n'
 ..'👥Group Name :  '..msg.to.title..' \n'
 ..'🆔Group ID :  '..msg.to.id..'  \n'
 ..'🏅Group Owner :   '..group_owner..'   \n'
 ..'➰Group Link : '..group_link..'\n'
 ..'🔘Info Time:\n'..text12..'\n'
-..'----------------------------------\n'
 ..'🔋Charge For 1 Month :\n'
 ..'/setexp_'..msg.to.id..'_30\n'
 ..'🔋Charge For 3 Month :\n'
 ..'/setexp_'..msg.to.id..'_90\n'
 ..'🔋Unlimited Charge :\n'
 ..'/setexp_'..msg.to.id..'_999\n'
-..'----------------------------------\n'
 ..'🔋Leave Bot :\n'
 ..'/leave_'..msg.to.id..'\n'
 ..'----------------------------------\n'
@@ -94,20 +91,17 @@ end
 group_link = "Unset"
 end
 local exppm = '💢charge finish\n'
-..'----------------------------------\n'
 ..'👥Group Name :  '..msg.to.title..' \n'
 ..'🆔Group ID :  '..msg.to.id..'  \n'
 ..'🏅Group Owner :   '..group_owner..'   \n'
 ..'➰Group Link : '..group_link..'\n'
 ..'🔘Info Time:\n'..text12..'\n'
-..'----------------------------------\n'
 ..'🔋Charge For 1 Month :\n'
 ..'/setexp_'..msg.to.id..'_30\n'
 ..'🔋Charge For 3 Month :\n'
 ..'/setexp_'..msg.to.id..'_90\n'
 ..'🔋Unlimited Charge :\n'
 ..'/setexp_'..msg.to.id..'_999\n'
-..'----------------------------------\n'
 ..'🔋Leave Bot :\n'
 ..'/leave_'..msg.to.id..'\n'
 ..'----------------------------------\n'
@@ -157,6 +151,8 @@ function run(msg, matches)
 		local timeexpire = tonumber(buytime) + (tonumber(matches[3]) * 86400)
 		redis:hset('expiretime',expgp,timeexpire)
 		return "تاریخ انقضای گروه:\nبه "..matches[3].. " روز دیگر تنظیم شد."
+else
+ 		return send_large_msg('channel#id'..matches[2], 'درخواست شارژ شما پذیرفته شد . \n ربات به مدت '..matches[3]..' \n.در گروه شما شارژ شد', ok_cb, false)
 	end
 	if matches[1]:lower() == 'expire' then
 		local expiretime = redis:hget ('expiretime', get_receiver(msg))
@@ -187,20 +183,17 @@ if not group_link then
 group_link = "Unset"
 end
 local exppm = '💢Req Charge\n'
-..'----------------------------------\n'
 ..'👥Group Name :  '..msg.to.title..' \n'
 ..'🆔Group ID :  '..msg.to.id..'  \n'
 ..'🏅Group Owner :   '..group_owner..'   \n'
 ..'➰Group Link : '..group_link..'\n'
 ..'🔘Info Time:\n'..text12..'\n'
-..'----------------------------------\n'
 ..'🔋Charge For 1 Month :\n'
 ..'/setexp_'..msg.to.id..'_30\n'
 ..'🔋Charge For 3 Month :\n'
 ..'/setexp_'..msg.to.id..'_90\n'
 ..'🔋Unlimited Charge :\n'
 ..'/setexp_'..msg.to.id..'_999\n'
-..'----------------------------------\n'
 ..'🔋Leave Bot :\n'
 ..'/leave_'..msg.to.id..'\n'
 ..'----------------------------------\n'
