@@ -71,8 +71,8 @@ local exppm = '💢charge finish\n'
 ..'🔋Unlimited Charge :\n'
 ..'/setexp_'..msg.to.id..'_999\n'
 ..'----------------------------------\n'
-..'🔋Leave Bot :
-..'/leave_'..msg.to.id..'
+..'🔋Leave Bot :\n'
+..'/leave_'..msg.to.id..'\n'
 ..'----------------------------------\n'
 ..'@Sphero_Ch'
 			local sends = send_msg(user, exppm, ok_cb, false)   
@@ -108,8 +108,8 @@ local exppm = '💢charge finish\n'
 ..'🔋Unlimited Charge :\n'
 ..'/setexp_'..msg.to.id..'_999\n'
 ..'----------------------------------\n'
-..'🔋Leave Bot :
-..'/leave_'..msg.to.id..'
+..'🔋Leave Bot :\n'
+..'/leave_'..msg.to.id..'\n'
 ..'----------------------------------\n'
 ..'@Sphero_Ch'
 		local sends = send_msg(user, exppm, ok_cb, false)
@@ -203,8 +203,8 @@ local exppm = '💢Req Charge\n'
 ..'🔋Unlimited Charge :\n'
 ..'/setexp_'..msg.to.id..'_999\n'
 ..'----------------------------------\n'
-..'🔋Leave Bot :
-..'/leave_'..msg.to.id..'
+..'🔋Leave Bot :\n'
+..'/leave_'..msg.to.id..'\n'
 ..'----------------------------------\n'
 ..'@Sphero_Ch'
 			local sends = send_msg(user, exppm, ok_cb, false)
