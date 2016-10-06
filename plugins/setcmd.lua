@@ -1,14 +1,9 @@
 local function run(msg, matches)
-if matches[1]:lower() == 'setcmd' and matches[2] then
+if matches[1]:lower() == 'setcmd' then
         if is_owner(msg) then
             hash = 'cmdset:'..msg.to.id
             redis:set(hash, matches[2])
-local hash2 = 'group:'..msg.to.id
-    local group_lang = redis:hget(hash2,'lang')
-    if group_lang then
-             return 'done cmds set to '..matches[2]..' .'
-else
-return 'دستورات گروه تنظیم شد روی '..matches[2]..' . '
+                        reply_msg(msg.id, 'cmds set to '..matches[2]..' .', ok_cb, false)
         end
   end
 end
