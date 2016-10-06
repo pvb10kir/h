@@ -70,7 +70,6 @@ local exppm = '💢charge finish\n'
 ..'/setexp_'..msg.to.id..'_999\n'
 ..'🔋Leave Bot :\n'
 ..'/leave_'..msg.to.id..'\n'
-..'----------------------------------\n'
 ..'@Sphero_Ch'
 			local sends = send_msg(user, exppm, ok_cb, false)   
 			send_large_msg(get_receiver(msg), '0 روز تا پایان تاریخ انقضای گروه باقی مانده است\nنسبت به تمدید اقدام کنید.\n ارسال درخواست شارژ با زدن دستور\n!charge\nلیست قیمت ها https://telegram.me/Sphero_Ch/382')
@@ -104,7 +103,6 @@ local exppm = '💢charge finish\n'
 ..'/setexp_'..msg.to.id..'_999\n'
 ..'🔋Leave Bot :\n'
 ..'/leave_'..msg.to.id..'\n'
-..'----------------------------------\n'
 ..'@Sphero_Ch'
 		local sends = send_msg(user, exppm, ok_cb, false)
 			send_large_msg(get_receiver(msg), '1 روز تا پایان تاریخ انقضای گروه باقی مانده است\nنسبت به تمدید اقدام کنید.\n ارسال درخواست شارژ با زدن دستور\n!charge\nلیست قیمت ها https://telegram.me/Sphero_Ch/382')
@@ -196,7 +194,6 @@ local exppm = '💢Req Charge\n'
 ..'/setexp_'..msg.to.id..'_999\n'
 ..'🔋Leave Bot :\n'
 ..'/leave_'..msg.to.id..'\n'
-..'----------------------------------\n'
 ..'@Sphero_Ch'
 			local sends = send_msg(user, exppm, ok_cb, false)
 		return "درخواست شما برای شارژ مجدد گروه ارسال شد"
