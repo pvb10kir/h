@@ -1,4 +1,4 @@
-local function run(msg, matches, callback, extra)
+local function run(msg, matches)
 if matches[1]:lower() == 'setcmd' and matches[2] then
         if is_owner(msg) then
             hash = 'cmdset:'..msg.to.id
@@ -18,3 +18,4 @@ patterns = {
 },
 run = run,
 }
+end
