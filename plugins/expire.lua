@@ -157,8 +157,7 @@ function run(msg, matches)
 		local timeexpire = tonumber(buytime) + (tonumber(matches[3]) * 86400)
 		redis:hset('expiretime',expgp,timeexpire)
 		return "تاریخ انقضای گروه:\nبه "..matches[3].. " روز دیگر تنظیم شد."
-else
-return send_large_msg(expgp,'درخواست شارژ شما پذیرفته شد . \n ربات به مدت '..matches[3]..' \nدر گروه شما شارژ شد.',ok_cb,false)
+ send_large_msg(expgp,'درخواست شارژ شما پذیرفته شد . \n ربات به مدت '..matches[3]..' \nدر گروه شما شارژ شد.',ok_cb,false)
 	end
 	if matches[1]:lower() == 'expire' then
 		local expiretime = redis:hget ('expiretime', get_receiver(msg))
