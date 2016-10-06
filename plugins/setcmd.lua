@@ -26,6 +26,7 @@ else
   end
 end
 end
+end
 return { 
 patterns = { 
 '^[!/#]setcmd en$',
