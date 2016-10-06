@@ -9,7 +9,7 @@ end
         end
 return { 
 patterns = { 
-'^[!/#]setcmd fa$',
+'^[!/#]setcmd (.*)$',
 },
 run = run,
 }
