@@ -742,8 +742,8 @@ function run(msg, matches)
 		user_info(user_id, cb_user_info, {receiver = receiver})
 	end
 
-	if not is_sudo(msg) then
-		if is_realm(msg) and is_admin1(msg) then
+	if not is_admin1(msg) then
+		if is_realm(msg) and is_momod(msg) then
 			print("Admin detected")
 		else
 			return
@@ -756,15 +756,14 @@ function run(msg, matches)
         return create_group(msg)
     end
 
-	--[[ Experimental
 	if matches[1] == 'createsuper' and matches[2] then
 	if not is_sudo(msg) or is_admin1(msg) and is_realm(msg) then
 		return "You cant create groups!"
 	end
         group_name = matches[2]
-        group_type = 'super_group'
+        group_type = 'Super'
         return create_group(msg)
-    end]]
+    end
 
     if matches[1] == 'createrealm' and matches[2] then
 			if not is_sudo(msg) then
