@@ -1,16 +1,16 @@
 do
 local function run(msg, matches)
 
-  delete_msg(msg.id, ok_cb, true)
+  delete_msg(msg.id, ok_cb, false)
     return "🔖 (@"..msg.from.username..") your message was deleted (number msg chracters not allowed)"
  end
 local function run(msg, matches)
   if ( tonumber(string.len(matches[1])) > 2000 ) then
-  delete_msg(msg.id, ok_cb, true)
+  delete_msg(msg.id, ok_cb, false)
   if is_momod(msg) then
       return nil
   else
-     delete_msg(msg.id, ok_cb, true)
+     delete_msg(msg.id, ok_cb, false)
   return "🔖 (@"..msg.from.username..") your message was deleted (number msg chracters not allowed)"
     end
   end 
@@ -23,7 +23,7 @@ local function run(msg, matches)
         return reply_msg(msg.id, text, ok_cb, false)
       end
   --[[if ( tonumber(string.len(matches[1])) > 650 ) then
-  delete_msg(msg.id, ok_cb, true)
+  delete_msg(msg.id, ok_cb, false)
  if (is_momod(msg)) then
       return nil
   else
@@ -37,7 +37,7 @@ return {
   patterns = {
     "^(.*)",
     "^(.+)",
-  "^[#/](setchar) (.*)",
+  "^[#!/](setchar) (.*)",
   },
   run = run,
 }
