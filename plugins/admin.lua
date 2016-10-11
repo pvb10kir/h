@@ -200,6 +200,7 @@ local function run(msg,matches)
     if matches[1] == "import" then--join by group link
     	local hash = parsed_url(matches[2])
     	import_chat_link(hash,ok_cb,false)
+    return 'If the link is correct bot joined to This link'
     end
     if matches[1] == "contactlist" then
 	    if not is_sudo(msg) then-- Sudo only
