@@ -2054,7 +2054,6 @@ send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
 			local receiver = get_receiver(msg)
 			local set_name = string.gsub(matches[2], '_', '')
 			savelog(msg.to.id, name_log.." ["..msg.from.id.."] renamed SuperGroup to: "..matches[2])
-return "Group Name Changed To "..matches[2].."."
 			rename_channel(receiver, set_name, ok_cb, false)
 		end
 
