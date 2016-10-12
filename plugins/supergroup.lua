@@ -1075,7 +1075,7 @@ local hash = 'group:'..msg.to.id
  local text = "*تنظیماتِ [-100"..msg.to.id.."]*\n〰〰〰〰〰〰\n▪️ *قفل لینک : * _"..settings.lock_link.."_\n▪️ *قفل اموجی : * _ "..settings.lock_emoji.."_\n▪️ *قفل تگ/یوزرنیم : *_"..settings.lock_user.."_\n▫️ *قفل 😐 :  * _"..settings.lock_poker.."_\n▪️*قفل فروارد : * _"..settings.lock_fwd.."_\n▫️ *قفل ریپلی : *_ "..settings.lock_reply.."_\n▪️ *قفل کلمات رکیک : * _"..settings.lock_fosh.."_\n▫️ *قفل دعوت بات : * _"..bots_protection.."_\n▪️ *قفل اسپم : * _"..settings.flood.."_\n▫️ *حساسیت اسپم : * _"..NUM_MSG_MAX.."_\n▪️ *قفل فارسی/عربی : * _"..settings.lock_arabic.."_\n▫️ *قفل اینوایت ممبر : * _"..settings.lock_member.."_\n*▫️ قفل پیام های سرویس : * _"..settings.lock_tgservice.."_\n▪️ *قفل استیکر : * _ "..settings.lock_sticker.."_\n▫️ *عمومی : * _"..settings.public.."_\n▪️ *تنظیمات سختگیرانه : * _"..settings.strict.."_\n▫️ *مدل گروه : * _"..gp_type.."\n▪️ تاریخ انقضا : *"..expire.."*\n_زبان گروه : فارسی\n〰〰〰〰〰〰\n⚫️*ورژن ربات : 2.4*\n⚫️*توسعه دهنده* : [MrBlackLife](http://telegram.me/Mrblacklife)\n⚫️*کانال بات : * [SpheroCh](https://telegram.me/sphero_ch)"
 send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
 else
-  local text = "*[-100"..msg.to.id.."]*_ Settings:_\n〰〰〰〰〰〰\n▪️ *Lock Links : * _"..settings.lock_link.."_\n▪️ *Lock Emoji : * _ "..settings.lock_emoji.."_\n▪️ *Lock user/Tag : *_"..settings.lock_user.."_\n▫️ *Lock poker :  * _"..settings.lock_poker.."_\n▪️*Lock Forwarding : * _"..settings.lock_fwd.."_\n▫️ *Lock Reply : *_ "..settings.lock_reply.."_\n▪️ *Lock BadWords : * _"..settings.lock_fosh.."_\n▫️ *Lock Bots : * _"..bots_protection.."_\n▪️ *Lock Flood: * _"..settings.flood.."_\n▫️ *Flood Sensitivity : * _"..NUM_MSG_MAX.."_\n▪️ *Lock Persian/arabic : * _"..settings.lock_arabic.."_\n▫️ *Lock Member : * _"..settings.lock_member.."_\n*▫️ Lock TgService : * _"..settings.lock_tgservice.."_\n▪️ *Lock Sticker : * _ "..settings.lock_sticker.."_\n▫️ *Public Status : * _"..settings.public.."_\n*Number Users Kicked Count : *_"..user_info_kicked.."_\n▪️ *Strict Settings : * _"..settings.strict.."_\n▫️ *Group Model : * _"..gp_type.."_\n*▪️ Expire : *_"..expire.."_\n▫️* Group Lang :* _En_\n〰〰〰〰〰〰\n⚫️*Bot Version : 2.4*\n⚫️*Dev* : [MrBlackLife](http://telegram.me/Mrblacklife)\n⚫️*Channel : * [SpheroCh](https://telegram.me/sphero_ch)"
+  local text = "*[-100"..msg.to.id.."]*_ Settings:_\n〰〰〰〰〰〰\n▪️ *Lock Links : * _"..settings.lock_link.."_\n▪️ *Lock Emoji : * _ "..settings.lock_emoji.."_\n▪️ *Lock user/Tag : *_"..settings.lock_user.."_\n▫️ *Lock poker :  * _"..settings.lock_poker.."_\n▪️*Lock Forwarding : * _"..settings.lock_fwd.."_\n▫️ *Lock Reply : *_ "..settings.lock_reply.."_\n▪️ *Lock BadWords : * _"..settings.lock_fosh.."_\n▫️ *Lock Bots : * _"..bots_protection.."_\n▪️ *Lock Flood: * _"..settings.flood.."_\n▫️ *Flood Sensitivity : * _"..NUM_MSG_MAX.."_\n▪️ *Lock Persian/arabic : * _"..settings.lock_arabic.."_\n▫️ *Lock Member : * _"..settings.lock_member.."_\n*▫️ Lock TgService : * _"..settings.lock_tgservice.."_\n▪️ *Lock Sticker : * _ "..settings.lock_sticker.."_\n▫️ *Public Status : * _"..settings.public.."_\n▪️ *Strict Settings : * _"..settings.strict.."_\n▫️ *Group Model : * _"..gp_type.."_\n*▪️ Expire : *_"..expire.."_\n▫️* Group Lang :* _En_\n〰〰〰〰〰〰\n⚫️*Bot Version : 2.4*\n⚫️*Dev* : [MrBlackLife](http://telegram.me/Mrblacklife)\n⚫️*Channel : * [SpheroCh](https://telegram.me/sphero_ch)"
   local text = text
 send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
 end
@@ -1514,19 +1514,15 @@ if get_cmd == "channel_block" then
       if v.username then
         text = ""
         savelog(msg.to.id, name_log.." ["..msg.from.id.."] kicked: @"..v.username.." ["..v.peer_id.."]")
-local kickedhash = 'kicked:'..msg.from.id..':'..msg.to.id
-        redis:incr(kickedhash)
-        local kickedhash = 'kicked'..msg.from.id..':'..msg.to.id
-        local kicked = redis:get(kickedhash)
       else
         text = ""
         savelog(msg.to.id, name_log.." ["..msg.from.id.."] kicked: ["..v.peer_id.."]")
+      end
+      kick_user(user_id, channel_id)
 local kickedhash = 'kicked:'..msg.from.id..':'..msg.to.id
         redis:incr(kickedhash)
         local kickedhash = 'kicked'..msg.from.id..':'..msg.to.id
         local kicked = redis:get(kickedhash)
-      end
-      kick_user(user_id, channel_id)
       return
     end
   end
@@ -2057,6 +2053,7 @@ send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
 		if matches[1] == "setname" and is_momod(msg) then
 			local receiver = get_receiver(msg)
 			local set_name = string.gsub(matches[2], '_', '')
+return "Group Name Changed To "..matches[2].."."
 			savelog(msg.to.id, name_log.." ["..msg.from.id.."] renamed SuperGroup to: "..matches[2])
 			rename_channel(receiver, set_name, ok_cb, false)
 		end
