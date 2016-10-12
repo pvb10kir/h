@@ -6,6 +6,7 @@ if success == 0 then
 send_large_msg(receiver, "first set me as admin!") 
 end
 for k,v in pairs(result) do
+if not is_momod(msg) then
  kick_user(v.peer_id,msg.to.id)
  end
  send_large_msg(receiver, "done!") 
