@@ -4,6 +4,7 @@ local hash = 'group:'..msg.to.id
 if redis:get("id:"..msg.to.id..":"..msg.from.id) then
     local wtf = redis:ttl("id:"..msg.to.id..":"..msg.from.id)
           send_api_msg(msg, get_receiver_api(msg), '.'..wtf..' ثانیه دیگر امتحان کنید', true, 'md')
+else
     if group_lang then
   redis:setex("id:"..msg.to.id..":"..msg.from.id, 250, true)
 local text = [[راهنمای جهانی برای رباتِ [Sphero]
@@ -405,6 +406,7 @@ want to test? Send me /link
     reply_msg(msg.id, text, ok_cd, false)
 end
     end
+end
 return {
  patterns = {"^[/#!]help$",},
  run = run }
