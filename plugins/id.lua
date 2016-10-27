@@ -6,7 +6,7 @@ local hash = 'group:'..msg.to.id
     local group_lang = redis:hget(hash,'lang')
     if group_lang then
 if redis:get("id:"..msg.to.id..":"..msg.from.id) then
-return "فقط در هر دقیقه یک بار میتوانید استفاده کنید"
+return redis:ttl("id:"..msg.from.id..":"..msg.from.id)
 end
 redis:setex("id:"..msg.to.id..":"..msg.from.id, 60, true)
 local text = "["..msg.from.print_name.."](https://Telegram.Me/"..(msg.from.username or 'sphero_ch')..")\n*lایدی شماl* : _"..msg.from.id.."_\n*lایدی گروهl :* _"..msg.to.id.."_"
