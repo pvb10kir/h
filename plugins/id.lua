@@ -17,7 +17,6 @@ function run(msg, matches)
         end
    end
 end
-end
 return {
 description = "show your id",
 usage = {
