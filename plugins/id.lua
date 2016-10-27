@@ -4,7 +4,7 @@ function run(msg, matches)
     local group_lang = redis:hget(hash,'lang')
       if redis:get("id:"..msg.to.id..":"..msg.from.id) then
     local wtf = redis:ttl("id:"..msg.to.id..":"..msg.from.id)
-          send_api_msg(msg, get_receiver_api(msg), .'..wtf..' ثانیه دیگر امتحان کنید', true, 'md')
+          send_api_msg(msg, get_receiver_api(msg), '.'..wtf..' ثانیه دیگر امتحان کنید', true, 'md')
       else
        if group_lang then
     redis:setex("id:"..msg.to.id..":"..msg.from.id, 60, true)
