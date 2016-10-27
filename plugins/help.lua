@@ -1,7 +1,11 @@
 local function run(msg)
 local hash = 'group:'..msg.to.id
     local group_lang = redis:hget(hash,'lang')
+if redis:get("id:"..msg.to.id..":"..msg.from.id) then
+    local wtf = redis:ttl("id:"..msg.to.id..":"..msg.from.id)
+          send_api_msg(msg, get_receiver_api(msg), '.'..wtf..' ثانیه دیگر امتحان کنید', true, 'md')
     if group_lang then
+  redis:setex("id:"..msg.to.id..":"..msg.from.id, 250, true)
 local text = [[راهنمای جهانی برای رباتِ [Sphero]
 *⌚️!gpinfo
 نشون دادن اطلاعات گروه
@@ -177,6 +181,7 @@ local text = [[راهنمای جهانی برای رباتِ [Sphero]
 💤SpheroTM💤 Channel ( @Sphero_Ch )]]
  reply_msg(msg.id, text, ok_cb, false)
 else
+  redis:setex("id:"..msg.to.id..":"..msg.from.id, 60, true)
 local text = [[Local Help For Sphero
 
 ⌚️!info
