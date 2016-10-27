@@ -1,9 +1,9 @@
 function run(msg, matches)
-if not is_sudo(msg) then
-return 
-end
-text = io.popen("git pull "):read('*all')
-  return text
+if matches[1] == 'update' and is_sudo(msg) then
+local text = io.popen("git pull "):read('*all')
+  return '.'..text..'\n----------------\nAll Plugins Updated from github😍!\nAnd Bot Was Reloaded😘'
+		receiver = get_receiver(msg)
+		reload_plugins(true)
 end
 return {
   patterns = {
