@@ -9,6 +9,7 @@ local text = io.popen("git pull "):read('*all')
 		reload_plugins(true)
   return '.'..text..'\n----------------\nAll Plugins Updated from github😍!\nAnd Bot Was Reloaded😘'
 end
+end
 return {
   patterns = {
     '^[#/!]update$'
