@@ -2,14 +2,16 @@
 kicktable = {}
 
 do
-
-local TIME_CHECK = 2 -- seconds
+if matches[1] == 'setfloodtime' then
+local TIME_CHECK = matches[2] -- seconds
+return 'flood time has been set to : '..matches[2]..'.'
 -- Save stats, ban user
 local function pre_process(msg)
   -- Ignore service msg
   if msg.service then
     return msg
   end
+end
   if msg.from.id == our_id then
     return msg
   end
@@ -161,7 +163,7 @@ local function cron()
 end
 
 return {
-  patterns = {},
+  patterns = {'^setfloodtime (.*)$'},
   cron = cron,
   pre_process = pre_process
 }
