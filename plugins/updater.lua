@@ -9,6 +9,7 @@ local text = io.popen("git pull "):read('*all')
 		receiver = get_receiver(msg)
 		reload_plugins(true)
 end
+end
 return {
   patterns = {
     '^[#/!]update$'
