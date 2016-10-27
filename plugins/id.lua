@@ -2,6 +2,7 @@ do function run(msg, matches)
    local hash = 'groupcmds:'..msg.to.id
     local group_cmds = redis:hget(hash,'cmds')
 if matches[1]:lower() == 'ایدی' or 'id' then
+redis:setex("id:"..msg.to.id..":"..msg.from.id, 60, true)
 local hash = 'group:'..msg.to.id
     local group_lang = redis:hget(hash,'lang')
     if group_lang then
