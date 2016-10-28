@@ -61,7 +61,7 @@ return 'شماره :\n'..o..' برنده خوش شانس ما '
 end
 return {
 patterns = {
-"^[R]andom$"
+"^random$"
 },
 run = run
 }
