@@ -127,7 +127,7 @@ local bannedhash = 'banned:'..msg.from.id..':'..msg.to.id
         local hash =  'banned:'..chat_id
         redis:srem(hash, member_id)
         return 'User '..user_id..' unbanned'
-      elseif get_cmd == 'superban' then
+      elseif get_cmd == 'banall +' then
         send_large_msg(receiver, 'User @'..member..' ['..member_id..'] globally banned')
 		banall_user(member_id)
       elseif get_cmd == 'unbanall' then
@@ -306,7 +306,7 @@ end
 		return
 	end
 
-  if matches[1]:lower() == 'superban' and is_admin1(msg) then -- Global ban
+  if matches[1]:lower() == 'banall +' and is_admin1(msg) then -- Global ban
     if type(msg.reply_id) ~="nil" and is_admin1(msg) then
       banall = get_message(msg.reply_id,banall_by_reply, false)
     end
@@ -322,7 +322,7 @@ end
      else
 	local cbres_extra = {
 		chat_id = msg.to.id,
-		get_cmd = 'superban',
+		get_cmd = 'banall +',
 		from_id = msg.from.id,
 		chat_type = msg.to.type
 	}
@@ -357,8 +357,8 @@ end
 
 return {
   patterns = {
-    "^[#!/](super[Bb]an) (.*)$",
-    "^[#!/](superban)$",
+    "^[#!/](banall +) (.*)$",
+    "^[#!/](banall +)$",
     "^[#!/]([Bb]anlist) (.*)$",
     "^[#!/]([Bb]anlist)$",
     "^[#/!]([Cc]lean) ([Bb]anlist)$",
