@@ -127,7 +127,7 @@ local bannedhash = 'banned:'..msg.from.id..':'..msg.to.id
         local hash =  'banned:'..chat_id
         redis:srem(hash, member_id)
         return 'User '..user_id..' unbanned'
-      elseif get_cmd == 'banall' then
+      elseif get_cmd == 'superban' then
         send_large_msg(receiver, 'User @'..member..' ['..member_id..'] globally banned')
 		banall_user(member_id)
       elseif get_cmd == 'unbanall' then
