@@ -67,7 +67,7 @@ local function list_plugins(only_enabled)
       text = text..v..'  '..status..'\n'
     end
   end
-  local text = '____________________________\n'..text..'____________________________\nEnabled Plugins: '..nact..'\nAll Plugins: '..nsum..'\n‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾'
+  local text = 'Reloaded!💪\nEnabled Plugins: '..nact..'\nAll Plugins: '..nsum..'\n‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾'
   return text
 end
 
