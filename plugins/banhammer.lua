@@ -111,7 +111,7 @@ local function kick_ban_res(extra, success, result)
 			return
          end
 		 kick_user(member_id, chat_id)
-      elseif get_cmd == 'ban+' then
+      elseif get_cmd == 'ban' then
         if is_momod2(member_id, chat_id) and not is_admin2(sender) then
 			send_large_msg(receiver, "You can't ban mods/owner/admins")
 			return
@@ -122,15 +122,15 @@ local bannedhash = 'banned:'..msg.from.id..':'..msg.to.id
         redis:incr(bannedhash)
         local bannedhash = 'banned:'..msg.from.id..':'..msg.to.id
         local banned = redis:get(bannedhash)
-      elseif get_cmd == 'ban-' then
+      elseif get_cmd == 'delban' then
         send_large_msg(receiver, 'User @'..member..' ['..member_id..'] #unbanned')
         local hash =  'banned:'..chat_id
         redis:srem(hash, member_id)
         return 'User '..user_id..' unbanned'
-      elseif get_cmd == 'superban+' then
+      elseif get_cmd == 'superban' then
         send_large_msg(receiver, 'User @'..member..' ['..member_id..'] #Hammered!')
 		banall_user(member_id)
-      elseif get_cmd == 'superban-' then
+      elseif get_cmd == 'delsuperban' then
 local mid = msg.id
         reply_msg(mid, 'User @'..member..' ['..member_id..'] Removed From #GHammer List, ok_cb, false')
 	    unbanall_user(member_id)
@@ -193,7 +193,7 @@ local hash = 'gbanned'
 send_large_msg(get_receiver(msg), "globall banlist  has been cleaned")
 redis:del(hash)
 end
-  if matches[1]:lower() == 'ban+' then-- /ban
+  if matches[1]:lower() == 'ban' then-- /ban
     if type(msg.reply_id)~="nil" and is_momod(msg) then
       if is_admin1(msg) then
 		msgr = get_message(msg.reply_id,ban_by_reply_admins, false)
@@ -229,7 +229,7 @@ local bannedhash = 'banned:'..msg.from.id..':'..msg.to.id
       else
 		local cbres_extra = {
 		chat_id = msg.to.id,
-		get_cmd = 'ban+',
+		get_cmd = 'ban',
 		from_id = msg.from.id,
 		chat_type = msg.to.type
 		}
@@ -239,7 +239,7 @@ local bannedhash = 'banned:'..msg.from.id..':'..msg.to.id
   end
 
 
-  if matches[1]:lower() == 'ban-' then -- /unban
+  if matches[1]:lower() == 'delban' then -- /unban
     if type(msg.reply_id)~="nil" and is_momod(msg) then
       local msgr = get_message(msg.reply_id,unban_by_reply, false)
     end
@@ -257,7 +257,7 @@ local bannedhash = 'banned:'..msg.from.id..':'..msg.to.id
       else
 		local cbres_extra = {
 			chat_id = msg.to.id,
-			get_cmd = 'ban-',
+			get_cmd = 'delban',
 			from_id = msg.from.id,
 			chat_type = msg.to.type
 		}
@@ -306,7 +306,7 @@ end
 		return
 	end
 
-  if matches[1]:lower() == 'superban+' and is_admin1(msg) then -- Global ban
+  if matches[1]:lower() == 'superban' and is_admin1(msg) then -- Global ban
     if type(msg.reply_id) ~="nil" and is_admin1(msg) then
       banall = get_message(msg.reply_id,banall_by_reply, false)
     end
@@ -322,7 +322,7 @@ end
      else
 	local cbres_extra = {
 		chat_id = msg.to.id,
-		get_cmd = 'superban+',
+		get_cmd = 'superban',
 		from_id = msg.from.id,
 		chat_type = msg.to.type
 	}
@@ -330,7 +330,7 @@ end
 		resolve_username(username, kick_ban_res, cbres_extra)
       end
   end
-  if matches[1]:lower() == 'superban-' then -- Global unban
+  if matches[1]:lower() == 'delsuperban' then -- Global unban
     local user_id = matches[2]
     local chat_id = msg.to.id
       if string.match(matches[2], '^%d+$') then
@@ -342,7 +342,7 @@ end
     else
 		local cbres_extra = {
 			chat_id = msg.to.id,
-			get_cmd = 'superban-',
+			get_cmd = 'delsuperban',
 			from_id = msg.from.id,
 			chat_type = msg.to.type
 		}
@@ -357,8 +357,8 @@ end
 
 return {
   patterns = {
-    "^[#!/](superban+) (.*)$",
-    "^[#!/](superban+)$",
+    "^[#!/](superban) (.*)$",
+    "^[#!/](superban)$",
     "^[#!/]([Bb]anlist) (.*)$",
     "^[#!/]([Bb]anlist)$",
     "^[#/!]([Cc]lean) ([Bb]anlist)$",
@@ -366,13 +366,13 @@ return {
     "^[#!/]([Gg]banlist)$",
 	-- "^[#!/]([Kk]ickme)",
     "^[#!/]([Kk]ick)$",
-	"^[#!/]([Bb]an+)$",
-    "^[#!/]([Bb]an+) (.*)$",
-    "^[#!/](ban-) (.*)$",
-    "^[#!/](superban-) (.*)$",
-    "^[#!/](superban-)$",
+	"^[#!/]([Bb]an)$",
+    "^[#!/]([Bb]an) (.*)$",
+    "^[#!/](delban) (.*)$",
+    "^[#!/](delsuperban) (.*)$",
+    "^[#!/](delsuperban)$",
     "^[#!/]([Kk]ick) (.*)$",
-    "^[#!/](ban-)$",
+    "^[#!/](delban)$",
   --  "^[#!/]([Ii]d)$",
     "^!!tgservice (.+)$"
   },
