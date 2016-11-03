@@ -24,7 +24,7 @@ local second = string.gsub(matches[4], 's', '')
  local num3 = tonumber(second) 
 local num4 = tonumber(num1 + num2 + num3)
 redis:setex(hash, num4, true)
- return "گروه تعطیل شد به مدت\n⏺ ساعت(s) : "..matches[2].."\n⏺ دقیقه(s) : "..matches[3].." \n⏺ ثانیه(s) : "..matches[4]..""
+ return "گروه تعطیل شد به مدت\n⏺ ساعت : "..matches[2].."\n⏺ دقیقه : "..matches[3].." \n⏺ ثانیه : "..matches[4]..""
  end
  end
 if matches[1] == 'unmute all' and is_momod(msg) then
