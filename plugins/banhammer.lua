@@ -132,7 +132,7 @@ local bannedhash = 'banned:'..msg.from.id..':'..msg.to.id
 		banall_user(member_id)
       elseif get_cmd == 'delsuperban' then
 local mid = msg.id
-        reply_msg(mid, 'User @'..member..' ['..member_id..'] Removed From #GHammer List, ok_cb, false')
+        reply_msg(mid, 'User @'..member..' ['..member_id..'] removed from #GHammer list, ok_cb, false')
 	    unbanall_user(member_id)
     end
 end
@@ -338,7 +338,7 @@ end
           	return false
         end
        		unbanall_user(user_id)
-        	return 'User ['..user_id..' ] remode from #GHammer list'
+        	return 'User ['..user_id..' ] removed from #GHammer list'
     else
 		local cbres_extra = {
 			chat_id = msg.to.id,
