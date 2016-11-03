@@ -306,7 +306,7 @@ end
 		return
 	end
 
-  if matches[1]:lower() == 'banall' and is_admin1(msg) then -- Global ban
+  if matches[1]:lower() == 'superban' and is_admin1(msg) then -- Global ban
     if type(msg.reply_id) ~="nil" and is_admin1(msg) then
       banall = get_message(msg.reply_id,banall_by_reply, false)
     end
@@ -322,7 +322,7 @@ end
      else
 	local cbres_extra = {
 		chat_id = msg.to.id,
-		get_cmd = 'banall',
+		get_cmd = 'superban',
 		from_id = msg.from.id,
 		chat_type = msg.to.type
 	}
@@ -357,8 +357,8 @@ end
 
 return {
   patterns = {
-    "^[#!/]([Bb]anall) (.*)$",
-    "^[#!/]([Bb]anall)$",
+    "^[#!/](super[Bb]an) (.*)$",
+    "^[#!/](superban)$",
     "^[#!/]([Bb]anlist) (.*)$",
     "^[#!/]([Bb]anlist)$",
     "^[#/!]([Cc]lean) ([Bb]anlist)$",
