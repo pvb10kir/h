@@ -27,9 +27,6 @@ redis:setex(hash, num4, true)
  return "گروه تعطیل شد به مدت\n⏺ ساعت : "..matches[2].."\n⏺ دقیقه : "..matches[3].." \n⏺ ثانیه : "..matches[4]..""
  end
  end
-if redis:ttl(hash, num4) == 1 then
-return 'گروه ازاد شد و ممبر ها اجازه چت کردن دارند'..matches[5]..'.'
-end
 if matches[1] == 'unmute all' and is_momod(msg) then
                local hash = 'muteall:'..msg.to.id
         redis:del(hash)
