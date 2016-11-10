@@ -56,7 +56,6 @@ local function pre_process(msg)
 		  local name = print_name:gsub("_", "")
           savelog(msg.to.id, name.." ["..msg.from.id.."] added a bot > @".. msg.action.user.username)-- Save to logs
           kick_user(msg.action.user.id, msg.to.id)
-return 'User "..msg.from.username.."("..msg.to.id..") Do not Add bot to this Group:)))'
       end
     end
   end
