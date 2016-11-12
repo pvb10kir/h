@@ -116,23 +116,23 @@ local function kick_ban_res(extra, success, result)
 			send_large_msg(receiver, "You can't ban mods/owner/admins")
 			return
         end
-        send_large_msg(receiver, 'User @'..member..' ['..member_id..'] <b>Banned</b>')
+        send_large_msg(receiver, '<b>User</b> @'..member..' <code>['..member_id..']</code> <b>Banned!</b>')
 		ban_user(member_id, chat_id)
 local bannedhash = 'banned:'..msg.from.id..':'..msg.to.id
         redis:incr(bannedhash)
         local bannedhash = 'banned:'..msg.from.id..':'..msg.to.id
         local banned = redis:get(bannedhash)
       elseif get_cmd == 'delban' then
-        send_large_msg(receiver, 'User @'..member..' ['..member_id..'] #unbanned')
+        send_large_msg(receiver, '<b>User</b> @'..member..' <code>['..member_id..']</code> <b>UnBanned!</b>')
         local hash =  'banned:'..chat_id
         redis:srem(hash, member_id)
         return 'User '..user_id..' unbanned'
       elseif get_cmd == 'superban' then
-        send_large_msg(receiver, 'User @'..member..' ['..member_id..'] #Hammered!')
+        send_large_msg(receiver, '<b>User</b> @'..member..' <code>['..member_id..']</code> <b>Hammered!</b>')
 		banall_user(member_id)
       elseif get_cmd == 'delsuperban' then
 local mid = msg.id
-        reply_msg(mid, 'User @'..member..' ['..member_id..'] removed from #GHammer list, ok_cb, false')
+        reply_msg(mid, '<b>User</b> @'..member..' <code>['..member_id..']</code> <b>removed from GHammer list</b>, ok_cb, false')
 	    unbanall_user(member_id)
     end
 end
@@ -181,7 +181,7 @@ return nil
 end
 local chat_id = msg.to.id
 local hash = 'banned:'..chat_id
-send_large_msg(get_receiver(msg), "banlist has been cleaned")
+send_large_msg(get_receiver(msg), "<code>banlist has been</code> <b>Cleaned</b>")
 redis:del(hash)
 end
 if matches[1]:lower() == "clean" and matches[2]:lower() == "gbanlist" then
@@ -190,7 +190,7 @@ return nil
 end
 local chat_id = msg.to.id
 local hash = 'gbanned'
-send_large_msg(get_receiver(msg), "globall banlist  has been cleaned")
+send_large_msg(get_receiver(msg), "<code>globall banlist  has been</code><b> Cleaned</b>")
 redis:del(hash)
 end
   if matches[1]:lower() == 'ban' then-- /ban
