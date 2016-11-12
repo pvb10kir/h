@@ -267,6 +267,7 @@ local bannedhash = 'banned:'..msg.from.id..':'..msg.to.id
 		resolve_username(username, kick_ban_res, cbres_extra)
 	end
  end
+		end
 
 if matches[1]:lower() == 'kick' then
     if type(msg.reply_id)~="nil" and is_momod(msg) then
