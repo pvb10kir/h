@@ -240,6 +240,7 @@ local bannedhash = 'banned:'..msg.from.id..':'..msg.to.id
 
   if matches[1]:lower() == 'delban' then -- /unban
     if type(msg.reply_id)~="nil" and is_momod(msg) then
+			local msgr = get_message(msg.reply_id,unban_by_reply, false)
       end
       local user_id = matches[2]
       local chat_id = msg.to.id
