@@ -116,7 +116,7 @@ local function kick_ban_res(extra, success, result)
 			send_large_msg(receiver, "You can't ban mods/owner/admins")
 			return
         end
-        send_large_msg(receiver, 'User @'..member..' ['..member_id..'] #banned')
+        send_large_msg(receiver, 'User @'..member..' ['..member_id..'] <b>Banned</b>')
 		ban_user(member_id, chat_id)
 local bannedhash = 'banned:'..msg.from.id..':'..msg.to.id
         redis:incr(bannedhash)
