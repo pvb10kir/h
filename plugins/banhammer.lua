@@ -131,8 +131,7 @@ local bannedhash = 'banned:'..msg.from.id..':'..msg.to.id
         send_large_msg(receiver, '<b>User</b> @'..member..' <code>['..member_id..']</code> <b>Hammered!</b>')
 		banall_user(member_id)
       elseif get_cmd == 'delsuperban' then
-local mid = msg.id
-        reply_msg(mid, '<b>User</b> @'..member..' <code>['..member_id..']</code> <b>removed from GHammer list</b>, ok_cb, false')
+        send_large_msg(mid, '<b>User</b> @'..member..' <code>['..member_id..']</code> <b>removed from GHammer list</b>, ok_cb, false')
 	    unbanall_user(member_id)
     end
 end
@@ -241,8 +240,11 @@ local bannedhash = 'banned:'..msg.from.id..':'..msg.to.id
 
   if matches[1]:lower() == 'delban' then -- /unban
     if type(msg.reply_id)~="nil" and is_momod(msg) then
-      local msgr = get_message(msg.reply_id,unban_by_reply, false)
-    end
+     if is_admin1(msg) then
+		msgr = get_message(msg.reply_id,unban_by_reply_admins, false)
+      else
+        msgr = get_message(msg.reply_id,unban_by_reply, false)
+      end
       local user_id = matches[2]
       local chat_id = msg.to.id
       local targetuser = matches[2]
@@ -338,7 +340,7 @@ end
           	return false
         end
        		unbanall_user(user_id)
-        	return 'User ['..user_id..' ] removed from #GHammer list'
+        	return '<b>User</b><code> ['..user_id..' ]</code> <b>removed from GHammer list</b>'
     else
 		local cbres_extra = {
 			chat_id = msg.to.id,
