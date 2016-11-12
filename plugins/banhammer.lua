@@ -240,10 +240,6 @@ local bannedhash = 'banned:'..msg.from.id..':'..msg.to.id
 
   if matches[1]:lower() == 'delban' then -- /unban
     if type(msg.reply_id)~="nil" and is_momod(msg) then
-     if is_admin1(msg) then
-		msgr = get_message(msg.reply_id,unban_by_reply_admins, false)
-      else
-        msgr = get_message(msg.reply_id,unban_by_reply, false)
       end
       local user_id = matches[2]
       local chat_id = msg.to.id
@@ -267,7 +263,6 @@ local bannedhash = 'banned:'..msg.from.id..':'..msg.to.id
 		resolve_username(username, kick_ban_res, cbres_extra)
 	end
  end
-		end
 
 if matches[1]:lower() == 'kick' then
     if type(msg.reply_id)~="nil" and is_momod(msg) then
