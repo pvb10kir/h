@@ -7,10 +7,10 @@ local function tosticker(msg, success, result)
     print('File moved to:', file)
     --send_document(get_receiver(msg), file, ok_cb, false)
     redis:del("photo:setsticker")
-	return reply_msg(msg.id, '<b>your avatar was saved!</b>\n<code>you can see your avatar by /me . info . /myavatar</code>', ok_cb, false)
+	return reply_msg(msg.id, 'your avatar was saved!\nyou can see your avatar by /me . info . /myavatar', ok_cb, false)
   else
     print('Error downloading: '..msg.id)
-    send_large_msg(receiver, '<code>Try again later.</code>', ok_cb, false)
+    send_large_msg(receiver, 'Try again later.', ok_cb, false)
   end
 end
 local function tosticker2(msg, success, result)
@@ -22,10 +22,10 @@ local function tosticker2(msg, success, result)
     print('File moved to:', file)
     --send_document(get_receiver(msg), file, ok_cb, false)
     redis:del("photo:setsticker")
-	return reply_msg(msg.reply_id, '<b>your avatar was saved!</b>\n<code>you can see your avatar by /me . info . /myavatar</code>', ok_cb, false)
+	return reply_msg(msg.reply_id, 'your avatar was saved!\nyou can see your avatar by /me . info . /myavatar', ok_cb, false)
   else
     print('Error downloading: '..msg.id)
-    send_large_msg(receiver, '<code>Try again later.</code>', ok_cb, false)
+    send_large_msg(receiver, 'Try again later.', ok_cb, false)
   end
 end
 
@@ -42,7 +42,7 @@ local function run(msg,matches)
     end
     if matches[1] == "setavatar" then
      redis:set("photo:setsticker", "waiting")
-     return reply_msg(msg.id, '<b>ok now send your photo</b>', ok_cb, false)
+     return reply_msg(msg.id, 'ok now send your photo', ok_cb, false)
     end
 	end
 if msg.reply_id then
@@ -58,7 +58,7 @@ if msg.reply_id then
 	local files = './data/sstickers/'..msg.from.id..'.webp'
 	if matches[1]:lower() == 'myavatar' then
 	if not files then
-	return "<b>You Don't have avatar please set it By /setavatar</b>"
+	return "You Don't have avatar please set it By /setavatar"
 	else
 	return reply_document(msg.id, files, ok_cb, false) --send_document(get_receiver(msg), files, ok_cb, false)
 end
