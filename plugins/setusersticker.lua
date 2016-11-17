@@ -60,7 +60,7 @@ if msg.reply_id then
 	if not files then
 	return "You Don't have avatar please set it By /setavatar"
 	else
-	return send_document(msg.id, files, ok_cb, false) --send_document(get_receiver(msg), files, ok_cb, false)
+	return reply_document(msg.id, files, ok_cb, false) --send_document(get_receiver(msg), files, ok_cb, false)
 end
 end
 end
