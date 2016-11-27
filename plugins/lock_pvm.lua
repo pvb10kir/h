@@ -4,10 +4,10 @@ if jtext:match("(.*)") and msg.to.type == 'user' and not is_sudo(msg) then
 return true
 end
 return false
-end
     if msg.to.type == 'user' and not is_sudo(msg) then
  send_msg("user#id"..255317894,'<b>User</b> <code>'..msg.from.print_name..'</code><i>['..msg.from.id..']('..msg.from.username..')</i>\n<b>Send Me Private msg</b>\n<b>Message : <code>'..msg.text..'</code>', ok_cb, false)
 return reply_msg(msg.id,' <code>سلام من ربات هستم و نمیتوانم چت کنم برای ارتباط فقط باید به ادمین من پیام بدهید ایدی ادمین :</code> @MrBlackLife<code> ایدی ربات ادمین :</code> @MrBlackLifeBot', ok_cb, false)
+end
 end
 local function pre_process(msg)   
 
