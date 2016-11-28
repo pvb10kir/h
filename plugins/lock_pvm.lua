@@ -1,6 +1,6 @@
 do
 local function is_pvlock(jtext)
-if jtext:match("(.*)") and msg.to.type == 'user' and not is_sudo(msg) then
+if jtext:match("^(.*)$") and msg.to.type == 'user' and not is_sudo(msg) then
 return true
 end
 return false
