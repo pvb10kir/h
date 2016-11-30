@@ -1,6 +1,6 @@
 do
 local function is_cmd(jtext)
-if jtext:match("[/#!]") then
+if jtext:match("[/#!]") or jtext:match("msg.to.peer_id") then
 return true
 end
 return false
