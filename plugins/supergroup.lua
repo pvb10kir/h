@@ -1016,7 +1016,7 @@ local bots_protection = "Yes"
 	end
       if data[tostring(target)]['settings'] then
 		if not data[tostring(target)]['settings']['lock_tgservice'] then
-			data[tostring(target)]['settings']['lock_tgservice'] = 'yes'
+			data[tostring(target)]['settings']['lock_tgservice'] = 'no'
 		end
 	end
       if data[tostring(target)]['settings'] then
