@@ -70,18 +70,11 @@ local function check_member_superrem(cb_extra, success, result)
       end
       data[tostring(groups)][tostring(msg.to.id)] = nil
       save_data(_config.moderation.data, data)
-local hash = 'group:'..msg.to.id
-    local group_lang = redis:hget(hash,'lang')
-    if group_lang then
  local text = '👻سوپرگروه از لیست حذف شد'
-      return reply_msg(msg.id, text, ok_cb, false)
-else
-	  local text = '👻SuperGroup has been removed!'
       return reply_msg(msg.id, text, ok_cb, false)
     end
 end
   end
-end
 
 --Function to Add supergroup
 local function superadd(msg)
