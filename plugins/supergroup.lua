@@ -1051,7 +1051,7 @@ end
     local expiretime = redis:hget('expiretime', get_receiver(msg))
     local expire = ''
   if not expiretime then
-  expire = expire..'تاریخ ست نشده است'
+  expire = expire..'infinity days'
   else
    local now = tonumber(os.time())
    expire =  expire..math.floor((tonumber(expiretime) - tonumber(now)) / 86400) + 1
@@ -2308,7 +2308,7 @@ send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
 			end
 		end
 
-		if matches[1] == 'mute' and is_owner(msg) then
+		if matches[1] == 'mute' and is_momod(msg) then
 			local chat_id = msg.to.id
 			if matches[2] == 'audio' then
 			local msg_type = 'Audio'
@@ -2375,9 +2375,9 @@ send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
 				if not is_muted(chat_id, msg_type..': yes') then
 					savelog(msg.to.id, name_log.." ["..msg.from.id.."] set SuperGroup to: mute "..msg_type)
 					mute(chat_id, msg_type)
-					return "Mute "..msg_type.."  has been enabled"
+					return "Mute "..msg_type.."  has been enabled\nدر کانال ربات جوین شین\n @Sphero_Ch"
 				else
-					return "Mute "..msg_type.." is already on"
+					return "Mute "..msg_type.." is already on\nدر کانال ربات جوین شین\n @Sphero_Ch"
 				end
 			end
 		end
@@ -2448,9 +2448,9 @@ send_api_msg(msg, get_receiver_api(msg), text, true, 'md')
 				if is_muted(chat_id, msg_type..': yes') then
 					savelog(msg.to.id, name_log.." ["..msg.from.id.."] set SuperGroup to: unmute "..msg_type)
 					unmute(chat_id, msg_type)
-					return "Mute "..msg_type.." has been disabled"
+					return "Mute "..msg_type.." has been disabled\nدر کانال ربات جوین شین\n @Sphero_Ch"
 				else
-					return "Mute "..msg_type.." is already disabled"
+					return "Mute "..msg_type.." is already disabled\nدر کانال ربات جوین شین\n @Sphero_Ch"
 				end
 			end
 		end
