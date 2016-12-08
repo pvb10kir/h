@@ -7,9 +7,7 @@ VOLUNTARY=1
 VOLUNTARYCHECK=0
 I=1
 BOT=spheros
-RELOADTIME=20
-
-
+RELOADTIME=60
 function tmux_mode {
 
 sleep 0.5
