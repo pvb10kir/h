@@ -1,4 +1,4 @@
-[Forwarded from ßελτ ßΘτ (Unknown)]
+
 function run(msg, matches)
 text = io.popen("figlet " .. matches[1]):read('*all')
   return text
