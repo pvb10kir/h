@@ -1019,17 +1019,17 @@ local bots_protection = "Yes"
 end
 if data[tostring(target)]['settings'] then
 		if not data[tostring(target)]['settings']['lock_fosh'] then
-			data[tostring(target)]['settings']['lock_fosh'] = 'no'
+			data[tostring(target)]['settings']['lock_fosh'] = 'yes'
 		end
 end
 if data[tostring(target)]['settings'] then
 		if not data[tostring(target)]['settings']['lock_fwd'] then
-			data[tostring(target)]['settings']['lock_fwd'] = 'no'
+			data[tostring(target)]['settings']['lock_fwd'] = 'yes'
 		end
 end
 	    if data[tostring(target)]['settings'] then
 		if not data[tostring(target)]['settings']['lock_user'] then
-			data[tostring(target)]['settings']['lock_user'] = 'no'
+			data[tostring(target)]['settings']['lock_user'] = 'yes'
 		end
 	end
 	if data[tostring(target)]['settings'] then
