@@ -3,8 +3,8 @@
   local user = msg.from.id
   local chat = msg.to.id
   local hash = 'mate:'..chat..':'..user
-  local is_link_title = msg.media.title:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]/") or msg.media.title:match("[Tt].[Mm][Ee]/") or msg.media.title:match("@")
-  if is_link_title and not is_momod(msg) then
+ local is_link_msg = msg.text:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]/") or msg.text:match("[Tt].[Mm][Ee]/") or msg.text:match("@")
+  if is_link_msg and not is_momod(msg) then
     if redis:get(hash) and msg.media and not is_momod(msg) then 
       delete_msg(msg.id, ok_cb, false) 
       redis:del(hash) 
