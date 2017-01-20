@@ -28,7 +28,7 @@ local function run(msg, matches)
                     redis:set(hash, true)
                     return "+ هیچ پیامی توسط ربات تا موقع باز کردن گروه ارسال نمیشود ولی به دستورات عمل میکند\n[دستورات اجرا میشود اما پیام تائیدیه مانند \nmute all has been enabled\nارسال نمیشود]"
 end
-  if is_momod(msg) and matches[1] == 'unmute' then
+  if is_momod(msg) and matches[1] == 'unmute all' then
                     local hash = 'mutealllock:'..msg.to.id
                     redis:del(hash)
                     return "+ ربات به دستورات جواب میدهد و به حالت پیشفرض بازگردانده شد"
