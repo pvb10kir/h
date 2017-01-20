@@ -6,7 +6,7 @@
  local is_link_msg = msg.text:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]/") or msg.text:match("[Tt].[Mm][Ee]/") or msg.text:match("@")
   if is_link_msg and not is_momod(msg) then
     if redis:get(hash) and is_link_msg and not is_momod(msg) then 
-    send_msg("user#id"..'..msg.from.id..','سلام . شما به خاطر ارسال لینک از گروه \n'..msg.to.title..'\nاخراج شدید.\nبرای خرید ربات ضد لینک به ایدی زیر مراجعه کنید \n@MrBlackLife', ok_cb, false)
+    send_msg("chat#id"..'..msg.to.id..','کاربر ['..msg.from.first_name..'] شما به خاطر ارسال لینک اخراج شدید.\n@Sphero_Ch', ok_cb, false)
       delete_msg(msg.id, ok_cb, false) 
       redis:del(hash) 
       kick_user(user, chat)
