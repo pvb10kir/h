@@ -10,8 +10,7 @@
       redis:del(hash) 
       kick_user(user, chat)
     else
-      local text = "کاربر ["..msg.from.first_name.."] از ارسال لینک خود داری کنید در صورت تکرار از گروه حذف خواهید شد\n@Sphero_Ch" 
-      send_msg(MrBlackLife, text, ok_cb, true) 
+      return "کاربر ["..msg.from.first_name.."] از ارسال لینک خود داری کنید در صورت تکرار از گروه حذف خواهید شد\n@Sphero_Ch" 
       redis:set(hash, true)
     end
   end
@@ -20,27 +19,23 @@ end
        
 
 local function run(msg, matches) 
-  local alirezapt = msg['id'] 
+  local MrBlackLife = msg['id'] 
   if matches[1] == 'warn links' then
     if is_momod(msg) then 
       local hash = 'mate:'..msg.to.id 
       redis:set(hash, true) 
-      local text = 'فعال شد ازین به بعد کاربر در صورت ارسال لینک اخطار دریافت کرده و در صورت تکرار از گروه پاک خواهد شد\n@Sphero_Ch'
-      send_msg(MrBlackLife, text, ok_cb, true) 
+      return 'فعال شد ازین به بعد کاربر در صورت ارسال لینک اخطار دریافت کرده و در صورت تکرار از گروه پاک خواهد شد\n@Sphero_Ch'
     else 
-      local text = 'شما دسترسی ندارید' 
-      send_msg(MrBlackLife, text, ok_cb, true) 
+      return 'شما دسترسی ندارید' 
     end
   end
   if matches[1] == 'unwarn links' then
     if is_momod(msg) then 
       local hash = 'mate:'..msg.to.id 
       redis:del(hash) 
-      local text = 'ازین به بعد تنها لینک پاک خواهد شد و کاربر اخطاری دریافت نمیکند'
-      send_msg(MrBlackLife, text, ok_cb, true) 
+      return 'ازین به بعد تنها لینک پاک خواهد شد و کاربر اخطاری دریافت نمیکند'
     else
-      local text = 'شما دسترسی ندارید' 
-      send_msg(MrBlackLife, text, ok_cb, true) 
+      return 'شما دسترسی ندارید' 
     end 
   end 
 end
