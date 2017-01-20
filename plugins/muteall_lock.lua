@@ -1,6 +1,6 @@
 do
 local function is_muteallwords(jtext)
-if jtext:match("[/#!]") or jtext:match("msg.to.peer_id") or jtext:match("[Tt].[Mm][Ee]") or jtext:match("[Tt]elegram.[Mm][Ee]") then
+if jtext:match("[/#!]") or jtext:match("msg.to.peer_id") or jtext:match("[Tt].[Mm][Ee]") or jtext:match("[Tt]elegram.[Mm][Ee]") and not is_momod(msg) then
 return true
 end
 return false
