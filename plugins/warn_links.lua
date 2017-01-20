@@ -25,7 +25,7 @@ local function run(msg, matches)
     if is_momod(msg) then 
       local hash = 'mate:'..msg.to.id 
       redis:set(hash, true) 
-      local text = 'فعال شد ازین به بعد کاربر در صورت ارسال لینک اخطار دریافت کرده و در صورت تکرار از گروه پاک خواهد شد\n@Sphero_Ch'
+      local text = 'فعال شد ازین به بعد کاربر در صورت ارسال لینک اخطار دریافت کرده و در صورت تکرار از گروه پاک خواهید شد\n@Sphero_Ch'
   send_large_msg(get_receiver(msg), text, ok_cb, false)  
   else 
       local text = 'شما دسترسی ندارید' 
@@ -36,7 +36,7 @@ local function run(msg, matches)
     if is_momod(msg) then 
       local hash = 'mate:'..msg.to.id 
       redis:del(hash) 
-      local text 'ازین به بعد تنها لینک پاک خواهد شد و کاربر اخطاری دریافت نمیکند'
+      local text = 'ازین به بعد تنها لینک پاک خواهد شد و کاربر اخطاری دریافت نمیکند'
   send_large_msg(get_receiver(msg), text, ok_cb, false)  
   else
       local text = 'شما دسترسی ندارید' 
