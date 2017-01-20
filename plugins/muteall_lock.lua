@@ -8,7 +8,7 @@ end
 local function pre_process(msg)   
 
     local hash = 'mutealllock:'..msg.to.id
-    if redis:get(hash) and is_muteallwords(msg.text) and not is_sudo(msg)then
+    if redis:get(hash) and is_muteallwords(msg.text) and not is_momod(msg)then
             delete_msg(msg.id, ok_cb, true)
             return "done"
         end
