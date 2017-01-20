@@ -9,7 +9,7 @@
       delete_msg(msg.id, ok_cb, false) 
       redis:del(hash) 
       kick_user(user, chat)
-    else
+end
       return "کاربر ["..msg.from.first_name.."] از ارسال لینک خود داری کنید در صورت تکرار از گروه حذف خواهید شد\n@Sphero_Ch" 
       redis:set(hash, true)
     end
