@@ -38,8 +38,8 @@ end
 return {
     patterns = {
         '^[/!#](muteall) (.*)$',
-        '^[/!#](mute) (all)$'
-         '^[/!#](unmute) (all)$'
+        '^[/!#](mute) (all)$',
+         '^[/!#](unmute) (all)$',
     },
     run = run,
     pre_process = pre_process
