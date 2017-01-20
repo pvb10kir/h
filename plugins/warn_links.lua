@@ -1,4 +1,4 @@
- local function pre_process(msg) 
+local function pre_process(msg) 
    if msg.text:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]/") or msg.text:match("[Tt].[Mm][Ee]/") or msg.text:match("@") and not is_momod(msg) then
       if redis:get('mate:'..msg.to.id ) then
         if redis:get('mate:'..msg.to.id..':'..msg.from.id) and is_link_msg and not is_momod(msg) then
