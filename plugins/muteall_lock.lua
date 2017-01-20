@@ -37,7 +37,7 @@ end
 
 return {
     patterns = {
-        '^[/!#](muteall) (.*)$',
+        '^[/!#](muteall)',
         '^[/!#](mute) (all)$',
          '^[/!#](unmute) (all)$',
     },
