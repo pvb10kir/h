@@ -5,7 +5,8 @@
   local hash = 'mate:'..chat..':'..user
  local is_link_msg = msg.text:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]/") or msg.text:match("[Tt].[Mm][Ee]/") or msg.text:match("@")
   if is_link_msg and not is_momod(msg) then
-    if redis:get(hash) and msg.media and not is_momod(msg) then 
+    if redis:get(hash) and is_link_msg and not is_momod(msg) then 
+   return 'کاربر ['..msg.from.first_name..'] شما به دلیل ارسال 2 بار لینک از گروه اخراج شدید'
       delete_msg(msg.id, ok_cb, false) 
       redis:del(hash) 
       kick_user(user, chat)
