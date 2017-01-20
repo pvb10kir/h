@@ -21,7 +21,7 @@ local function pre_process(msg)
 local function run(msg, matches)
     chat_id =  msg.to.id
     
-    if is_momod(msg) and matches[1] == 'mute' or "muteall" then
+    if is_momod(msg) and matches[1] == 'mute' then
       
             
                     local hash = 'mutealllock:'..msg.to.id
@@ -37,7 +37,7 @@ end
 
 return {
     patterns = {
-        '^[/!#](muteall)',
+       -- '^[/!#](muteall)',
         '^[/!#](mute) (all)$',
          '^[/!#](unmute) (all)$',
     },
