@@ -1,47 +1,46 @@
-do
-local function is_muteallwords(jtext)
-if jtext:match("[/#!]") or jtext:match("msg.to.peer_id") or jtext:match("[Tt].[Mm][Ee]") or jtext:match("[Tt]elegram.[Mm][Ee]") and not is_momod(msg) then
-return true
-end
-return false
-end
-local function pre_process(msg)   
-
-    local hash = 'mutealllock:'..msg.to.id
-    if redis:get(hash) and is_muteallwords(msg.text) and not is_momod(msg)then
-            delete_msg(msg.id, ok_cb, true)
-            return "done"
+local function pre_process(msg) 
+if not is_momod(msg) then
+   if msg.text:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]/") or msg.text:match("[Tt].[Mm][Ee]/") or msg.text:match("@") then
+      if redis:get('mate:'..msg.to.id ) then
+        if redis:get('mate:'..msg.to.id..':'..msg.from.id) then
+             redis:del('mate:'..msg.to.id..':'..msg.from.id) 
+       send_large_msg(get_receiver(msg), 'کاربر ['..msg.from.first_name..'] شما به خاطر ارسال لینک اخراج شدید.\n@Sphero_Ch', ok_cb, false)
+             delete_msg(msg.id, ok_cb, false) 
+             kick_user(msg.from.id, msg.to.id)
+        else
+            redis:set('mate:'..msg.to.id..':'..msg.from.id, true)
+            send_large_msg(get_receiver(msg), "کاربر ["..msg.from.first_name.."] از ارسال لینک خود داری کنید در صورت تکرار از گروه حذف خواهید شد\n@Sphero_Ch" , ok_cb, false)
         end
-        return msg
     end
-
-  
-
-
-local function run(msg, matches)
-    chat_id =  msg.to.id
-    
-    if is_momod(msg) and matches[1] == 'mute' then
-      
-            
-                    local hash = 'mutealllock:'..msg.to.id
-                    redis:set(hash, true)
-                    return "+ هیچ پیامی توسط ربات تا موقع باز کردن گروه ارسال نمیشود ولی به دستورات عمل میکند\n[دستورات اجرا میشود اما پیام تائیدیه مانند \nmute all has been enabled\nارسال نمیشود]"
+    end
 end
-  if is_momod(msg) and matches[1] == 'unmute' then
-                    local hash = 'mutealllock:'..msg.to.id
-                    redis:del(hash)
-                    return "+ ربات به دستورات جواب میدهد و به حالت پیشفرض بازگردانده شد"
+  return  msg
 end
+       
+local function run(msg, matches) 
+  if matches[1] == 'warn links' then
+    if is_momod(msg) then 
+      redis:set('mate:'..msg.to.id , true) 
+      send_large_msg(get_receiver(msg), 'فعال شد ازین به بعد کاربر در صورت ارسال لینک اخطار دریافت کرده و در صورت تکرار از گروه پاک خواهید شد\n@Sphero_Ch', ok_cb, false)  
+    else 
+      send_large_msg(get_receiver(msg), 'شما دسترسی ندارید' , ok_cb, false)  
+    end
+  end
+  if matches[1] == 'unwarn links' then
+    if is_momod(msg) then 
+      redis:del('mate:'..msg.to.id ) 
+      send_large_msg(get_receiver(msg), 'ازین به بعد تنها لینک پاک خواهد شد و کاربر اخطاری دریافت نمیکند', ok_cb, false)  
+    else
+      send_large_msg(get_receiver(msg), 'شما دسترسی ندارید' , ok_cb, false)  
+   end 
+  end 
 end
 
-return {
+return { 
     patterns = {
-       -- '^[/!#](muteall)',
-        '^[/!#](mute) (all)$',
-         '^[/!#](unmute) (all)$',
-    },
-    run = run,
-    pre_process = pre_process
+       "^[#!/](warn links)$",
+       "^[#!/](unwarn links)$",
+    }, 
+    run = run, 
+    pre_process = pre_process 
 }
-end
