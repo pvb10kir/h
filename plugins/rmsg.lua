@@ -1,4 +1,5 @@
 local function history(extra, suc, result)
+       if redis:get("id:"..msg.to.id..":"..msg.from.id) then
   for i=1, #result do
     delete_msg(result[i].id, ok_cb, false)
   end
@@ -9,6 +10,10 @@ local function history(extra, suc, result)
   end
 end
 local function run(msg, matches)
+     local wtf = redis:ttl("id:"..msg.to.id..":"..msg.from.id)
+          send_api_msg(msg, get_receiver_api(msg), '`برای جلوگیری از هنگ شدن ربات *"..x.."*\nثانیه دیگر امتحان کنید.`', true, 'md')
+    else
+    redis:setex("id:"..msg.to.id..":"..msg.from.id, 10, true
   if matches[1] == 'rmsg' and is_owner(msg) then
     if msg.to.type == 'channel' then
       if tonumber(matches[2]) > 10000 or tonumber(matches[2]) < 1 then
