@@ -24,6 +24,7 @@ local function run(msg, matches)
         return "Eror"
       end
            end
+          end
       get_history(msg.to.peer_id, matches[2] + 1 , history , {chatid = msg.to.peer_id, con = matches[2]})
     else
       return "ℹ️Only For The SuperGroups"
