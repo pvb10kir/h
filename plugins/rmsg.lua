@@ -1,5 +1,4 @@
 local function history(extra, suc, result)
-       if redis:get("id:"..msg.to.id..":"..msg.from.id) then
   for i=1, #result do
     delete_msg(result[i].id, ok_cb, false)
   end
@@ -10,6 +9,7 @@ local function history(extra, suc, result)
   end
 end
 local function run(msg, matches)
+       if redis:get("id:"..msg.to.id..":"..msg.from.id) then
      local wtf = redis:ttl("id:"..msg.to.id..":"..msg.from.id)
           send_api_msg(msg, get_receiver_api(msg), '`برای جلوگیری از هنگ شدن ربات *"..x.."*\nثانیه دیگر امتحان کنید.`', true, 'md')
     else
