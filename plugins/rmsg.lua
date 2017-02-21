@@ -23,6 +23,7 @@ local function run(msg, matches)
       if tonumber(matches[2]) > 10000 or tonumber(matches[2]) < 1 then
         return "Eror"
       end
+           
       get_history(msg.to.peer_id, matches[2] + 1 , history , {chatid = msg.to.peer_id, con = matches[2]})
     else
       return "ℹ️Only For The SuperGroups"
@@ -31,7 +32,7 @@ local function run(msg, matches)
     return "ℹ️Only For The Owner"
   end
 end
-
+end
 return {
     patterns = {
         '^[/!#](rmsg) (%d*)$'
