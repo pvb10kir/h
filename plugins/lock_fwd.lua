@@ -23,11 +23,11 @@ local function run(msg, matches)
             
                     local hash = 'mate:'..msg.to.id
                     redis:set(hash, true)
-                    return ""
+                    return "LOCKED!"
   elseif is_momod(msg) and matches[1] == 'unlock' then
                     local hash = 'mate:'..msg.to.id
                     redis:del(hash)
-                    return ""
+                    return "UNLOCKED!"
 end
 
 end
