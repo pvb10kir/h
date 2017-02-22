@@ -132,7 +132,7 @@ end
 					kick_user(msg.from.id, msg.to.id)
 				end
 			end
-			local is_link_msg = msg.text:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]/") or msg.fwd_from or msg.text:match("[Tt].[Mm][Ee]/") or msg.text:match("@")
+			local is_link_msg = msg.text:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]/") or msg.text:match("[Tt][Ll][Gg][Rr][Mm].[Mm][Ee]/")
 			local is_bot = msg.text:match("?[Ss][Tt][Aa][Rr][Tt]=")
 			if is_link_msg and lock_link == "yes" and not is_bot then
 				delete_msg(msg.id, ok_cb, false)
@@ -226,7 +226,7 @@ end
 					kick_user(msg.from.id, msg.to.id)
 				end
 			end
-				local is_link_title = msg.media.title:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]/") or msg.fwd_from or msg.media.title:match("[Tt].[Mm][Ee]/") or msg.media.title:match("@")
+				local is_link_title = msg.media.title:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]/") or msg.media.title:match("[Tt][Ll][Gg][Rr][Mm].[Mm][Ee]/")
 				if is_link_title and lock_link == "yes" then
 					delete_msg(msg.id, ok_cb, false)
 					if strict == "yes" or to_chat then
@@ -277,7 +277,7 @@ end
 					kick_user(msg.from.id, msg.to.id)
 				end
 			end
-				local is_link_desc = msg.media.description:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]/") or msg.fwd_from or msg.media.description:match("[Tt].[Mm][Ee]/") or msg.media.description:match("@")
+				local is_link_desc = msg.media.description:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]/") or msg.media.description:match("[Tt][Ll][Gg][Rr][Mm].[Mm][Ee]/")
 				if is_link_desc and lock_link == "yes" then
 					delete_msg(msg.id, ok_cb, false)
 					if strict == "yes" or to_chat then
@@ -306,7 +306,7 @@ end
 					kick_user(msg.from.id, msg.to.id)
 				end
 			end
-				local is_url_caption = msg.media.caption:match("[Hh][Tt][Tt][Pp][Ss]://") or msg.media.caption:match("[Hh][Tt][Tt][Pp]://") or msg.media.caption:match("@") or msg.media.caption:match(".[Cc][Oo][Mm]") or msg.media.caption:match(".[Oo][Rr][Gg]") or msg.media.caption:match(".[Ii][Nn][Ff][Oo]") or msg.media.caption:match("[Ww][Ww][Ww].") or msg.media.caption:match(".[Tt][Kk]")
+				local is_url_caption = msg.media.caption:match("[Hh][Tt][Tt][Pp][Ss]://") or msg.media.caption:match("[Hh][Tt][Tt][Pp]://") or msg.media.caption:match(".[Ii][Rr]") or msg.media.caption:match(".[Cc][Oo][Mm]") or msg.media.caption:match(".[Oo][Rr][Gg]") or msg.media.caption:match(".[Ii][Nn][Ff][Oo]") or msg.media.caption:match("[Ww][Ww][Ww].") or msg.media.caption:match(".[Tt][Kk]")
 			if is_url_caption and lock_url == "yes" then
 				delete_msg(msg.id, ok_cb, false)
 				if strict == "yes" or to_chat then
@@ -327,7 +327,7 @@ end
 					kick_user(msg.from.id, msg.to.id)
 				end
 			end
-				local is_link_caption = msg.media.caption:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]/") or msg.fwd_from or msg.media.caption:match("[Tt].[Mm][Ee]/") or msg.media.caption:match("@")
+				local is_link_caption = msg.media.caption:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]/") or msg.media.caption:match("[Tt][Ll][Gg][Rr][Mm].[Mm][Ee]/")
 				if is_link_caption and lock_link == "yes" then
 					delete_msg(msg.id, ok_cb, false)
 					if strict == "yes" or to_chat then
@@ -410,7 +410,7 @@ end
 		end
 		if msg.fwd_from then
 			if msg.fwd_from.title then
-				local is_link_title = msg.fwd_from.title:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]/") or msg.fwd_from.title:match("[Tt].[Mm][Ee]/") or msg.fwd_from.title:match("@")
+				local is_link_title = msg.fwd_from.title:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]/") or msg.fwd_from.title:match("[Tt][Ll][Gg][Rr][Mm].[Mm][Ee]/")
 				if is_link_title and lock_link == "yes" then
 					delete_msg(msg.id, ok_cb, false)
 
