@@ -11,19 +11,21 @@ end
 local function run(msg, matches)
        if redis:get("id:"..msg.to.id..":"..msg.from.id) then
      local wtf = redis:ttl("id:"..msg.to.id..":"..msg.from.id)
-          send_api_msg(msg, get_receiver_api(msg), '`برای جلوگیری از هنگ شدن ربات *"..x.."*\nثانیه دیگر امتحان کنید.`', true, 'md')
+          send_api_msg(msg, get_receiver_api(msg), 'برای جلوگیری از هنگ شدن ربات *"..x.."*\nثانیه دیگر امتحان کنید.', true, 'md')
     else
   if matches[1] == 'rmsg' and is_owner(msg) then
     if msg.to.type == 'channel' then
                  if redis:get("id:"..msg.to.id..":"..msg.from.id) then
      local wtf = redis:ttl("id:"..msg.to.id..":"..msg.from.id)
-          send_api_msg(msg, get_receiver_api(msg), '`برای جلوگیری از هنگ شدن ربات *"..x.."*\nثانیه دیگر امتحان کنید.`', true, 'md')
+if redis:get("id:"..msg.to.id..":"..msg.from.id) then
+          send_api_msg(msg, get_receiver_api(msg), 'برای جلوگیری از هنگ شدن ربات *"..x.."*\nثانیه دیگر امتحان کنید.', true, 'md')
     else
              redis:setex("id:"..msg.to.id..":"..msg.from.id, 10, true
       if tonumber(matches[2]) > 10000 or tonumber(matches[2]) < 1 then
         return "Eror"
       end
            end
+end
           end
       get_history(msg.to.peer_id, matches[2] + 1 , history , {chatid = msg.to.peer_id, con = matches[2]})
     else
